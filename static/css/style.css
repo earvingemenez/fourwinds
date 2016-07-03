@@ -1,0 +1,255 @@
+
+@font-face {
+    font-family: 'gotham-light-regular';
+    src: url('fonts/gothamlight-webfont.woff2') format('woff2'),
+         url('fonts/gothamlight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'gotham-medium-regular';
+    src: url('fonts/gothammedium-webfont.woff2') format('woff2'),
+         url('fonts/gothammedium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham-bold-regular';
+    src: url('fonts/gothambold-webfont.woff2') format('woff2'),
+         url('fonts/gothambold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'gotham-book-regular';
+    src: url('fonts/gothambook-webfont.woff2') format('woff2'),
+         url('fonts/gothambook-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#page{
+    max-width: 2000px;
+    margin: 0 auto;
+    height:100000px;
+
+}
+
+#top-bar{
+    font-family: gotham-bold-regular;
+    background-color: #eeeeee;
+    font-size: 14px;
+    min-height: 34px;
+    padding-top: 11px;
+    padding-bottom: 12px;
+}
+
+#top-banner{
+    background: no-repeat url("../img/banner/banner-bgd.png") top center;
+}
+
+#top-navbar{
+    background-color: #102633;
+}
+#top-navbar > nav{
+    margin-bottom: 0;
+}
+#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li > a{
+    color: white !important;
+}
+#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li > a:hover,
+#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li.active > a{
+    color: #00b19f !important;
+    background-color: inherit;
+}
+#home > #main-carousel > .carousel-inner > .item > .carousel-caption{
+    padding-bottom: 79px;
+}
+
+#home > #main-carousel > .left {
+    width: 2%;
+}
+#home > #main-carousel > .right{
+    width: 9%;
+}
+#home > #main-carousel > .left > .icon,
+#home > #main-carousel > .right > .icon{
+    width: 48px;
+    height: 48px;
+    margin-top: -10px;
+    font-size: 30px;
+    background: url("../img/slideshow/slider-arrow.png") center center;
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+}
+#home > #main-carousel > .right > .icon{
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+
+@media (min-width: 1640px){
+    #home > #main-carousel > .carousel-inner > .item > .carousel-caption {
+        padding-bottom: 11%;
+    }
+}
+@media (max-width: 1300px){
+    #home > #main-carousel > .carousel-inner > .item > .carousel-caption {
+        padding-bottom: -5px;
+    }
+}
+
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+.jcarousel {
+    position: relative;
+    overflow: hidden;
+}
+
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+.jcarousel ul {
+    width: 20000em;
+    position: relative;
+
+    /* Optional, required in this case since it's a <ul> element */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+.jcarousel li {
+    /* Required only for block elements like <li>'s */
+    float: left;
+}
+
+#widget-venue-categories{
+
+}
+#widget-venues-control{
+    margin: 37px 0;
+    font-size: 14px;
+    font-family: "gotham-bold-regular";
+}
+#widget-venues-control .left .icon,
+#widget-venues-control .right .icon{
+    width: 25px;
+    height: 15px;
+    margin-top: -10px;
+    font-size: 15px;
+    background: url("../img/widgets/left-arrow.png") center center no-repeat;
+    z-index: 5;
+    display: inline-block;
+}
+#widget-venues-control .right .icon{
+ -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.widget-venue{
+    width: 320px;
+    height: 210px;
+    margin-right: 15px;
+}
+.widget-venue-body{
+    background-color: #0f2633;
+    color:#f2b705;
+    font-family: "gotham-bold-regular";
+    height: 133px;
+    border-bottom:5px #00bec9 solid;
+    font-size: 24px;
+    text-align: center;
+    margin-top: -25px;
+    line-height: 30px;
+}
+.widget-venue-body small{
+    font-size: 12px;
+}
+.widget-venue-header{
+    height: 80px;
+}
+/*Widget headers*/
+.widget-venue-header.widget-venue-science {
+    background: url('../img/widgets/widget-science.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-science {
+    background: url('../img/widgets/widget-science-h.png') top no-repeat ;
+}
+.widget-venue-header.widget-venue-art{
+    background: url('../img/widgets/widget-art.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-art{
+    background: url('../img/widgets/widget-art-h.png') top no-repeat ;
+}
+.widget-venue-header.widget-venue-environment{
+    background: url('../img/widgets/widget-environment.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-environment{
+    background: url('../img/widgets/widget-environment-h.png') top no-repeat ;
+}
+.widget-venue-header.widget-venue-history{
+    background: url('../img/widgets/widget-history.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-history{
+    background: url('../img/widgets/widget-history-h.png') top no-repeat ;
+}
+.widget-venue-header.widget-venue-honors{
+    background: url('../img/widgets/widget-honors.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-honors{
+    background: url('../img/widgets/widget-honors-h.png') top no-repeat ;
+}
+.widget-venue-header.widget-venue-language{
+    background: url('../img/widgets/widget-language.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-language{
+    background: url('../img/widgets/widget-language-h.png') top no-repeat ;
+}
+.widget-venue-header.widget-venue-music{
+    background: url('../img/widgets/widget-music.png') top no-repeat ;
+}
+.widget-venue:hover .widget-venue-header.widget-venue-music{
+    background: url('../img/widgets/widget-music-h.png') top no-repeat ;
+}
+/*End Widget headers*/
+.widget-venue-footer{
+    margin-top: -23px;
+}
+.widget-venue-footer .btn-learn-more{
+    position: relative;
+    background: #00bec9;
+    display: inline-block;
+    color: black;
+    height: 45px;
+    width: 290px;
+    line-height: 45px;
+    font-family: "gotham-bold-regular";
+}
+.widget-venue:hover .widget-venue-footer .btn-learn-more{
+    background: #f3b800;
+}
+
+.get-started-box{
+    background: url("../img/body/body-c2a.png") no-repeat top #eeeeee;
+    font-family: "gotham-light-regular";
+
+}
