@@ -1,0 +1,149 @@
+{% load static %}
+{#    Widgets#}
+    <div id="widget-venue-categories">
+        <div class="text-center" id="widget-venues-control">
+            <a href="#" class="left">
+                <span class="icon"></span>
+            </a>
+            <span >SELECT YOUR DOMESTIC OR INTERNATIONAL VENUE OF INTEREST</span>
+            <a href="#" class="right">
+                <span class="icon"></span>
+            </a>
+        </div>
+       <div class="jcarousel">
+            <ul class="jcarousel-list">
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-environment"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>CLEAN UP WITH</small><br/>
+                                ENVIRONMENTAL<br/>
+                                STUDIES
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-art"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>HONE YOUR CRAFT WITH A</small><br/>
+                                FINE ARTS<br/>
+                                <small>EXPERIENCE</small>
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-science"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>DISCOVERY</small><br/>
+                                SCIENCE FAIRS<br/>
+                                <small>ABROAD OR DOMESTICALLY</small><br/>
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-language"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>GET STARTED WITH YOUR</small><br/>
+                                FOREIGN LANGUAGE<br/>
+                                <small>ADVENTURE</small>
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-music"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>COMPOSE YOUR NEXT</small><br/>
+                                MUSIC<br/>
+                                <small>MASTERPIECE</small>
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-history"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>JOURNEY TO THE PAST ON A</small><br/>
+                                HISTORIC<br/>
+                                <small>EXPEDITION</small>
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="widget-venue">
+                        <div class="widget-venue-header widget-venue-honors"></div>
+                        <div class="widget-venue-body">
+                            <p>
+                                <small>SHOWCASE YOUR</small><br/>
+                                HONOR SOCIETY<br/>
+                                <small>ELITE</small><br/>
+                            </p>
+                        </div>
+                        <div class="widget-venue-footer text-center">
+                            <a href="#" class="btn-learn-more text-center">
+                                LEARN MORE
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+{#    End Widgets#}
+{% block scripts %}
+<script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.jcarousel').jcarousel();
+});
+</script>
+{%  endblock %}
