@@ -441,3 +441,24 @@ have a fixed width and height (but it's not required).
     font-weight: bold;
     font-size: 14px;
 }
+
+#safety{
+    font-family: gotham-light-regular;
+}
+
+#safety .title{
+    color: #00b19f;
+    font-size: 24px;
+    font-family: gotham-bold-regular;
+}
+#safety .subtitle{
+    font-family: gotham-bold-regular;
+    font-size: 14px;
+    /*font-weight: bolder;*/
+}
+#safety .bottom-subtitle{
+    font-family: gotham-bold-regular;
+    font-size: 18px;
+    /*font-weight: bold;*/
+    margin:20px auto;
+}

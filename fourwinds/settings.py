@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
-    'home.apps.HomeConfig'
+    'website.apps.WebsiteConfig'
 
 ]
 
