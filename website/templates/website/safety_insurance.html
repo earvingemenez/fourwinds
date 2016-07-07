@@ -1,0 +1,51 @@
+{% extends 'website/base.html' %}
+{% block title %}FourWinds{% endblock %}
+{% load static %}
+{% load page_tags %}
+{% block content %}
+
+    <div id="safety" class="container" >
+        <h3 class="title">SAFETY &amp; INSURANCE</h3>
+        <div class="col-md-6">
+            <p class="subtitle">We believe that two very important factors should govern our operations: SAFETY & SECURITY. We accomplish these goals as follows:</p>
+            <ul>
+                <li>We carry our own insurance which totals $5,000,000.</li>
+                <li>We are SYTA, NTA, IATAN, BBB, WPO and ABA members.</li>
+                <li>We only use coach companies with at a minimum of $5,000,000 insurance and who’s bus driver’s are school board approved with   certified drivers. A Certificate of Insurance endorsed to your school
+   can be provided upon request.</li>
+                <li>We not only use chain hotels like Marriott, Sheraton, Radisson,    Doubletree and Holiday Inn but we also make sure that your hotel is in a   safe neighborhood with interior corridors. Upon request, specific hotels    and beachfront properties can be arranged. If you require, additional    night time security guards exclusive to your group can be arranged at   your hotel.</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <p class="subtitle">Trip Cancellation / Trip Interruption Available:</p>
+            <p>
+                The easy, affordable way to protect your trip investment! Missing your trip is bad enough. Losing the money you paid for your trip is even worse. The Four Winds Travel Protection Plan is your ticket to worry-free travel. Now you can protect your trip investment at a very affordable rate – take peace of mind with you when you travel. Cancel for ANY REASON, must be paid for in full at the time the first deposit is paid.
+            </p>
+            <p class="subtitle">SYTA Consumer Protection Plan </p>
+            <p>
+                As we are privileged to be a member of SYTA (Student & Youth Travel Association), founded in 1997 to protect travelers younger than 26 years of age, Four Winds Tours & Travel endorses and complies with SYTA’s strict code of ethics. In addition, Four Winds Tours & Travel meets  SYTA’s requirement that members have tour protection coverage of $200,000
+            </p>
+            <p>
+                <img src="{% static 'img/safety-and-insureance/saftey-icon-pdf.png' %}" alt="safety and insurance"/>
+                <span class="subtitle">Four Winds Deluxe Travel Protection Plan (PDF) </span>
+            </p>
+        </div>
+        <div class="clearfix"></div>
+        <p class="text-center bottom-subtitle">While on the road, we can be reached 24/7 with our toll-free number 1-800-896-3858.</p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    {% render_widgets %}
+
+    <hr class="space">
+
+    {% render_get_started_form %}
+
+    <hr class="space"/>
+
+    {% render_welcome_signin_form %}
+
+    {% render_testimonials %}
+</div>
+{% endblock %}
