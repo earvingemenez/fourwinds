@@ -7,3 +7,6 @@ def index(request):
 
 def safety_insurance(request):
     return render(request, 'website/safety_insurance.html')
+
+def request_quote(request):
+    return render(request, 'website/request_quote.html')

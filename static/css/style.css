@@ -316,7 +316,8 @@ have a fixed width and height (but it's not required).
 }
 
 .get-started-box-body .form-control,
-.sign-in .form-control{
+.sign-in .form-control,
+#request_quote .form-control{
     height: 50px;
     border-radius: 0px;
     background-color: #dddddd;
@@ -446,12 +447,14 @@ have a fixed width and height (but it's not required).
     font-family: gotham-light-regular;
 }
 
-#safety .title{
+#safety .title,
+#request_quote .title{
     color: #00b19f;
     font-size: 24px;
     font-family: gotham-bold-regular;
 }
-#safety .subtitle{
+#safety .subtitle
+{
     font-family: gotham-bold-regular;
     font-size: 14px;
     /*font-weight: bolder;*/
@@ -461,4 +464,30 @@ have a fixed width and height (but it's not required).
     font-size: 18px;
     /*font-weight: bold;*/
     margin:20px auto;
+}
+
+#request_quote{
+    font-family: gotham-light-regular;
+    font-size: 14px;
+}
+#request_quote .subtitle{
+    font-family: gotham-light-regular;
+
+}
+#request_quote .wellmake{
+    font-family: gotham-bold-regular;
+
+}
+
+#request_quote .box{
+    padding-top: 20px;
+    margin-bottom: 60px;
+}
+#request_quote .box{
+    border-bottom: #00bec8 solid 5px;
+}
+#request_quote .btn-submit{
+    width: 290px;
+    height: 44px;
+    margin-bottom: -44px;
 }
