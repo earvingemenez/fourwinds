@@ -1,0 +1,181 @@
+{% extends 'website/base.html' %}
+{% block title %}FourWinds{% endblock %}
+{% load static %}
+{% load page_tags %}
+{% block content %}
+
+    <div id="request_quote" class="container" >
+        <h3 class="title">REQUEST A QUOTE</h3>
+        <h5 class="subtitle">Whatever your budget, whatever your timeline...</h5>
+        <div class="box">
+            <form>
+                <div class="col-md-6">
+                    <h3>Contact information</h3>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input class="form-control" type="text" name="first_name" placeholder="First Name"/>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <input class="form-control" type="text" name="last_name" placeholder="Last Name"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="title" placeholder="Title"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="email" placeholder="Email Address"/>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-9">
+                            <input class="form-control" type="text" name="phone_number" placeholder="Phone Number"/>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <input class="form-control" type="text" name="extension" placeholder="Extension"/>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <select class="form-control" type="text" name="contact_method" placeholder="Prefered Method of Contact">
+                            <option>Prefered Method of Contact</option>
+                        </select>
+                    </div>
+                    <h4>School Information</h4>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="school_name" placeholder="School Name"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="education_department" placeholder="Education Department"/>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="street_address" placeholder="Street Address"/>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <input class="form-control" type="text" name="city" placeholder="City"/>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <select class="form-control" type="text" name="state" placeholder="State">
+                                <option>State</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <input class="form-control" type="text" name="zip" placeholder="Zip"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="school_fax_number" placeholder="School"/>
+                    </div>
+                    <hr class="space"/>
+                    <div class="form-group">
+                        <select class="form-control" type="text" name="heard_about_us" placeholder="How did you hear about us?">
+                            <option>How did you hear about us?</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Trip information</h3>
+                    <div class="form-group ">
+                        <select class="form-control" type="text" name="trip_type" placeholder="Type of Trip">
+                            <option>Type of Trip</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <input class="form-control" type="text" name="students" placeholder="Number of Students"/>
+                    </div>
+                    <div class="form-group ">
+                        <select class="form-control" type="text" name="grade_levels" placeholder="Grade Levels">
+                            <option>Grade Levels</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <input class="form-control" type="text" name="chaperones" placeholder="Number of Complementary Chaperones"/>
+                    </div>
+                    <div class="form-group ">
+                        <input class="form-control" type="text" name="destination" placeholder="Destination"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Date of Tip
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <select class="form-control" type="text" name="trip_month" placeholder="Month">
+                                <option>Month</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <select class="form-control" type="text" name="trip_day" placeholder="Day">
+                                <option>Day</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <select class="form-control" type="text" name="trip_year" placeholder="Year">
+                                <option>Year</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="row">
+                                <a>
+                                    <img src="{% static 'img/request-a-quote/raq_icon-calendar.png' %}"/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <select class="form-control" type="text" name="transportation" placeholder="Transportation Needed">
+                            <option>Transportation Needed</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <input class="form-control" type="text" name="pref_airport" placeholder="Preferred Airport"/>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            Meals to include
+                        </div>
+                        <div class=" col-sm-3">
+                            <label>
+                              <input type="checkbox" name="meals[breakfast]"> Breakfast
+                            </label>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>
+                              <input type="checkbox" name="meals[lunch]"> Lunch
+                            </label>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>
+                              <input type="checkbox" name="meals[dinner]"> Dinner
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <select class="form-control" type="text" name="budget" placeholder="Budget">
+                            <option>Budget</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6">
+                        Upload a word doc or pdf file for reference<br/>
+                        <b>Greece Arcadia High School Senior Trip 2017.pdf</b>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <input class="form-control" type="file" name="reference_file"/>
+                    </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+                <p class="text-center wellmake">
+                    WELL MAKE YOUR DREAM A REALITY!
+                </p>
+
+                <div class="form-group text-center">
+                    <input type="submit" class="btn btn-submit" value="GET STARTED"/>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    {% render_testimonials %}
+
+{% endblock %}
