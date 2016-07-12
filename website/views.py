@@ -5,6 +5,10 @@ def index(request):
     return render(request, 'website/index.html')
 
 
+def our_story(request):
+    return render(request, 'website/our-story.html')
+
+
 def travel(request):
     return render(request, 'website/travel.html')
 

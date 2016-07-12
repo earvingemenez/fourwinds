@@ -583,3 +583,27 @@ have a fixed width and height (but it's not required).
     border: #9c9993 solid 2px;
 
 }
+
+#our-story{
+    background: url('../img/our_story/background-image.png') no-repeat top center;
+}
+
+#our-story h2.title{
+    font-family: gotham-bold-regular;
+    font-size: 18px;
+    color:#00b19f;
+}
+#our-story {
+    font-family: gotham-light-regular;
+    font-size: 14px;
+    padding: 44px;
+}
+#our-story #our-story-body{
+    background-color: white;
+    border: #9c9993 solid 2px;
+    padding: 10px 30px;
+
+}
+#our-story #our-story-body b{
+
+}
