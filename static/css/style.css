@@ -491,3 +491,65 @@ have a fixed width and height (but it's not required).
     height: 44px;
     margin-bottom: -44px;
 }
+#travel .jcarousel{
+    border-bottom: #595959 solid 8px;
+}
+#travel .jcarousel li{
+    width: 539px;
+    height: 499px;
+    margin: 21px;
+}
+
+#travel .jcarousel .event-front{
+
+}
+#travel .jcarousel .event-back{
+    background-color: #1e374b;
+    width: 539px;
+    height: 499px;
+    position: absolute;
+    z-index: 10;
+    opacity: 0.85;
+    filter: alpha(opacity=85); /* For IE8 and earlier */
+    color:white;
+    font-family: gotham-light-regular;
+    font-size: 14px;
+    padding: 40px;
+}
+#travel .jcarousel .event-back h4{
+    font-size: 18px;
+    font-family: gotham-bold-regular;
+}
+#travel .jcarousel .event-back a{
+    background-color: #f2b705;
+    border-radius: 0;
+    width: 159px;
+    height: 46px;
+    color:#1e374b;
+    line-height: 34px;
+    font-family: gotham-medium-regular;
+}
+#travel .events{
+    padding-top: 50px;
+}
+#travel .events-list .event{
+    font-family: gotham-light-regular;
+    font-size: 14px;
+}
+#travel .events-list .event-title{
+    font-family: gotham-bold-regular;
+    font-size: 18px;
+    color: #00b19f;
+}
+
+#travel .events-list .event .row > a{
+    width: 150px;
+    height: 46px;
+    line-height: 34px;
+    color: #f2b705;
+    background-color: #1e374b;
+    border-radius: 0px;
+}
+#travel .events-list .event{
+
+}
