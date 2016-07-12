@@ -317,7 +317,8 @@ have a fixed width and height (but it's not required).
 
 .get-started-box-body .form-control,
 .sign-in .form-control,
-#request_quote .form-control{
+#request_quote .form-control,
+#contact-us .form-control{
     height: 50px;
     border-radius: 0px;
     background-color: #dddddd;
@@ -550,6 +551,35 @@ have a fixed width and height (but it's not required).
     background-color: #1e374b;
     border-radius: 0px;
 }
-#travel .events-list .event{
+
+#contact-us{
+    font-family:gotham-light-regular;
+    background: url('../img/contact_us/map.png') no-repeat top center;
+    padding: 20px 0px;
+    border-bottom: #595959 solid 6px;
+}
+#contact-us .title{
+    color:#00b19f;
+}
+#contact-us h2.title{
+    font-family:gotham-bold-regular;
+    font-size: 18px;
+}
+#contact-us h3.title{
+    font-family: gotham-light-regular;
+    font-size: 24px;
+}
+#contact-us textarea.form-control{
+    min-height: 181px;
+}
+#contact-us .btn-submit{
+    width: 100px;
+    height: 44px;
+    line-height: 30px;
+
+}
+#contact-us .container{
+    background-color: white;
+    border: #9c9993 solid 2px;
 
 }

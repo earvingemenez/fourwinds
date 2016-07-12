@@ -15,3 +15,7 @@ def safety_insurance(request):
 
 def request_quote(request):
     return render(request, 'website/request_quote.html')
+
+
+def contact_us(request):
+    return render(request, 'website/contact-us.html')
