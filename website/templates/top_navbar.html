@@ -14,10 +14,16 @@
                         OUR STORY
                     </a>
                 </li>
-                <li>
-                    <a href="{% url 'travel' %}">
-                        TRAVEL
+                <li class="dropdown">
+                    <a href="{% url 'travel' %}" class="dropdown-toggle" data-toggle="dropdown"
+                        role="button" aria-haspopup="true" aria-expanded="false">
+                        TRAVEL <span class="caret"></span>
                     </a>
+                    <ul class="dropdown-menu">
+                        {% for cat in categories %}
+                        <li><a href="#">{{ cat }}</a></li>
+                        {% endfor %}
+                    </ul>
                 </li>
                 <li>
                     <a href="{% url 'safety_insurance' %}">

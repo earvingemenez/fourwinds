@@ -6,6 +6,7 @@ import uuid
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch.dispatcher import receiver
+from django.utils import timezone
 
 
 def get_path(instance, filename, path):
@@ -22,13 +23,21 @@ def get_quotes_files_path(instance, filename):
     return get_path(instance, filename, 'quotes')
 
 
-class EventCategory(models.Model):
+def get_trip_photos_path(instance, filename):
+    return get_path(instance, filename, 'trips/photos')
+
+
+def get_trip_pdf_path(instance, filename):
+    return get_path(instance, filename, 'trips/pdf')
+
+
+class Category(models.Model):
 
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, default="General")
     caption = models.CharField(max_length=200)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -46,9 +55,9 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     date = models.DateTimeField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-    category = models.ForeignKey(EventCategory, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -64,11 +73,6 @@ class EventPhotos(models.Model):
                               null=False,
                               blank=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-
-
-@receiver(post_delete, sender=EventPhotos)
-def event_photo_delete(sender, instance, **kwargs):
-    instance.photo.delete(False)
 
 
 class Organization(models.Model):
@@ -113,19 +117,49 @@ class Customer(models.Model):
 
 
 class Trip(models.Model):
+
     class Meta:
         verbose_name = "Trip"
         verbose_name_plural = "Trips"
 
+    title = models.CharField(max_length=100, default='')
+    description = models.TextField(default='')
     type = models.CharField(max_length=100)
     destination = models.CharField(max_length=200)
     date = models.DateField()
     draft = models.BooleanField(default=True)
+    start_location = models.CharField(max_length=255, default='')
+    end_location = models.CharField(max_length=255, default='')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
     def __str__(self):
         return self.destination
+
+
+class TripPhoto(models.Model):
+
+    class Meta:
+        verbose_name = "Photo"
+        verbose_name_plural = "Photos"
+
+    photo = models.ImageField(upload_to=get_trip_photos_path,
+                              null=False,
+                              blank=False)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+
+
+class TripFile(models.Model):
+
+    class Meta:
+        verbose_name = "File"
+        verbose_name_plural = "Files"
+
+    file = models.FileField(upload_to=get_trip_pdf_path,
+                             null=False,
+                             blank=False)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
 
 
 class Quote(models.Model):
@@ -160,9 +194,27 @@ class Testimonial(models.Model):
         verbose_name_plural = "Testimonials"
 
     text = models.TextField(null=False, blank=False)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=150, default='')
+    organization = models.CharField(max_length=150)
+    trip = models.CharField(max_length=150, default='')
+    event = models.CharField(max_length=150, default='')
+    date = models.DateField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
+    def __repr__(self):
+        return self.full_name
+
+
+class Receivers:
+    @receiver(post_delete, sender=EventPhotos)
+    def event_photo_delete(self, sender, instance, **kwargs):
+        instance.photo.delete(False)
+
+    @receiver(post_delete, sender=TripPhoto)
+    def trip_photo_delete(self, sender, instance, **kwargs):
+        instance.photo.delete(False)
+
+    @receiver(post_delete, sender=TripFile)
+    def trip_file_delete(self, sender, instance, **kwargs):
+        instance.photo.delete(False)

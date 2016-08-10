@@ -2,8 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import (
-    EventCategory, Event, EventPhotos,
-    Organization, Customer, Trip, Quote, Testimonial
+    Category, Event, EventPhotos,
+    Organization, Customer, Trip, Quote, Testimonial,
+    TripPhoto, TripFile
 )
 
 
@@ -13,23 +14,31 @@ class EventPhotosInline(admin.TabularInline):
 
 class EventAdmin(admin.ModelAdmin):
     inlines = [EventPhotosInline]
-    list_display = ['title', 'date', 'category', 'updated', 'timestamp']
+    list_display = ['title', 'date', 'updated', 'timestamp']
 
 
-class EventCategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title', 'caption', 'updated', 'timestamp']
-
-
-admin.site.register(EventCategory, EventCategoryAdmin)
-admin.site.register(Event, EventAdmin)
 
 
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ['name', 'city', 'state', 'zip', 'updated', 'timestamp']
 
+
 class CustomerAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'occupation', 'email', 'phone_number', 'updated', 'timestamp']
+
+
+class TripPhotosInline(admin.TabularInline):
+    model = TripPhoto
+
+
+class TripFilesInline(admin.TabularInline):
+    model = TripFile
+
+
 class TripAdmin(admin.ModelAdmin):
+    inlines = [TripPhotosInline, TripFilesInline]
     list_display = ['type', 'destination', 'date', 'draft', 'updated', 'timestamp']
 
 
@@ -40,8 +49,10 @@ class QuoteAdmin(admin.ModelAdmin):
 
 class TestimonialAdmin(admin.ModelAdmin):
     # TODO: improve admin display
-    list_display = ['text']
+    list_display = ['full_name', 'organization', 'trip', 'event', 'date']
 
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Event, EventAdmin)
 admin.site.register(Organization, OrganizationAdmin)
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Trip, TripAdmin)

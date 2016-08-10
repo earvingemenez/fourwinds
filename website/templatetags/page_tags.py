@@ -10,7 +10,10 @@ def render_topheader(context):
 
 @register.inclusion_tag('top_navbar.html', takes_context=True)
 def render_topnavbar(context):
-    return {}
+    from website.models import Category
+    cats = Category.objects.all()
+    
+    return {'categories': cats}
 
 
 @register.inclusion_tag('widgets.html', takes_context=True)
@@ -30,7 +33,9 @@ def render_welcome_signin_form(context):
 
 @register.inclusion_tag('testimonials.html', takes_context=True)
 def render_testimonials(context):
-    return {}
+    from website.models import Testimonial
+    data = Testimonial.objects.all()
+    return {'testimonials': data}
 
 
 @register.inclusion_tag('footer.html', takes_context=True)
