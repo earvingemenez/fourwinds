@@ -34,7 +34,7 @@ def render_welcome_signin_form(context):
 @register.inclusion_tag('testimonials.html', takes_context=True)
 def render_testimonials(context):
     from website.models import Testimonial
-    data = Testimonial.objects.all()
+    data = Testimonial.objects.all()[:5]
     return {'testimonials': data}
 
 

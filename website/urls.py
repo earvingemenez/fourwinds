@@ -8,5 +8,7 @@ urlpatterns = [
     url(r'^safety-and-insurance/$', views.safety_insurance, name='safety_insurance'),
     url(r'^request-a-quote/$', views.request_quote, name='request_quote'),
     url(r'^travel/$', views.travel, name='travel'),
-    url(r'^contact-us/$', views.contact_us, name='contact-us')
+    url(r'^contact-us/$', views.contact_us, name='contact-us'),
+    # other pages
+    url(r'^testimonials/$', views.testimonials, name='testimonials')
 ]
