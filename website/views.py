@@ -23,3 +23,9 @@ def request_quote(request):
 
 def contact_us(request):
     return render(request, 'website/contact-us.html')
+
+
+def testimonials(request):
+    from website.models import Testimonial
+    data = Testimonial.objects.all()
+    return render(request, 'website/testimonials.html', context={"data": data})
