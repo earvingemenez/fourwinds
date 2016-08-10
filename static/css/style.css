@@ -71,9 +71,10 @@
     color: white !important;
 }
 #top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li > a:hover,
-#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li.active > a{
+#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li.active > a,
+#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li.open > a{
     color: #00b19f !important;
-    background-color: inherit;
+    background-color: white;
 }
 #home > #main-carousel > .carousel-inner > .item > .carousel-caption{
     padding-bottom: 79px;

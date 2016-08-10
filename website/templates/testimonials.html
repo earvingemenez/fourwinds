@@ -7,18 +7,24 @@
                 <div class="box">
                     <div id="testimonials-carousel" class="container carousel" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
-                            <div class="item testimonial active">
+
+                            {%  for row in testimonials %}
+                            <div class="item testimonial {%  if forloop.counter == 1 %} active {% endif %}">
                                 <p>
                                     <img src="{% static 'img/testimonial/quote.png' %}" alt="" class="quote">
-                                    My students absolutely loved experiencing Les Miserables on Broadway and
-                                    the amazing Broadway Classroom workshop we attended.
-                                    They learned so much and are already looking forward to another trip.
+                                    {{ row.text }}
                                 </p>
                                 <p class="autor">
-                                    - Joanna Kufs, Moravia High School,
-                                        New York City trip with Broadway workshop, May 2014
+                                    - {{ row.full_name }}, {{ row.organization }},
+                                        {{ row.trip }}
+                                        {% if row.event %}
+                                        trip with {{ row.event }},
+                                        {% endif %}
+                                        {{ row.date }}
+
                                 </p>
                             </div>
+                            {% endfor %}
                         </div>
                         <!-- Controls -->
                           <a class="left carousel-control" href="#testimonials-carousel" role="button" data-slide="prev">
