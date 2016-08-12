@@ -76,6 +76,43 @@
     color: #00b19f !important;
     background-color: white;
 }
+
+#top-navbar #travel-menu{
+    width: 1170px;
+    left: -200px;
+}
+
+#top-navbar ul{
+    list-style-type: none;
+}
+#travel-menu #travel-menu-content img{
+    margin-top: 15px;
+    width: 100%;
+}
+#travel-menu #travel-menu-content #divider{
+    border-left: solid 2px yellow;
+    min-height: 300px;
+}
+#travel-menu #travel-menu-content ul{
+    margin: 0;
+    padding: 0;
+}
+#travel-menu #travel-menu-content .title{
+    color: #00b19f;
+    font-size: 24px;
+    font-family: gotham-bold-regular;
+}
+#travel-menu #travel-menu-content ul li a{
+    font-family: gotham-bold-regular;
+    font-size: 12px;
+    color: black;
+}
+#travel-menu #travel-menu-content ul li a:hover{
+    color: #00b19f;
+}
+#travel-menu #travel-menu-content .btn-submit{
+    line-height: 30px;
+}
 #home > #main-carousel > .carousel-inner > .item > .carousel-caption{
     padding-bottom: 79px;
 }
@@ -284,6 +321,10 @@ have a fixed width and height (but it's not required).
     color: #f2b705;
     height: 44px;
 }
+.btn-submit:hover{
+    color: #00bec9;
+
+}
 .get-started-box-body .btn-submit{
 
     width: 290px;
@@ -331,9 +372,14 @@ have a fixed width and height (but it's not required).
 .bottom-bg{
     background: url("../img/bottom/bottom-bg-final.png") bottom center no-repeat;
 }
+
+#testimonials .well{
+    background: white;
+}
 .testimonials{
     border-bottom: 4px white solid;
 }
+
 .testimonial{
 
     max-width: 850px;
@@ -341,15 +387,22 @@ have a fixed width and height (but it's not required).
     padding-top: 35px;
 }
 .testimonial p {
-    font-family: "Adobe Garamond Pro";
-    font-size: 24px;
+    font-family: gotham-light-regular;
+    font-size: 18px;
     font-style: italic;
+    font-weight: bold;
 }
+
 .testimonial .autor{
     font-size: 14px;
+    font-weight: 100;
 }
 .testimonial .quote{
     margin-bottom: 17px;
+}
+.testimonial .quote.quote-close{
+    margin-bottom: 17px;
+    margin-left: 5px;
 }
 .testimonials .btn-submit{
     width: 200px;
@@ -378,6 +431,7 @@ have a fixed width and height (but it's not required).
 #footer .affiliates{
     padding-top:43px;
     padding-bottom: 50px;
+    overflow: hidden;
 
 }
 #footer .title{
@@ -608,3 +662,4 @@ have a fixed width and height (but it's not required).
 #our-story #our-story-body b{
 
 }
+

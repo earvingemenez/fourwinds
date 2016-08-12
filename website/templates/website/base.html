@@ -25,7 +25,9 @@
 {% endblock %}
 {% block bootstrap3_extra_script %}
 
-    {% block scripts %} {% endblock %}
+    {% block scripts %}
+        {{ block.super }}
+     {% endblock %}
     <script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
 
     <script src="{% static 'js/jquery.bootstrap-dropdown-hover.min.js' %}"></script>
@@ -36,9 +38,10 @@
         $('#top-navbar [data-toggle="dropdown"]').bootstrapDropdownHover({
           // see next for specifications
         });
+        $("#travel-menu li").load("{% url 'travel_info' %}");
     });
-
     </script>
+
 
 
 {% endblock %}
