@@ -10,10 +10,7 @@ def render_topheader(context):
 
 @register.inclusion_tag('top_navbar.html', takes_context=True)
 def render_topnavbar(context):
-    from website.models import Category
-    cats = Category.objects.all()
-    
-    return {'categories': cats}
+    return {}
 
 
 @register.inclusion_tag('widgets.html', takes_context=True)

@@ -13,6 +13,12 @@ def travel(request):
     return render(request, 'website/travel.html')
 
 
+def travel_info(request):
+    from website.models import Category
+    cats = Category.objects.all()
+    return render(request, 'website/travel-ajax.html', context={'categories': cats})
+
+
 def safety_insurance(request):
     return render(request, 'website/safety_insurance.html')
 
@@ -28,4 +34,5 @@ def contact_us(request):
 def testimonials(request):
     from website.models import Testimonial
     data = Testimonial.objects.all()
+
     return render(request, 'website/testimonials.html', context={"data": data})

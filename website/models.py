@@ -45,6 +45,10 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def events(self):
+        return self.event_set.all()[:10]
+
 
 class Event(models.Model):
 
@@ -61,6 +65,10 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def photos(self):
+        return self.eventphotos_set.all()[:10]
 
 
 class EventPhotos(models.Model):
@@ -196,8 +204,8 @@ class Testimonial(models.Model):
     text = models.TextField(null=False, blank=False)
     full_name = models.CharField(max_length=150, default='')
     organization = models.CharField(max_length=150)
-    trip = models.CharField(max_length=150, default='')
-    event = models.CharField(max_length=150, default='')
+    trip = models.CharField(max_length=150, default='', null=True, blank=True)
+    event = models.CharField(max_length=150, default='', null=True, blank=True)
     date = models.DateField(default=timezone.now)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
