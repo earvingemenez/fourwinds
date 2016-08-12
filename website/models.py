@@ -215,14 +215,17 @@ class Testimonial(models.Model):
 
 
 class Receivers:
+    @staticmethod
     @receiver(post_delete, sender=EventPhotos)
-    def event_photo_delete(self, sender, instance, **kwargs):
+    def event_photo_delete(sender, instance, **kwargs):
         instance.photo.delete(False)
 
+    @staticmethod
     @receiver(post_delete, sender=TripPhoto)
-    def trip_photo_delete(self, sender, instance, **kwargs):
+    def trip_photo_delete(sender, instance, **kwargs):
         instance.photo.delete(False)
 
+    @staticmethod
     @receiver(post_delete, sender=TripFile)
-    def trip_file_delete(self, sender, instance, **kwargs):
+    def trip_file_delete(sender, instance, **kwargs):
         instance.photo.delete(False)
