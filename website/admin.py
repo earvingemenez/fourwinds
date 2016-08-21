@@ -4,7 +4,7 @@ from django.contrib import admin
 from .models import (
     Category, Event, EventPhotos,
     Organization, Customer, Trip, Quote, Testimonial,
-    TripPhoto, TripFile
+    TripPhoto, TripFile, ContactRequest
 )
 
 
@@ -51,6 +51,10 @@ class TestimonialAdmin(admin.ModelAdmin):
     # TODO: improve admin display
     list_display = ['full_name', 'organization', 'trip', 'event', 'date']
 
+
+class ContactRequestAdmin(admin.ModelAdmin):
+    list_display = ['first_name', 'last_name', 'email', 'organization']
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Organization, OrganizationAdmin)
@@ -58,4 +62,4 @@ admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Trip, TripAdmin)
 admin.site.register(Quote, QuoteAdmin)
 admin.site.register(Testimonial, TestimonialAdmin)
-
+admin.site.register(ContactRequest, ContactRequestAdmin)

@@ -261,3 +261,19 @@ class Receivers:
     @receiver(post_delete, sender=TripFile)
     def trip_file_delete(sender, instance, **kwargs):
         instance.photo.delete(False)
+
+
+class ContactRequest(models.Model):
+    class Meta:
+        verbose_name = 'Contact Request'
+        verbose_name_plural = 'Contact Requests'
+
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=150)
+    date = models.DateField(blank=True, default='')
+    organization = models.CharField(blank=True, default='', max_length=200)
+    message = models.TextField()
+    newsletter = models.BooleanField(default=False)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)

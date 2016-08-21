@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.utils.timezone import now
 from django.db.models import Count
 from django.db.models.functions import Concat
-from website.models import Trip, Event, Category, Testimonial, Month, Year
+from website.models import Trip, Event, Category, Testimonial, Month, Year, ContactRequest
 
 
 def index(request):
@@ -71,6 +71,11 @@ def request_quote(request):
 
 
 def contact_us(request):
+    data = request.POST.dict()
+    if data:
+        del data['csrfmiddlewaretoken']
+        contact = ContactRequest.objects.create(**data)
+        contact.save()
     return render(request, 'website/contact-us.html')
 
 
