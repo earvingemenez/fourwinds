@@ -5,8 +5,31 @@ import uuid
 
 from django.db import models
 from django.db.models.signals import post_delete
+from django.db.models import Func
 from django.dispatch.dispatcher import receiver
 from django.utils import timezone
+
+
+class Month(Func):
+    def __ror__(self, other):
+        pass
+
+    def __rand__(self, other):
+        pass
+
+    def __and__(self, other):
+        pass
+
+    def __or__(self, other):
+        pass
+
+    function = 'EXTRACT'
+    template = '%(function)s(MONTH from %(expressions)s)'
+    output_field = models.IntegerField()
+
+
+class Year(Month):
+    template = '%(function)s(YEAR from %(expressions)s)'
 
 
 def get_path(instance, filename, path):
@@ -31,6 +54,10 @@ def get_trip_pdf_path(instance, filename):
     return get_path(instance, filename, 'trips/pdf')
 
 
+def get_category_bg_path(instance, filename):
+    return get_path(instance, filename, 'categories')
+
+
 class Category(models.Model):
 
     class Meta:
@@ -38,7 +65,8 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
     title = models.CharField(max_length=100, default="General")
-    caption = models.CharField(max_length=200)
+    caption = models.TextField(blank=True)
+    widget_top_bg = models.ImageField(upload_to=get_category_bg_path, null=False, blank=False, default='')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -77,9 +105,7 @@ class EventPhotos(models.Model):
         verbose_name = "Photo"
         verbose_name_plural = "Photos"
 
-    photo = models.ImageField(upload_to=get_event_photos_path,
-                              null=False,
-                              blank=False)
+    photo = models.ImageField(upload_to=get_event_photos_path, null=False, blank=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
@@ -144,6 +170,12 @@ class Trip(models.Model):
 
     def __str__(self):
         return self.destination
+
+    @property
+    def photos(self):
+        return self.tripphoto_set.all()[:10]
+
+
 
 
 class TripPhoto(models.Model):

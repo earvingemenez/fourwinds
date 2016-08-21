@@ -33,8 +33,19 @@
     <script src="{% static 'js/jquery.bootstrap-dropdown-hover.min.js' %}"></script>
 
     <script type="text/javascript">
+
+    function jcarousel_move(left){
+        var direction = "+=1";
+        if(left){
+            direction = "-=1";
+        }
+        $('.jcarousel').jcarousel('scroll',direction);
+    }
     $(document).ready(function(){
-        $('.jcarousel').jcarousel();
+        $('.jcarousel').jcarousel({
+            list: '.jcarousel-list',
+            items: '.jcarousel-item'
+        });
         $('#top-navbar [data-toggle="dropdown"]').bootstrapDropdownHover({
           // see next for specifications
         });

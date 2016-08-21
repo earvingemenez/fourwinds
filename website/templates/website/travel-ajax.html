@@ -36,7 +36,7 @@
                             <div class="title">{{ event.title }}</div>
                             <p>{{ event.description }}</p>
                             <div class="clearfix"></div>
-                            <a href="#" class="btn btn-submit">LEARN MORE</a>
+                            <a href="{% url 'event' event.id %}" class="btn btn-submit">LEARN MORE</a>
                         </div>
                     {% endfor %}
                     </div>

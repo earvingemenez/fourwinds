@@ -126,7 +126,9 @@
 #main-carousel > .left > .icon,
 #main-carousel > .right > .icon,
 #testimonials-carousel .left .icon,
-#testimonials-carousel .right .icon{
+#testimonials-carousel .right .icon,
+#travel .jcarousel .left .icon,
+#travel .jcarousel .right .icon{
     width: 48px;
     height: 48px;
     margin-top: -10px;
@@ -134,16 +136,24 @@
     background: url("../img/slideshow/slider-arrow.png") center center;
     position: absolute;
     top: 50%;
-    z-index: 5;
+    z-index: 100;
     display: inline-block;
 }
 #main-carousel > .right > .icon,
-#testimonials-carousel > .right > .icon{
+#testimonials-carousel > .right > .icon,
+#travel .jcarousel .right .icon{
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+#travel .jcarousel .left{
+    width: 10%;
+}
+#travel .jcarousel .left,
+#travel .jcarousel .right{
+    z-index: 10;
 }
 
 
@@ -663,3 +673,10 @@ have a fixed width and height (but it's not required).
 
 }
 
+#category_travels{
+    min-height: 900px;
+}
+
+#category_travels .media{
+    margin: 10px 3px;
+}
