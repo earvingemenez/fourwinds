@@ -32,7 +32,7 @@
                         <div class="media-left">
                             {% if trip.photos %}
                             <a href="{% url 'trip' trip.id %}">
-                              <img class="media-object img-thumbnail" src="/media/{{ trip.photos.0.photo.0.photo }}" alt="{{ trip.title }}" width="100">
+                              <img class="media-object img-thumbnail" src="/media/{{ trip.photos.0.photo }}" alt="{{ trip.title }}" width="100">
                             </a>
                             {% endif %}
                         </div>
