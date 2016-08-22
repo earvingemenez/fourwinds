@@ -1,0 +1,37 @@
+{% extends 'website/base.html' %}
+{% block title %}FourWinds{% endblock %}
+{% load static %}
+{% load page_tags %}
+{% block content %}
+<div id="event" class="container">
+    <ol class="breadcrumb">
+        <li><a href="{% url 'travel' %}">Travel</a></li>
+        <li><a href="{% url 'category_travels' event.category.id %}">{{ event.category }}</a></li>
+        <li class="active">{{ event }}</li>
+    </ol>
+    <h3>{{ event }}</h3>
+    <div id="event-{{ event.id }}-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+            {% for photo in event.photos %}
+                <li data-target="#event-{{ trip.id }}-carousel"
+                    data-slide-to="{{ forloop.counter }}"
+                    class="{% if forloop.first %} active {% endif %}">
+                </li>
+            {% endfor %}
+        </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+          {% for photo in event.photos %}
+            <div class="item {% if forloop.first %} active {% endif %}">
+              <img src="/media/{{ photo.photo }}" alt="{{ trip.title }}">
+            </div>
+          {% endfor %}
+      </div>
+    </div>
+    <hr class="space"/>
+    <div class="well">
+        {{ event.description }}
+    </div>
+</div>
+
+{% endblock %}

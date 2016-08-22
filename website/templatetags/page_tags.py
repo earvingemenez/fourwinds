@@ -15,7 +15,9 @@ def render_topnavbar(context):
 
 @register.inclusion_tag('widgets.html', takes_context=True)
 def render_widgets(context):
-    return {}
+    from website.models import Category
+    data = Category.objects.all()
+    return {'categories': data}
 
 
 @register.inclusion_tag('get_started_form.html', takes_context=True)
