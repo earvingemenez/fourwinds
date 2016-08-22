@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.utils.timezone import now
 from django.db.models import Count
 from django.db.models.functions import Concat
-from website.models import Trip, Event, Category, Testimonial, Month, Year, ContactRequest
+from website.models import Trip, Event, Category, Testimonial, Month, Year, ContactRequest, Quote
 
 
 def index(request):
@@ -66,8 +66,31 @@ def safety_insurance(request):
     return render(request, 'website/safety_insurance.html')
 
 
-def request_quote(request):
-    return render(request, 'website/request_quote.html')
+def request_quote(request, details=''):
+    if not details:
+        data = request.POST.dict()
+        if data:
+            del data['csrfmiddlewaretoken']
+            data['meal_to_include'] = ", ".join(request.POST.getlist('meal'))
+            quote = Quote.objects.get(id=int(data['id']))
+            quote.followup_time = data['followup_time']
+            quote.chaperones = int(data['chaperones'] or 0)
+            quote.department = int(data['department'] or 0)
+            quote.transportation = data['transportation']
+            quote.preferred_airport = data['preferred_airport']
+            quote.meal_to_include = data['meal_to_include']
+            if request.FILES['attachment']:
+                quote.attachment = request.FILES['attachment']
+            quote.save()
+        return render(request, 'website/request_quote.html')
+    else:
+        data = request.POST.dict()
+        data['date'] = '{}-{}-{}'.format(data['date[year]'], data['date[month]'], data['date[day]'])
+        del data['csrfmiddlewaretoken']
+        del data['date[year]'], data['date[month]'], data['date[day]']
+        quote = Quote.objects.create(**data)
+        quote.save()
+        return render(request, 'website/request_quote_details.html', context={"quote_id": quote.id})
 
 
 def contact_us(request):

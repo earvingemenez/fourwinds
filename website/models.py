@@ -115,9 +115,6 @@ class Organization(models.Model):
         verbose_name_plural = "Organizations"
 
     name = models.CharField(max_length=100)
-    # Schools only
-    education_department = models.CharField(max_length=100)
-    # End Schools only
     street_address = models.CharField(max_length=150)
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
@@ -176,8 +173,6 @@ class Trip(models.Model):
         return self.tripphoto_set.all()[:10]
 
 
-
-
 class TripPhoto(models.Model):
 
     class Meta:
@@ -207,23 +202,27 @@ class Quote(models.Model):
         verbose_name = "Quote"
         verbose_name_plural = "Quotes"
 
-    travelers = models.IntegerField()
-    # Schools only
-    grade_levels = models.CharField(max_length=50)
-    complementary_chaperones = models.IntegerField()
-    # End Schools only
-    transportation = models.CharField(max_length=150)
-    preferred_airport = models.CharField(max_length=200)
-    meals_to_include = models.CharField(max_length=60)
-    budget = models.CharField(max_length=200)
-    reference_file = models.FileField(
-        upload_to=get_quotes_files_path,
-        null=True,
-        blank=False)
-    how_hear = models.CharField(max_length=150)
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=20)
+    phone_ext = models.CharField(max_length=10, null=True, blank=True)
+    organization_name = models.CharField(max_length=150)
+    organization_zip = models.CharField(max_length=50)
+    trip_type = models.CharField(max_length=100)
+    number_students = models.IntegerField()
+    destination = models.CharField(max_length=250)
+    date = models.DateField(default=timezone.now())
+    budget = models.CharField(max_length=150)
+    notes = models.TextField(blank=True, default='')
+    # optional fields
+    followup_time = models.CharField(blank=True, default='', max_length=50)
+    chaperones = models.IntegerField(blank=True, null=True)
+    department = models.CharField(blank=True, null=True, default='', max_length=100)
+    transportation = models.CharField(blank=True, null=True, default='', max_length=100)
+    preferred_airport = models.CharField(blank=True, null=True, default='', max_length=100)
+    meal_to_include = models.CharField(blank=True, null=True, default='', max_length=100)
+    attachment = models.FileField(upload_to=get_quotes_files_path, null=True, blank=True, default='')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 

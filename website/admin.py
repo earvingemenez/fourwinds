@@ -44,7 +44,7 @@ class TripAdmin(admin.ModelAdmin):
 
 class QuoteAdmin(admin.ModelAdmin):
     # TODO: improve admin display
-    list_display = ['travelers', 'transportation', 'preferred_airport']
+    list_display = ['email', 'first_name', 'last_name', 'date', 'transportation', 'preferred_airport']
 
 
 class TestimonialAdmin(admin.ModelAdmin):
