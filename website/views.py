@@ -75,7 +75,7 @@ def request_quote(request, details=''):
             quote = Quote.objects.get(id=int(data['id']))
             quote.followup_time = data['followup_time']
             quote.chaperones = int(data['chaperones'] or 0)
-            quote.department = int(data['department'] or 0)
+            quote.department = data['department']
             quote.transportation = data['transportation']
             quote.preferred_airport = data['preferred_airport']
             quote.meal_to_include = data['meal_to_include']
