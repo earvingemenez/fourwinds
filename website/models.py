@@ -2,13 +2,43 @@ from __future__ import unicode_literals
 
 import os
 import uuid
+import datetime
+import time
 
 from django.db import models
 from django.db.models.signals import post_delete
 from django.db.models import Func
 from django.dispatch.dispatcher import receiver
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
+from django.core.validators import ValidationError
 
+YEARMONTH_INPUT_FORMATS = (
+    '%Y-%m', '%m/%Y', '%m/%y', # '2006-10', '10/2006', '10/06'
+)
+
+class YearMonthField(models.CharField):
+    default_error_messages = {
+        'invalid': _('Enter a valid year and month.'),
+    }
+
+    def __init__(self, input_formats=None, *args, **kwargs):
+        super(YearMonthField, self).__init__(*args, **kwargs)
+        self.input_formats = input_formats
+
+    def clean(self, value, model_instance):
+
+        if isinstance(value, datetime.datetime):
+            return format(value, '%Y-%m')
+        if isinstance(value, datetime.date):
+            return format(value, '%Y-%m')
+        for fmt in self.input_formats or YEARMONTH_INPUT_FORMATS:
+            try:
+                date = datetime.date(*time.strptime(value, fmt)[:3])
+                return format(date, '%Y-%m')
+            except ValueError:
+                continue
+        raise ValidationError(self.error_messages['invalid'])
 
 class Month(Func):
     def __ror__(self, other):
@@ -75,7 +105,11 @@ class Category(models.Model):
 
     @property
     def events(self):
-        return self.event_set.all()[:10]
+        return self.event_set.all()[:]
+
+    @property
+    def trips(self):
+        return self.trip_set.all()[:]
 
 
 class Event(models.Model):
@@ -96,7 +130,7 @@ class Event(models.Model):
 
     @property
     def photos(self):
-        return self.eventphotos_set.all()[:10]
+        return self.eventphotos_set.all()
 
 
 class EventPhotos(models.Model):
@@ -157,8 +191,7 @@ class Trip(models.Model):
     description = models.TextField(default='')
     type = models.CharField(max_length=100)
     destination = models.CharField(max_length=200)
-    date = models.DateField()
-    draft = models.BooleanField(default=True)
+    date = YearMonthField(max_length=10)
     start_location = models.CharField(max_length=255, default='')
     end_location = models.CharField(max_length=255, default='')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
@@ -170,7 +203,7 @@ class Trip(models.Model):
 
     @property
     def photos(self):
-        return self.tripphoto_set.all()[:10]
+        return self.tripphoto_set.all()
 
 
 class TripPhoto(models.Model):
