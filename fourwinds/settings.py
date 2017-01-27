@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '*_150b_jj)wal3e!mz_n5n9!w#q1k6@kuh^-s5!$*5!*36jpw6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fwinds.herokuapp.com']
 
 
 # Application definition
@@ -51,6 +51,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'fourwinds.urls'
@@ -123,13 +124,12 @@ USE_TZ = True
 
 STATIC_URL = '/assets/'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assets')
-print MEDIA_ROOT
 print STATIC_ROOT
+print MEDIA_ROOT
 
 STATICFILES_DIRS = (
     os.path.join(os.path.dirname(BASE_DIR), 'static'),
 )
-
-print STATICFILES_DIRS
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
