@@ -1,0 +1,23 @@
+{% extends 'website/base.html' %}
+{% block title %}FourWinds{% endblock %}
+{% load static %}
+{% load page_tags %}
+{% block content %}
+<div class="clearfix"></div>
+<div id="home">
+
+    <h3 class="text-center" style="color:darkred">Ups seems like we cannot find what you are looking for!</h3>
+
+    {% render_widgets %}
+
+    <hr class="space">
+
+    {% render_get_started_form %}
+
+    <hr class="space"/>
+
+    {% render_welcome_signin_form %}
+
+    {% render_testimonials %}
+</div>
+{% endblock %}

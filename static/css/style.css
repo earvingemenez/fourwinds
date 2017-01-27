@@ -595,20 +595,20 @@ have a fixed width and height (but it's not required).
     line-height: 34px;
     font-family: gotham-medium-regular;
 }
-#travel .events{
+#travel .items{
     padding-top: 50px;
 }
-#travel .events-list .event{
+#travel .items-list .item{
     font-family: gotham-light-regular;
     font-size: 14px;
 }
-#travel .events-list .event-title{
+#travel .items-list .items-title{
     font-family: gotham-bold-regular;
     font-size: 18px;
     color: #00b19f;
 }
 
-#travel .events-list .event .row > a{
+#travel .items-list .item .row > a{
     width: 150px;
     height: 46px;
     line-height: 34px;

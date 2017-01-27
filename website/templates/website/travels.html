@@ -32,7 +32,7 @@
                         <div class="media-left">
                             {% if trip.photos %}
                             <a href="{% url 'trip' trip.id %}">
-                              <img class="media-object img-thumbnail" src="/media/{{ trip.photos.0.photo }}" alt="{{ trip.title }}" width="100">
+                              <img class="media-object img-thumbnail" src="/media/{{ trip.photos.0.photo }}" alt="{{ trip.title }}" width="100" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'">
                             </a>
                             {% endif %}
                         </div>
@@ -50,7 +50,7 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="{% url 'event' event.id %}">
-                              <img class="media-object img-thumbnail" src="/media/{{ event.photos.0.photo }}" alt="{{ event.title }}" width="100">
+                              <img class="media-object img-thumbnail" src="/media/{{ event.photos.0.photo }}" alt="{{ event.title }}" width="100" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'">
                             </a>
                         </div>
                         <div class="media-body">

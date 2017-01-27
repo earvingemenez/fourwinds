@@ -39,7 +39,7 @@ class TripFilesInline(admin.TabularInline):
 
 class TripAdmin(admin.ModelAdmin):
     inlines = [TripPhotosInline, TripFilesInline]
-    list_display = ['type', 'destination', 'date', 'draft', 'updated', 'timestamp']
+    list_display = ['type', 'destination', 'date', 'updated', 'timestamp']
 
 
 class QuoteAdmin(admin.ModelAdmin):
