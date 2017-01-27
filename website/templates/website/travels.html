@@ -13,16 +13,20 @@
     </h3>
     <div class="well">
         <ul class="nav nav-tabs" role="tablist">
+            {%  if trips  %}
             <li role="presentation" class="active">
                 <a href="#trips" aria-controls="trips" role="tab" data-toggle="tab">
                     Trips <span class="badge">{{ trips | length }}</span>
                 </a>
             </li>
+            {% endif %}
+            {%  if events  %}
             <li role="presentation">
                 <a href="#events" aria-controls="events" role="tab" data-toggle="tab">
                     Events <span class="badge">{{ events | length }}</span>
                 </a>
             </li>
+            {% endif %}
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
