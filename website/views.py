@@ -73,14 +73,14 @@ def request_quote(request, details=''):
             del data['csrfmiddlewaretoken']
             data['meal_to_include'] = ", ".join(request.POST.getlist('meal'))
             quote = Quote.objects.get(id=int(data['id']))
-            quote.followup_time = data['followup_time']
-            quote.chaperones = int(data['chaperones'] or 0)
-            quote.department = data['department']
-            quote.transportation = data['transportation']
-            quote.preferred_airport = data['preferred_airport']
-            quote.meal_to_include = data['meal_to_include']
-            if request.FILES['attachment']:
-                quote.attachment = request.FILES['attachment']
+            quote.followup_time = data.get('followup_time')
+            quote.chaperones = int(0 if not data.get('chaperones') else data.get('chaperones'))
+            quote.department = data.get('department')
+            quote.transportation = data.get('transportation')
+            quote.preferred_airport = data.get('preferred_airport')
+            quote.meal_to_include = data.get('meal_to_include')
+            if request.FILES.get('attachment'):
+                quote.attachment = request.FILES.get('attachment')
             quote.save()
         return render(request, 'website/request_quote.html')
     else:

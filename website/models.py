@@ -255,7 +255,7 @@ class Quote(models.Model):
     transportation = models.CharField(blank=True, null=True, default='', max_length=100)
     preferred_airport = models.CharField(blank=True, null=True, default='', max_length=100)
     meal_to_include = models.CharField(blank=True, null=True, default='', max_length=100)
-    attachment = models.FileField(upload_to=get_quotes_files_path, null=True, blank=True, default='')
+    attachment = models.FileField(upload_to=get_quotes_files_path, blank=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -303,7 +303,7 @@ class ContactRequest(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=150)
-    date = models.DateField(blank=True, default='')
+    date = models.DateField(blank=True, default=timezone.now())
     organization = models.CharField(blank=True, default='', max_length=200)
     message = models.TextField()
     newsletter = models.BooleanField(default=False)

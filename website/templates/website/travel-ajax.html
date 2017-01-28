@@ -4,10 +4,10 @@
     <div class="col-md-4">
         {% for cat in categories %}
             {% for item in cat.events %}
-                <img src="/media/{{ item.photos.0.photo }}" id="photo-items-id-event{{ item.id }}" class="item-photos " width="400" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'"/>
+                <img src="{% get_media_prefix %}{{ item.photos.0.photo }}" id="photo-items-id-event{{ item.id }}" class="item-photos " width="400" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'"/>
             {% endfor %}
             {% for item in cat.trips %}
-                <img src="/media/{{ item.photos.0.photo }}" id="photo-items-id-trip{{ item.id }}" class="item-photos " width="400" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'"/>
+                <img src="{% get_media_prefix %}{{ item.photos.0.photo }}" id="photo-items-id-trip{{ item.id }}" class="item-photos " width="400" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'"/>
             {% endfor %}
         {% endfor %}
     </div>
