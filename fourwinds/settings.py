@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = '*_150b_jj)wal3e!mz_n5n9!w#q1k6@kuh^-s5!$*5!*36jpw6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = bool(os.environ.get('DEBUG', False))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fwinds.herokuapp.com']
 

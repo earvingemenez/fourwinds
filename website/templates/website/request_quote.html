@@ -15,21 +15,26 @@
                         <h4>Contact information</h4>
                         <div class="row">
                             <div class="form-group col-sm-6">
-                                <input class="form-control" type="text" name="first_name" placeholder="First Name"/>
+                                <input class="form-control" type="text" name="first_name" placeholder="First Name"
+                                       data-sanitize="trim" data-validation="length" data-validation-length="min5"/>
                             </div>
                             <div class="form-group col-sm-6">
-                                <input class="form-control" type="text" name="last_name" placeholder="Last Name"/>
+                                <input class="form-control" type="text" name="last_name" placeholder="Last Name"
+                                        data-sanitize="trim" data-validation="length" data-validation-length="min5"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" type="text" name="email" placeholder="Email Address"/>
+                            <input class="form-control" type="text" name="email" placeholder="Email Address"
+                                   data-sanitize="trim"  data-validation="email"/>
                         </div>
                         <div class="row">
                             <div class="form-group col-sm-9">
-                                <input class="form-control" type="text" name="phone_number" placeholder="Phone Number"/>
+                                <input class="form-control" type="text" name="phone_number" placeholder="Phone Number"
+                                       data-validation="number"/>
                             </div>
                             <div class="form-group col-sm-3">
-                                <input class="form-control" type="text" name="phone_ext" placeholder="Extension"/>
+                                <input class="form-control" type="text" name="phone_ext" placeholder="Extension"
+                                       data-validation="number"/>
                             </div>
                         </div>
                         <h4>School Information</h4>
@@ -45,17 +50,19 @@
                     <div class="col-md-6">
                         <h4>Trip Information</h4>
                         <div class="form-group">
-                            <select class="form-control" name="trip_type">
-                                <option>Type of Trip</option>
+                            <select class="form-control" name="trip_type" data-validation="required" placeholder="Type of Trip">
+                                <option disabled>Type of Trip</option>
                                 <option value="vacations">Vacations</option>
                                 <option value="business">Business</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" name="number_students" placeholder="Number of Students"/>
+                            <input class="form-control" name="number_students" placeholder="Number of Students"
+                                   data-validation="number"/>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" name="destination" placeholder="Destination"/>
+                            <input class="form-control" name="destination" placeholder="Destination"
+                                    data-validation="required"/>
                         </div>
 
                         <div class="row">
@@ -70,28 +77,32 @@
                                 </div>
                             </div>
                             <div class="form-group col-sm-3">
-                                <select class="form-control" type="text" name="date[month]" placeholder="Month">
-                                    <option>Month</option>
+                                <select class="form-control" type="text" name="date[month]" placeholder="Month"
+                                        data-validation="required">
+                                    <option disabled>Month</option>
                                     <option value="1">January</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-3">
-                                <select class="form-control" type="text" name="date[day]" placeholder="Day">
-                                    <option>Day</option>
+                                <select class="form-control" type="text" name="date[day]" placeholder="Day"
+                                        data-validation="required">
+                                    <option disabled>Day</option>
                                     <option value="1">01</option>
                                 </select>
                             </div>
                             <div class="form-group col-sm-3">
-                                <select class="form-control" type="text" name="date[year]" placeholder="Year">
-                                    <option>Year</option>
+                                <select class="form-control" type="text" name="date[year]" placeholder="Year"
+                                        data-validation="required">
+                                    <option disabled>Year</option>
                                     <option value="2016">2016</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group ">
-                            <select class="form-control" type="text" name="budget" placeholder="Budget">
-                                <option>Budget</option>
+                            <select class="form-control" type="text" name="budget" placeholder="Budget"
+                                    data-validation="required">
+                                <option disabled>Budget</option>
                                 <option value="10000-20000">$10,000 - $20,000</option>
                             </select>
                         </div>
