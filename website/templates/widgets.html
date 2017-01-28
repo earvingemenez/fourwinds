@@ -15,7 +15,7 @@
                 {% for cat in categories %}
                 <li class="jcarousel-item">
                     <div class="widget-venue">
-                        <div class="widget-venue-header" style="background: url('/media/{{ cat.widget_top_bg }}') top no-repeat"></div>
+                        <div class="widget-venue-header" style="background: url('{% get_media_prefix %}{{ cat.widget_top_bg }}') top no-repeat"></div>
                         <div class="widget-venue-body">
                             <p>
                                 {{ cat.caption | safe}}

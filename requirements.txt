@@ -1,7 +1,9 @@
 appdirs==1.4.0
+boto==2.45.0
 dj-database-url==0.4.2
 Django==1.10.5
 django-bootstrap3==8.1.0
+django-storages==1.5.2
 olefile==0.44
 packaging==16.8
 Pillow==4.0.0
