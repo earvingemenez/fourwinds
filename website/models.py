@@ -84,6 +84,10 @@ def get_trip_pdf_path(instance, filename):
     return get_path(instance, filename, 'trips/pdf')
 
 
+def get_event_pdf_path(instance, filename):
+    return get_path(instance, filename, 'events/pdf')
+
+
 def get_category_bg_path(instance, filename):
     return get_path(instance, filename, 'categories')
 
@@ -132,6 +136,10 @@ class Event(models.Model):
     def photos(self):
         return self.eventphotos_set.all()
 
+    @property
+    def files(self):
+        return self.eventfile_set.all()
+
 
 class EventPhotos(models.Model):
 
@@ -140,6 +148,16 @@ class EventPhotos(models.Model):
         verbose_name_plural = "Photos"
 
     photo = models.ImageField(upload_to=get_event_photos_path, null=False, blank=False)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+
+
+class EventFile(models.Model):
+
+    class Meta:
+        verbose_name = "File"
+        verbose_name_plural = "Files"
+
+    file = models.FileField(upload_to=get_event_pdf_path, null=False, blank=False)
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
 
 
@@ -205,6 +223,10 @@ class Trip(models.Model):
     def photos(self):
         return self.tripphoto_set.all()
 
+    @property
+    def files(self):
+        return self.tripfile_set.all()
+
 
 class TripPhoto(models.Model):
 
@@ -224,9 +246,7 @@ class TripFile(models.Model):
         verbose_name = "File"
         verbose_name_plural = "Files"
 
-    file = models.FileField(upload_to=get_trip_pdf_path,
-                             null=False,
-                             blank=False)
+    file = models.FileField(upload_to=get_trip_pdf_path, null=False, blank=False)
     trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
 
 
@@ -245,7 +265,7 @@ class Quote(models.Model):
     trip_type = models.CharField(max_length=100)
     number_students = models.IntegerField()
     destination = models.CharField(max_length=250)
-    date = models.DateField(default=timezone.now())
+    date = models.DateField(null=True, blank=False)
     budget = models.CharField(max_length=150)
     notes = models.TextField(blank=True, default='')
     # optional fields
@@ -255,7 +275,7 @@ class Quote(models.Model):
     transportation = models.CharField(blank=True, null=True, default='', max_length=100)
     preferred_airport = models.CharField(blank=True, null=True, default='', max_length=100)
     meal_to_include = models.CharField(blank=True, null=True, default='', max_length=100)
-    attachment = models.FileField(upload_to=get_quotes_files_path, blank=True)
+    attachment = models.FileField(upload_to=get_quotes_files_path, default=None, blank=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -303,8 +323,6 @@ class ContactRequest(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=150)
-    date = models.DateField(blank=True, default=timezone.now())
-    organization = models.CharField(blank=True, default='', max_length=200)
     message = models.TextField()
     newsletter = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
