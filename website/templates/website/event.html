@@ -30,7 +30,15 @@
     </div>
     <hr class="space"/>
     <div class="well">
-        {{ event.description }}
+        <div>{{ event.description }}</div>
+        <br/>
+        <div>
+            <div class="list-group">
+            {% for file in event.files %}
+            <a href="{% get_media_prefix %}{{ file.file }}" type="button" class="list-group-item" target="_blank">Download PDF file</a>
+            {% endfor %}
+            </div>
+        </div>
     </div>
 </div>
 

@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import (
-    Category, Event, EventPhotos,
+    Category, Event, EventPhotos, EventFile,
     Organization, Customer, Trip, Quote, Testimonial,
     TripPhoto, TripFile, ContactRequest
 )
@@ -12,9 +12,7 @@ class EventPhotosInline(admin.TabularInline):
     model = EventPhotos
 
 
-class EventAdmin(admin.ModelAdmin):
-    inlines = [EventPhotosInline]
-    list_display = ['title', 'date', 'updated', 'timestamp']
+
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -37,9 +35,18 @@ class TripFilesInline(admin.TabularInline):
     model = TripFile
 
 
+class EventFilesInline(admin.TabularInline):
+    model = EventFile
+
+
 class TripAdmin(admin.ModelAdmin):
     inlines = [TripPhotosInline, TripFilesInline]
     list_display = ['type', 'destination', 'date', 'updated', 'timestamp']
+
+
+class EventAdmin(admin.ModelAdmin):
+    inlines = [EventPhotosInline, EventFilesInline]
+    list_display = ['title', 'date', 'updated', 'timestamp']
 
 
 class QuoteAdmin(admin.ModelAdmin):
@@ -53,7 +60,7 @@ class TestimonialAdmin(admin.ModelAdmin):
 
 
 class ContactRequestAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'email', 'organization']
+    list_display = ['first_name', 'last_name', 'email']
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Event, EventAdmin)

@@ -30,8 +30,17 @@
     </div>
     <hr class="space"/>
     <div class="well">
-        {{ trip.description }}
+        <div>{{ trip.description }}</div>
+        <br/>
+        <div>
+            <div class="list-group">
+            {% for file in trip.files %}
+            <a href="{% get_media_prefix %}{{ file.file }}" type="button" class="list-group-item" target="_blank">Download PDF file</a>
+            {% endfor %}
+            </div>
+        </div>
     </div>
+
 </div>
 
 {% endblock %}
