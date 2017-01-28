@@ -292,7 +292,7 @@ class Receivers:
     @staticmethod
     @receiver(post_delete, sender=TripFile)
     def trip_file_delete(sender, instance, **kwargs):
-        instance.photo.delete(False)
+        instance.file.delete(False)
 
 
 class ContactRequest(models.Model):
