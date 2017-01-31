@@ -6,6 +6,11 @@ from django.db.models import Count
 from django.db.models.functions import Concat
 from website.models import Trip, Event, Category, Testimonial, Month, Year, ContactRequest, Quote
 
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.forms.models import model_to_dict
+from django.conf import settings
+
 
 def index(request):
     return render(request, 'website/index.html')
@@ -82,6 +87,9 @@ def request_quote(request, details=''):
             if request.FILES.get('attachment'):
                 quote.attachment = request.FILES.get('attachment')
             quote.save()
+            kwargs=model_to_dict(quote)
+            send_email('quote', **kwargs)
+            send_email('thank-you', to_email=contact.email, **kwargs)
         return render(request, 'website/request_quote.html')
     else:
         data = request.POST.dict()
@@ -99,10 +107,28 @@ def contact_us(request):
         del data['csrfmiddlewaretoken']
         contact = ContactRequest.objects.create(**data)
         contact.save()
+        kwargs = model_to_dict(contact)
+        send_email('contact-us', **kwargs)
+        send_email('thank-you', to_email=contact.email, **kwargs)
+
     return render(request, 'website/contact-us.html')
 
 
 def testimonials(request):
     data = Testimonial.objects.all()
-
     return render(request, 'website/testimonials.html', context={"data": data})
+
+
+def send_email(template, from_email='noreply@fourwindstours.com', to_email='accounts@fourwindstours.com', **kwargs):
+    to_email = to_email if to_email else kwargs.get('email')
+    # to_email = 'amielsinue@gmail.com'
+    if not to_email:
+        return
+    msg_plain = render_to_string('website/emails/{}.txt'.format(template), {"data": kwargs.items()})
+    msg_html = render_to_string('website/emails/{}.html'.format(template), {"data": kwargs.items()})
+    try:
+        send_mail('Conact Us', msg_plain, from_email=from_email, recipient_list=[to_email],
+                  fail_silently=False, html_message=msg_html)
+    except Exception as e:
+        error = e
+        pass

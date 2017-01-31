@@ -14,7 +14,7 @@
         <ol class="carousel-indicators">
             {% for photo in trip.photos %}
                 <li data-target="#trip-{{ trip.id }}-carousel"
-                    data-slide-to="{{ forloop.counter }}"
+                    data-slide-to="{{ forloop.counter0 }}"
                     class="{% if forloop.first %} active {% endif %}">
                 </li>
             {% endfor %}
@@ -35,7 +35,7 @@
         <div>
             <div class="list-group">
             {% for file in trip.files %}
-            <a href="{% get_media_prefix %}{{ file.file }}" type="button" class="list-group-item" target="_blank">Download PDF file</a>
+            <a href="{% get_media_prefix %}{{ file.file }}" type="button" class="list-group-item" target="_blank">View sample itinerary</a>
             {% endfor %}
             </div>
         </div>

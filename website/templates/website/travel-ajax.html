@@ -41,7 +41,7 @@
                     {% for item in cat.events %}
                         <div id="cat-item-desc-event{{ item.id }}" class="item item-desc">
                             <div class="title">{{ item.title }}</div>
-                            <p>{{ item.description }}</p>
+                            <p>{{ item.description|slice:":400" }}...</p>
                             <div class="clearfix"></div>
                             <a href="{% url 'event' item.id %}" class="btn btn-submit">LEARN MORE</a>
                         </div>
@@ -49,7 +49,7 @@
                     {% for item in cat.trips %}
                         <div id="cat-item-desc-trip{{ item.id }}" class="item item-desc">
                             <div class="title">{{ item.title }}</div>
-                            <p>{{ item.description }}</p>
+                            <p>{{ item.description|slice:":400" }}...</p>
                             <div class="clearfix"></div>
                             <a href="{% url 'trip' item.id %}" class="btn btn-submit">LEARN MORE</a>
                         </div>
