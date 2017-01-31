@@ -14,7 +14,7 @@
     <ol class="carousel-indicators">
             {% for photo in event.photos %}
                 <li data-target="#event-{{ trip.id }}-carousel"
-                    data-slide-to="{{ forloop.counter }}"
+                    data-slide-to="{{ forloop.counter0 }}"
                     class="{% if forloop.first %} active {% endif %}">
                 </li>
             {% endfor %}

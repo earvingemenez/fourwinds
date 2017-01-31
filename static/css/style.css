@@ -680,3 +680,24 @@ have a fixed width and height (but it's not required).
 #category_travels .media{
     margin: 10px 3px;
 }
+
+/*#trip .carousel-inner .item img{*/
+    /*max-width: 450px;*/
+    /*margin: 0 auto;*/
+/*}*/
+
+#trip .carousel-inner, #event .carousel-inner{
+    max-height: 456px;
+    overflow: hidden;
+}
+#trip .carousel-inner .item img,
+#event .carousel-inner .item img{
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+}
+
+#trip .carousel-indicators,
+#event .carousel-indicators{
+    bottom: -30px
+}

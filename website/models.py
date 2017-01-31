@@ -323,6 +323,8 @@ class ContactRequest(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=150)
+    date = models.DateField(null=True)
+    organization = models.CharField(max_length=150, null=True)
     message = models.TextField()
     newsletter = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)

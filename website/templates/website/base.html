@@ -46,6 +46,13 @@
             list: '.jcarousel-list',
             items: '.jcarousel-item'
         });
+
+        $('#top-navbar #travel-link').on('mouseover', function(e){
+            debugger;
+            $('#top-navbar [data-toggle="dropdown"]').trigger('mouseover');
+        });
+
+        $('#top-navbar #travel-dropdown-button');
         $('#top-navbar [data-toggle="dropdown"]').bootstrapDropdownHover({
           // see next for specifications
         });
