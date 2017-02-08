@@ -6,7 +6,7 @@
 <div id="event" class="container">
     <ol class="breadcrumb">
         <li><a href="{% url 'travel' %}">Travel</a></li>
-        <li><a href="{% url 'category_travels' event.category.id %}">{{ event.category }}</a></li>
+        <li><a href="{% url 'category_travels' category.id %}">{{ category }}</a></li>
         <li class="active">{{ event }}</li>
     </ol>
     <h3>{{ event }}</h3>

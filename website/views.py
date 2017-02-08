@@ -22,8 +22,11 @@ def our_story(request):
 
 def category_travels(request, category_id):
     category = Category.objects.get(id=category_id)
-    trips = Trip.objects.filter(category=category)
-    events = Event.objects.filter(category=category)
+    trips = []
+    events = []
+    for sub in category.subcategories:
+        trips = trips + [t for t in sub.trips if t not in trips]
+        events = events + [e for e in sub.events if e not in events]
     return render(request, 'website/travels.html', context={'trips': trips, 'events': events, 'category': category})
 
 
@@ -54,17 +57,22 @@ def travel(request, year_month=0):
 
 def view_trip(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
-    return render(request, 'website/trip.html', context={'trip': trip})
+    category = trip.subcategories.all()[0].category
+    return render(request, 'website/trip.html', context={'trip': trip, 'category': category})
 
 
 def view_event(request, event_id):
     event = Event.objects.get(id=event_id)
-    return render(request, 'website/event.html', context={'event': event})
+    category = event.subcategories.all()[0].category
+    return render(request, 'website/event.html', context={'event': event, 'category': category})
 
 
 def travel_info(request):
-    cats = Category.objects.all()
-    return render(request, 'website/travel-ajax.html', context={'categories': cats})
+    cats = Category.objects.all().order_by('rank')
+    subcats = []
+    for c in cats:
+        subcats = subcats + [s for s in c.subcategories]
+    return render(request, 'website/travel-ajax.html', context={'categories': cats, 'subcategories': subcats})
 
 
 def safety_insurance(request):
