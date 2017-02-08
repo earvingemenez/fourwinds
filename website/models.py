@@ -100,7 +100,7 @@ class Category(models.Model):
 
     title = models.CharField(max_length=100, default="General")
     caption = models.TextField(blank=True)
-    widget_top_bg = models.ImageField(upload_to=get_category_bg_path, null=False, blank=False, default='')
+    widget_top_bg = models.ImageField(upload_to=get_category_bg_path, null=False, blank=True, default='')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     rank = models.IntegerField(default=0)
