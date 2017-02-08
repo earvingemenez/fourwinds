@@ -6,7 +6,7 @@
 <div id="trip" class="container">
     <ol class="breadcrumb">
         <li><a href="{% url 'travel' %}">Travel</a></li>
-        <li><a href="{% url 'category_travels' trip.category.id %}">{{ trip.category }}</a></li>
+        <li><a href="{% url 'category_travels' category.id %}">{{ category }}</a></li>
         <li class="active">{{ trip }}</li>
     </ol>
     <h3>{{ trip }}</h3>

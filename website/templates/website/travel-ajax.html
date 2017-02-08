@@ -1,12 +1,12 @@
 {% load static %}
 <div class="">
 <div id="travel-menu-content" class="">
-    <div class="col-md-4">
-        {% for cat in categories %}
-            {% for item in cat.events %}
+    <div class="col-md-3">
+        {% for subcat in subcategories %}
+            {% for item in subcat.events %}
                 <img src="{% get_media_prefix %}{{ item.photos.0.photo }}" id="photo-items-id-event{{ item.id }}" class="item-photos " width="400" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'"/>
             {% endfor %}
-            {% for item in cat.trips %}
+            {% for item in subcat.trips %}
                 <img src="{% get_media_prefix %}{{ item.photos.0.photo }}" id="photo-items-id-trip{{ item.id }}" class="item-photos " width="400" onerror="this.src='{% static 'img/no-image-featured-image.png' %}'"/>
             {% endfor %}
         {% endfor %}
@@ -18,19 +18,28 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="col-md-6" id="divider">
+    <div class="col-md-2 menu-divider">
+        <ul>
+            {% for sub in subcategories %}
+            <li><a href="{% url 'category_travels' sub.category.id %}" data-cat-id="{{ sub.category.id }}" data-subcat-id="{{ sub.id }}" class="subcategories subcats-cat-id-{{ sub.category.id }}">{{ sub }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-5 menu-divider">
         <div class="">
-            {% for cat in categories %}
-            <div id="cat-items-{{ cat.id }}" class="cat-items">
+            {% for subcat in subcategories %}
+            <div id="subcat-items-{{ subcat.id }}" class="subcat-items">
                 <div class="col-md-4">
                     <div class="row">
                         <ul>
-                        {% for item in cat.events %}
-                            <li><a href="javascript:void(0);"  class="items-list"
+                        {% for item in subcat.events %}
+                            <li><a href="{% url 'event' item.id %}"  class="items-list"
+                                   data-subcat-id="{{ subcat.id }}"
                                    data-item-id="{{ item.id }}" data-item-type="event">{{ item.title }}</a></li>
                         {% endfor %}
-                        {% for item in cat.trips %}
+                        {% for item in subcat.trips %}
                             <li><a href="{% url 'trip' item.id %}"  class="items-list"
+                                   data-subcat-id="{{ subcat.id }}"
                                    data-item-id="{{ item.id }}" data-item-type="trip">{{ item.title }}</a></li>
                         {% endfor %}
                         </ul>
@@ -38,16 +47,16 @@
                 </div>
                 <div class="col-md-8">
                     <div class="row">
-                    {% for item in cat.events %}
-                        <div id="cat-item-desc-event{{ item.id }}" class="item item-desc">
+                    {% for item in subcat.events %}
+                        <div id="subcat-{{ subcat.id }}-item-desc-event{{ item.id }}" class="item item-desc">
                             <div class="title">{{ item.title }}</div>
                             <p>{{ item.description|slice:":400" }}...</p>
                             <div class="clearfix"></div>
                             <a href="{% url 'event' item.id %}" class="btn btn-submit">LEARN MORE</a>
                         </div>
                     {% endfor %}
-                    {% for item in cat.trips %}
-                        <div id="cat-item-desc-trip{{ item.id }}" class="item item-desc">
+                    {% for item in subcat.trips %}
+                        <div id="subcat-{{ subcat.id }}-item-desc-trip{{ item.id }}" class="item item-desc">
                             <div class="title">{{ item.title }}</div>
                             <p>{{ item.description|slice:":400" }}...</p>
                             <div class="clearfix"></div>
@@ -63,32 +72,49 @@
 </div>
 </div>
 <script type="text/javascript">
+    function hide_items(){
+        $('#travel-menu-content .item-photos').hide();
+        $('#travel-menu-content .subcategories').hide();
+        $('#travel-menu-content .subcat-items').hide();
+        $('#travel-menu-content .item-desc').hide();
+    }
     function select_item(e) {
         var id = $(e.currentTarget).data('item-id');
+        var subcat_id = $(e.currentTarget).data('subcat-id');
         var type = $(e.currentTarget).data('item-type');
         $('#travel-menu-content .item-desc').hide();
         $('#travel-menu-content .item-photos').hide();
-        $('#cat-item-desc-'+type+id).show();
+        $('#subcat-'+subcat_id+'-item-desc-'+type+id).show();
         $('#photo-items-id-'+type+id).show();
         console.log('photo id', '#photo-items-id-'+type+id);
         console.log("photo class", $('#photo-items-id-'+type+id).attr('class'));
         e.stopPropagation();
     }
+    function select_subcategory(e){
+        var id = $(e.currentTarget).data('subcat-id');
+        $('#travel-menu-content .subcat-items').hide()
+        $('#subcat-items-'+id).show();
+        $('#subcat-items-'+id+' .items-list:first').trigger('mouseover');
+        e.stopPropagation();
+    }
     function select_category(e){
 
         var id = $(e.currentTarget).data('cat-id');
-        $('#travel-menu-content .cat-items').hide()
-        $('#cat-items-'+id).show();
-        $('#cat-items-'+id+' .items-list:first').trigger('mouseover');
+        hide_items()
+        $('.subcats-cat-id-'+id).show();
+        $('.subcats-cat-id-'+id+':first').trigger('mouseover');
         e.stopPropagation();
     }
 
 
     $(document).ready(function(){
-        $('#travel-menu-content .item-photos').hide();
-        $('#travel-menu-content .item-photos').hide();
+        // Hide items
+        hide_items()
+
+
         $('#travel-menu-content .items-list').on('mouseover',select_item);
         $('#travel-menu-content .categories').on('mouseover',select_category);
+        $('#travel-menu-content .subcategories').on('mouseover',select_subcategory);
         $('#travel-menu-content .categories:first').trigger('mouseover');
     });
 

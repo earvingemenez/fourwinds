@@ -103,6 +103,28 @@ class Category(models.Model):
     widget_top_bg = models.ImageField(upload_to=get_category_bg_path, null=False, blank=False, default='')
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    rank = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+    @property
+    def subcategories(self):
+        return self.subcategory_set.all().order_by('rank')
+
+
+class Subcategory(models.Model):
+
+    class Meta:
+        verbose_name = "Subcategory"
+        verbose_name_plural = "Subcategories"
+
+    title = models.CharField(max_length=100, default="Unknown")
+    caption = models.TextField(blank=True)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
+    rank = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -116,6 +138,56 @@ class Category(models.Model):
         return self.trip_set.all()[:]
 
 
+class Trip(models.Model):
+
+    class Meta:
+        verbose_name = "Trip"
+        verbose_name_plural = "Trips"
+
+    title = models.CharField(max_length=100, default='')
+    description = models.TextField(default='')
+    destination = models.CharField(max_length=200)
+    date = YearMonthField(max_length=10)
+    start_location = models.CharField(max_length=255, default='')
+    end_location = models.CharField(max_length=255, default='')
+    subcategories = models.ManyToManyField(Subcategory, default=1)
+    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+
+    def __str__(self):
+        return self.destination
+
+    @property
+    def photos(self):
+        return self.tripphoto_set.all()
+
+    @property
+    def files(self):
+        return self.tripfile_set.all()
+
+
+class TripPhoto(models.Model):
+
+    class Meta:
+        verbose_name = "Photo"
+        verbose_name_plural = "Photos"
+
+    photo = models.ImageField(upload_to=get_trip_photos_path,
+                              null=False,
+                              blank=False)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+
+
+class TripFile(models.Model):
+
+    class Meta:
+        verbose_name = "File"
+        verbose_name_plural = "Files"
+
+    file = models.FileField(upload_to=get_trip_pdf_path, null=False, blank=False)
+    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+
+
 class Event(models.Model):
 
     class Meta:
@@ -125,7 +197,7 @@ class Event(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     date = models.DateTimeField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    subcategories = models.ManyToManyField(Subcategory, default=1)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
 
@@ -199,55 +271,6 @@ class Customer(models.Model):
         return self.first_name + " " + self.last_name
 
 
-class Trip(models.Model):
-
-    class Meta:
-        verbose_name = "Trip"
-        verbose_name_plural = "Trips"
-
-    title = models.CharField(max_length=100, default='')
-    description = models.TextField(default='')
-    type = models.CharField(max_length=100)
-    destination = models.CharField(max_length=200)
-    date = YearMonthField(max_length=10)
-    start_location = models.CharField(max_length=255, default='')
-    end_location = models.CharField(max_length=255, default='')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
-    updated = models.DateTimeField(auto_now=True, auto_now_add=False)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-
-    def __str__(self):
-        return self.destination
-
-    @property
-    def photos(self):
-        return self.tripphoto_set.all()
-
-    @property
-    def files(self):
-        return self.tripfile_set.all()
-
-
-class TripPhoto(models.Model):
-
-    class Meta:
-        verbose_name = "Photo"
-        verbose_name_plural = "Photos"
-
-    photo = models.ImageField(upload_to=get_trip_photos_path,
-                              null=False,
-                              blank=False)
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
-
-
-class TripFile(models.Model):
-
-    class Meta:
-        verbose_name = "File"
-        verbose_name_plural = "Files"
-
-    file = models.FileField(upload_to=get_trip_pdf_path, null=False, blank=False)
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
 
 
 class Quote(models.Model):
