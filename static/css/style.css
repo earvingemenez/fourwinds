@@ -61,18 +61,19 @@
     background: no-repeat url("../img/banner/banner-bgd.png") top center;
 }
 
-#top-navbar{
+#top-navbar > .navbar-default {
     background-color: #102633;
+    border: none;
 }
 #top-navbar > nav{
     margin-bottom: 0;
 }
-#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li > a{
+#top-navbar .top-navbar-item > a{
     color: white !important;
 }
-#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li > a:hover,
-#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li.active > a,
-#top-navbar > .navbar > .container > .navbar-collapse > .navbar-nav > li.open > a{
+#top-navbar .top-navbar-item > a:hover,
+#top-navbar .top-navbar-item.active > a,
+#top-navbar .top-navbar-item.open > a{
     color: #00b19f !important;
     background-color: white;
 }
@@ -91,20 +92,21 @@
         width: 1170px;
         left: -371px;
     }
+
 }
 @media (max-width: 608px) {
     #top-navbar #travel-menu {
-        width: 1170px;
-        left: -200px;
+        width: 100%;
+        left: 0px;
+    }
+    #top-navbar .dropdown-menu{
+        background-color: white;
     }
 }
 #top-navbar ul{
     list-style-type: none;
 }
-#travel-menu #travel-menu-content img{
-    margin-top: 15px;
-    width: 100%;
-}
+
 #travel-menu #travel-menu-content .menu-divider{
     border-left: solid 2px yellow;
     min-height: 300px;
@@ -112,6 +114,10 @@
 #travel-menu #travel-menu-content ul{
     margin: 0;
     padding: 0;
+}
+#travel-menu #travel-menu-content .item-photos,
+#travel-menu .item-photos{
+    width: 100%;
 }
 #travel-menu #travel-menu-content .title{
     color: #00b19f;
@@ -716,4 +722,51 @@ have a fixed width and height (but it's not required).
 #trip .carousel-indicators,
 #event .carousel-indicators{
     bottom: -30px
+}
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: black;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: black;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
 }
