@@ -4,53 +4,61 @@
             <div class="container">
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
-                <li>
-                    <a href="{% url 'index' %}">
-                        HOME
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'our_story' %}">
-                        OUR STORY
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="{% url 'travel' %}" class="dropdown-toggle" data-toggle="dropdown"
-                        role="button" aria-haspopup="true" aria-expanded="false">
-                        <span onclick="window.location.href='{% url 'travel' %}'">TRAVEL <span class="caret"></span></span>
-                    </a>
-                    <ul class="dropdown-menu" id="travel-menu">
                         <li>
+                            <a href="{% url 'index' %}">
+                                Home
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'travel' %}" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false">
+                                <span onclick="window.location.href='{% url 'travel' %}'">Group Travel<span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu" id="travel-menu">
+                                <li>
 
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{% url 'request_quote' %}">
+                                Get a Quote
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url 'our_story' %}" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-haspopup="true" aria-expanded="false">
+                                <span onclick="window.location.href='{% url 'our_story' %}'">About<span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu" id="about-menu">
+                                <li>
+                                    <a href="#">
+                                        Client Testimonials
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        Associations
+                                    </a>
+                                </li>
+                                <li>
+                                   <a href="{% url 'safety_insurance' %}">
+                                        Bonded & Insured
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact-us' %}">
+                                        Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Travel Blog
+                            </a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="{% url 'safety_insurance' %}">
-                        SAFETY &amp; INSURANCE
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'request_quote' %}">
-                        REQUEST A QUOTE
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        SHARE YOUR ADVENTURE
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        BLOG
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'contact-us' %}">
-                        CONTACT US
-                    </a>
-                </li>
-            </ul>
                 </div>
             </div>
         </nav>

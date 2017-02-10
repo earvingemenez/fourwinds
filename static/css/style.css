@@ -77,11 +77,27 @@
     background-color: white;
 }
 
-#top-navbar #travel-menu{
-    width: 1170px;
-    left: -200px;
-}
+@media (min-width: 768px) {
+    #top-navbar .navbar .navbar-nav {
+        display: inline-block;
+        float: none !important;
+        vertical-align: top;
+    }
 
+    #top-navbar .navbar .navbar-collapse {
+        text-align: center;
+    }
+    #top-navbar #travel-menu{
+        width: 1170px;
+        left: -371px;
+    }
+}
+@media (max-width: 608px) {
+    #top-navbar #travel-menu {
+        width: 1170px;
+        left: -200px;
+    }
+}
 #top-navbar ul{
     list-style-type: none;
 }
