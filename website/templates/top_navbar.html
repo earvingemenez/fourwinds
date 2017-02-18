@@ -1,57 +1,64 @@
 {% load static %}
 <div id="top-navbar">
-        <nav class="navbar " >
-            <div class="container">
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" >
-                <li>
-                    <a href="{% url 'index' %}">
-                        HOME
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'our_story' %}">
-                        OUR STORY
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="{% url 'travel' %}" class="dropdown-toggle" data-toggle="dropdown"
-                        role="button" aria-haspopup="true" aria-expanded="false">
-                        <span onclick="window.location.href='{% url 'travel' %}'">TRAVEL <span class="caret"></span></span>
-                    </a>
-                    <ul class="dropdown-menu" id="travel-menu">
-                        <li>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
 
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{% url 'safety_insurance' %}">
-                        SAFETY &amp; INSURANCE
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'request_quote' %}">
-                        REQUEST A QUOTE
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        SHARE YOUR ADVENTURE
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        BLOG
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'contact-us' %}">
-                        CONTACT US
-                    </a>
-                </li>
-            </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="top-navbar-item"><a href="{% url 'index' %}">Home</a></li>
+            <li class="dropdown top-navbar-item">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 id="group-travel-menu"
+                 aria-expanded="false">Group Travel<span class="caret"></span></a>
+              <ul class="dropdown-menu" id="travel-menu" aria-labelledby="group-travel-menu">
+
+              </ul>
+            </li>
+            <li class="top-navbar-item"><a href="{% url 'request_quote' %}">Get a Quote</a></li>
+            <li class="dropdown top-navbar-item">
+                <a href="{% url 'our_story' %}" class="dropdown-toggle" data-toggle="dropdown"
+                    role="button" aria-haspopup="true" aria-expanded="false">
+                    <span onclick="window.location.href='{% url 'our_story' %}'">About<span class="caret"></span></span>
+                </a>
+                <ul class="dropdown-menu" id="about-menu">
+                    <li>
+                        <a href="#">
+                            Client Testimonials
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Associations
+                        </a>
+                    </li>
+                    <li>
+                       <a href="{% url 'safety_insurance' %}">
+                            Bonded & Insured
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact-us' %}">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="top-navbar-item"><a href="#">Travel Blog</a></li>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+</div>

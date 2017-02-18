@@ -24,7 +24,6 @@ SECRET_KEY = '*_150b_jj)wal3e!mz_n5n9!w#q1k6@kuh^-s5!$*5!*36jpw6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG', 'False') == 'True' else False
-
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fwinds.herokuapp.com']
 
 
@@ -135,10 +134,11 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'amiel_test'
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# Media storage configuration
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 DEFAULT_FILE_STORAGE = 'fourwinds.custom_storages.MediaStorage'
-
+# Static storage configuration
 if not DEBUG:
     STATICFILES_LOCATION = 'static'
     STATICFILES_STORAGE = 'fourwinds.custom_storages.StaticStorage'
@@ -146,7 +146,6 @@ if not DEBUG:
 else:
     STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'assets')
     STATIC_URL = '/assets/'
-
 
 STATICFILES_DIRS = (
     os.path.join(os.path.dirname(BASE_DIR), 'static'),

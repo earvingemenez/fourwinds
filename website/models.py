@@ -137,6 +137,12 @@ class Subcategory(models.Model):
     def trips(self):
         return self.trip_set.all()[:]
 
+    @property
+    def items(self):
+        items = filter(lambda x: x.update({'type': 'event'}) is None, [i.__dict__ for i in self.event_set.all()[:]])
+        items += filter(lambda x: x.update({'type': 'trip'}) is None, [i.__dict__ for i in self.trip_set.all()[:]])
+        return items
+
 
 class Trip(models.Model):
 
