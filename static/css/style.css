@@ -419,6 +419,7 @@ have a fixed width and height (but it's not required).
     max-width: 850px;
     margin: 0 auto;
     padding-top: 35px;
+    min-height: 250px;
 }
 .testimonial p {
     font-family: gotham-light-regular;
@@ -454,6 +455,14 @@ have a fixed width and height (but it's not required).
 }
 #testimonials-carousel .right {
     width: 11%;
+}
+@media (max-width: 600px) {
+    #testimonials-carousel .right {
+        right: 43px;
+    }
+    #main-carousel > .right {
+        width: 34%;
+    }
 }
 
 #footer{

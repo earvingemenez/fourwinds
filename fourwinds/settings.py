@@ -24,7 +24,6 @@ SECRET_KEY = '*_150b_jj)wal3e!mz_n5n9!w#q1k6@kuh^-s5!$*5!*36jpw6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.environ.get('DEBUG', 'False') == 'True' else False
-print "Debug mode: {}".format(DEBUG)
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fwinds.herokuapp.com']
 
 
