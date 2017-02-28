@@ -378,8 +378,10 @@ have a fixed width and height (but it's not required).
 .box.welcome{
 
 }
-.box.sign-in{
-    margin-left: 20px;
+@media (min-width: 768px) {
+    .box.sign-in {
+        margin-left: 20px;
+    }
 }
 .box.sign-in h3{
     margin-bottom: 24px;
