@@ -91,7 +91,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fourwinds.wsgi.application'
 
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fwinds.herokuapp.com']
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 # Database
