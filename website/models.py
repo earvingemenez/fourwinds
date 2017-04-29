@@ -11,9 +11,12 @@ from django.utils.text import slugify, _
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+
+from website.fields import YearMonthField
+from website.mixins import WebsiteMixinTravelIndexPage
 
 
 class WebsiteAboutIndexPage(Page):
@@ -138,3 +141,60 @@ class WebsiteCategory(models.Model):
         return super(WebsiteCategory, self).save(*args, **kwargs)
 
 
+class WebsiteTravelIndexPage(WebsiteMixinTravelIndexPage, Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full")
+    ]
+
+
+class WebsiteTravelPage(Page):
+    intro = RichTextField()
+    text = RichTextField()
+    destination = models.CharField(max_length=200)
+    date = YearMonthField(max_length=10)
+    start_location = models.CharField(max_length=255, default='')
+    end_location = models.CharField(max_length=255, default='')
+    categories = ParentalManyToManyField('website.WebsiteCategory')
+
+    @property
+    def main_image(self):
+        gallery_item = self.gallery_images.first()
+        print("gallery_image: ")
+        print(gallery_item)
+        if gallery_item:
+            return gallery_item.image
+        else:
+            return None
+
+    search_fields = Page.search_fields + [
+        index.SearchField('text'),
+        index.SearchField('destination'),
+    ]
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            FieldPanel('destination'),
+            FieldPanel('date', forms.SelectDateWidget),
+            FieldPanel('start_location'),
+            FieldPanel('end_location'),
+            FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+        ], heading="Trip/Event information"),
+        FieldPanel('intro'),
+        FieldPanel('text'),
+        InlinePanel('gallery_images', label="Gallery images"),
+    ]
+
+
+class WebsiteTravelGalleryImage(Orderable):
+    page = ParentalKey(WebsiteTravelPage, related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]
