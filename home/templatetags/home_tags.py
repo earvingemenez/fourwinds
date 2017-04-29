@@ -1,6 +1,6 @@
 
 from django import template
-
+from website.models import WebsiteTestimonialPage
 register = template.Library()
 
 
@@ -59,3 +59,10 @@ def main_slider(context, calling_page):
         "gallery_images": calling_page.gallery_images,
         "show_carousel" : show_carousel
     }
+
+
+@register.inclusion_tag('website/tags/testimonials.html', takes_context=True)
+def testimonials_slider(context, calling_page):
+    testimonials = WebsiteTestimonialPage.objects.live().order_by('-first_published_at')
+    more_testimonials_link = testimonials[0].get_parent().url if len(testimonials) > 0 else "#"
+    return {"testimonials": testimonials, "more_testimonials_link": more_testimonials_link}
