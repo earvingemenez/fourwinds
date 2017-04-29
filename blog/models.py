@@ -38,7 +38,7 @@ class BlogPage(Page):
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
-    categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
+    categories = ParentalManyToManyField('website.WebsiteCategory', blank=True)
 
     def main_image(self):
         gallery_item = self.gallery_images.first()
