@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags home_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
+    {% main_slider calling_page=page %}
     {{ page.body|richtext }}
 {% endblock %}

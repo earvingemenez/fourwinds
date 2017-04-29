@@ -50,3 +50,12 @@ def top_menu_children(context, parent):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
     }
+
+
+@register.inclusion_tag('home/tags/main_slider.html', takes_context=True)
+def main_slider(context, calling_page):
+    show_carousel = calling_page.gallery_images.count() > 0
+    return {
+        "gallery_images": calling_page.gallery_images,
+        "show_carousel" : show_carousel
+    }
