@@ -3,15 +3,20 @@ from __future__ import unicode_literals
 from taggit.models import TaggedItemBase
 
 from wagtail.wagtailcore.models import Page, Orderable
-from django.db import models
 from django import forms
+from django.db import models
+from django.core.validators import ValidationError
+from django.utils.text import slugify, _
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+
+from website.fields import YearMonthField
+from website.mixins import WebsiteMixinTravelIndexPage
 
 
 class WebsiteAboutIndexPage(Page):
@@ -65,7 +70,7 @@ class WebsiteTestimonialPage(Page):
     full_name = models.CharField(max_length=150, default='')
     organization = models.CharField(max_length=150)
     trip_event = models.CharField("Trip or/and Event", max_length=250, default='')
-    categories = ParentalManyToManyField('blog.BlogCategory', blank=True)
+    categories = ParentalManyToManyField('website.WebsiteCategory', blank=True)
     date = models.DateField("Date of the event/trip", null=True)
 
     search_fields = Page.search_fields + [
@@ -94,13 +99,102 @@ class WebsiteCategory(models.Model):
         on_delete=models.SET_NULL, related_name='+'
     )
 
+    slug = models.SlugField(unique=True, max_length=80)
+    parent = models.ForeignKey(
+        'self', blank=True, null=True, related_name="children",
+        help_text=_(
+            'Categories, unlike tags, can have a hierarchy. You might have a '
+            'Trip category, and under that have children categories for International'
+            ' and Nacional. Totally optional.')
+    )
+    description = models.CharField(max_length=500, blank=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
+
     panels = [
         FieldPanel('name'),
+        FieldPanel('parent'),
+        FieldPanel('description'),
         ImageChooserPanel('icon'),
     ]
 
     def __str__(self):
+        parent_name = str(self.parent)
+        if self.parent:
+            return "{} - {}".format(parent_name, self.name)
         return self.name
 
-    class Meta:
-        verbose_name_plural = 'categories'
+    def clean(self):
+        if self.parent:
+            parent = self.parent
+            if self.parent == self:
+                raise ValidationError('Parent category cannot be self.')
+            if parent.parent and parent.parent == self:
+                raise ValidationError('Cannot have circular Parents.')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        return super(WebsiteCategory, self).save(*args, **kwargs)
+
+
+class WebsiteTravelIndexPage(WebsiteMixinTravelIndexPage, Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full")
+    ]
+
+
+class WebsiteTravelPage(Page):
+    intro = RichTextField()
+    text = RichTextField()
+    destination = models.CharField(max_length=200)
+    date = YearMonthField(max_length=10)
+    start_location = models.CharField(max_length=255, default='')
+    end_location = models.CharField(max_length=255, default='')
+    categories = ParentalManyToManyField('website.WebsiteCategory')
+
+    @property
+    def main_image(self):
+        gallery_item = self.gallery_images.first()
+        print("gallery_image: ")
+        print(gallery_item)
+        if gallery_item:
+            return gallery_item.image
+        else:
+            return None
+
+    search_fields = Page.search_fields + [
+        index.SearchField('text'),
+        index.SearchField('destination'),
+    ]
+
+    content_panels = Page.content_panels + [
+        MultiFieldPanel([
+            FieldPanel('destination'),
+            FieldPanel('date', forms.SelectDateWidget),
+            FieldPanel('start_location'),
+            FieldPanel('end_location'),
+            FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+        ], heading="Trip/Event information"),
+        FieldPanel('intro'),
+        FieldPanel('text'),
+        InlinePanel('gallery_images', label="Gallery images"),
+    ]
+
+
+class WebsiteTravelGalleryImage(Orderable):
+    page = ParentalKey(WebsiteTravelPage, related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]

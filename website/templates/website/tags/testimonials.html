@@ -1,0 +1,45 @@
+{% load static wagtailcore_tags wagtailimages_tags%}
+{#    Testimonials#}
+            <div class="text-center testimonials">
+                <h3 class="font-size-14 bold-regular">
+                    SEE WHAT OUR GUESTS HAVE TO SAY...
+                </h3>
+                <div class="box">
+                    <div id="testimonials-carousel" class="container carousel" data-ride="carousel">
+                        <div class="carousel-inner" role="listbox">
+
+                            {%  for testimonial in testimonials %}
+                            <div class="item testimonial {%  if forloop.counter == 1 %} active {% endif %}">
+                                <p>
+                                    <img src="{% static 'img/testimonial/quote.png' %}" alt="" class="quote" style="float:left">
+                                    {{ testimonial.text|richtext }}
+                                    <img style="float:right;margin-top: -30px;"
+                        src="{% static 'img/testimonial/quote-close.png' %}" alt="" class="quote quote-close">
+                                </p>
+                                <p class="autor">
+                                   - {{ testimonial.full_name }}, {{ testimonial.organization }},
+                                    {{ testimonial.trip_event }},  {{ testimonial.date }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Controls -->
+                          <a class="left carousel-control" href="#testimonials-carousel" role="button" data-slide="prev">
+                            <span class="icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                          <a class="right carousel-control" href="#testimonials-carousel" role="button" data-slide="next">
+                            <span class="icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                    </div>
+                    <a class="btn btn-submit" href="{{ more_testimonials_link }}">
+                        MORE TESTIMONIALS
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <br/>
+            <br/>
+        </div>
+    {#  End Testimonials#}

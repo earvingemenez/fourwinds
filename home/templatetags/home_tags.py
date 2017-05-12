@@ -1,5 +1,6 @@
-
 from django import template
+
+from website.models import WebsiteTestimonialPage, WebsiteTravelPage
 
 register = template.Library()
 
@@ -20,8 +21,8 @@ def has_menu_children(page):
 # a dropdown class to be applied to a parent
 @register.inclusion_tag('home/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
+    queryset = parent.get_children()
     menuitems = parent.get_children().live().in_menu()
-
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
@@ -57,3 +58,16 @@ def main_slider(context, calling_page):
         "gallery_images": calling_page.gallery_images,
         "show_carousel" : show_carousel
     }
+
+
+@register.inclusion_tag('website/tags/testimonials.html', takes_context=True)
+def testimonials_slider(context, calling_page):
+    testimonials = WebsiteTestimonialPage.objects.live().order_by('-first_published_at')
+    more_testimonials_link = testimonials[0].get_parent().url if len(testimonials) > 0 else "#"
+    return {"testimonials": testimonials, "more_testimonials_link": more_testimonials_link}
+
+
+@register.inclusion_tag('website/tags/travel_carousel.html', takes_context=True)
+def travel_carousel(context, calling_page):
+    travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:10]
+    return {"travelpages": travels}

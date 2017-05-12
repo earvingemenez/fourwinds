@@ -9,11 +9,7 @@
         <h1 class="title">{{ page.title }}</h1>
 
         <div>{{ page.text|richtext }}</div>
-        <p class="autor">
-            - {{ page.full_name }}, {{ page.organization }},
-                    {{ page.trip_event }}
-                    {{ page.date }}
-        </p>
-        <p><a class="btn btn-link" href="{{ page.get_parent.url }}">Return to testimonials</a></p>
+
+        <p><a class="btn btn-link" href="{{ page.get_parent.url }}">Return to Travel</a></p>
     </div>
 {% endblock %}
