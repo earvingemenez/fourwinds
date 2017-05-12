@@ -11,7 +11,7 @@ import wagtail.wagtailcore.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0006_blog_adding_categories'),
+        # ('blog', '0006_blog_adding_categories'),
         ('wagtailcore', '0032_add_bulk_delete_page_permission'),
         ('wagtailimages', '0018_remove_rendition_filter'),
         ('website', '0007_add_safety_insurance_pdf_field'),
