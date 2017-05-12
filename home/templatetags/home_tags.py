@@ -20,10 +20,8 @@ def has_menu_children(page):
 # a dropdown class to be applied to a parent
 @register.inclusion_tag('home/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
-    queryset = parent.get_children()
-    print(queryset.query)
     menuitems = parent.get_children().live().in_menu()
-    print(menuitems.query)
+
     for menuitem in menuitems:
         menuitem.show_dropdown = has_menu_children(menuitem)
         # We don't directly check if calling_page is None since the template
