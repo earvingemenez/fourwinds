@@ -96,6 +96,8 @@ ENV/
 
 assets/
 media/
+documents/
+local.py
+.sass-cache/
 images/
 original_images/
-.sass-cache/
