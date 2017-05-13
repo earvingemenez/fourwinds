@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
-from taggit.models import TaggedItemBase
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase, Tag
 
 from wagtail.wagtailcore.models import Page, Orderable
 from django import forms
@@ -64,6 +65,15 @@ class WebsiteTestimonalsIndexPage(Page):
         context['testimonialpages'] = pages
         return context
 
+class WebsiteTestimonialPageTag(TaggedItemBase):
+    content_object = ParentalKey('WebsiteTestimonialPage', related_name='tagged_items')
+
+
+@register_snippet
+class WebsiteTag(Tag):
+    class Meta:
+        proxy = True
+
 
 class WebsiteTestimonialPage(Page):
     text = RichTextField(blank=False)
@@ -71,6 +81,7 @@ class WebsiteTestimonialPage(Page):
     organization = models.CharField(max_length=150)
     trip_event = models.CharField("Trip or/and Event", max_length=250, default='')
     categories = ParentalManyToManyField('website.WebsiteCategory', blank=True)
+    tags = ClusterTaggableManager(through=WebsiteTestimonialPageTag, blank=True)
     date = models.DateField("Date of the event/trip", null=True)
 
     search_fields = Page.search_fields + [
@@ -86,6 +97,7 @@ class WebsiteTestimonialPage(Page):
             FieldPanel('organization'),
             FieldPanel('date'),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
+            FieldPanel('tags')
         ], heading="Trip information"),
         FieldPanel('text'),
     ]

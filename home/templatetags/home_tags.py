@@ -1,3 +1,4 @@
+from blog.models import BlogPage, BlogCategory
 from django import template
 
 from website.models import WebsiteTestimonialPage, WebsiteTravelPage
@@ -68,6 +69,21 @@ def testimonials_slider(context, calling_page):
 
 
 @register.inclusion_tag('website/tags/travel_carousel.html', takes_context=True)
-def travel_carousel(context, calling_page):
+def travel_carousel(context, caling_page):
     travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:10]
     return {"travelpages": travels}
+
+
+@register.inclusion_tag('blog/tags/recents.html', takes_context=True)
+def blog_recents(context):
+    blogs = BlogPage.objects.live().order_by('-first_published_at')[:10]
+    return {
+        'blogs': blogs
+    }
+
+@register.inclusion_tag('blog/tags/categories.html', takes_context=True)
+def blog_tags(context):
+    cats = BlogCategory.objects.all()
+    return {
+        'cats': cats
+    }

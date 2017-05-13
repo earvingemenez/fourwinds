@@ -23,7 +23,13 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
-
+SITE_ID = 1
+COMMENTS_APP = 'django_comments_xtd'
+COMMENTS_XTD_MAX_THREAD_LEVEL = 2
+COMMENTS_XTD_CONFIRM_EMAIL = True
+MANAGERS = (
+    ('Admin', 'amielsinue@gmail.com'),
+)
 # Application definition
 
 INSTALLED_APPS = [
@@ -51,9 +57,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog',
+
     'storages',
-    'website'
+    'website',
+    # Blog
+    'blog',
+    'django_comments_xtd',
+    'django_comments',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -146,4 +157,12 @@ WAGTAIL_SITE_NAME = "fourwinds"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://fwinds.herokuapp.com/'
+# BASE_URL = 'http://localhost:8000/'
+
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', True)
+DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"

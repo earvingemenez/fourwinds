@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block content %}
+<div class="container">
+    <br/>
+    <br/>
+    <div class="col-md-7">
+    {% if blogs %}
+        {% if tag %}
+        <h2>Tag: {{ tag }}</h2>
+        {% endif %}
+        {% if category %}
+        <h2>Topic: {{ category }}</h2>
+        {% endif %}
+        {% for blog in blogs %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {% if blog.date %}
+                <div class="meta date">
+                    {{ blog.date|date:"F jS, Y" }}
+                </div>
+                {% endif %}
+
+                <h2>{{ blog.title }}</h2>
+
+                {% if blog.header_image %}
+                {% image blog.header_image width-500 %}
+                {% endif %}
+
+                <div class="blog-intro">
+                    {{ blog.body|richtext|truncatewords_html:70 }}
+                    <a href="{% pageurl blog %}">Read full article &raquo;</a>
+                </div>
+                <div class="pull-left">
+                    <div class="tags">
+                        {% if blog.tags.all %}
+                            Tags:
+                                {% for tag in blog.tags.all %}
+                                    <a href="{% url 'blog:tag' tag.slug %}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="tags">
+                        {% if blog.categories.all %}
+                            Topics:
+                                {% for cat in blog.categories.all %}
+                                    <a href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+        <ul class="pager">
+        {% if blogs.has_next %}
+          <li class="previous"><a href="?page={{ blogs.next_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">&larr; Older</a></li>
+        {% endif %}
+        {% if blogs.has_previous %}
+          <li class="next"><a href="?page={{ blogs.previous_page_number }}{% for key,value in request.GET.items %}{% ifnotequal key 'page' %}&amp;{{ key }}={{ value }}{% endifnotequal %}{% endfor %}">Newer &rarr;</a></li>
+        {% endif %}
+        </ul>
+
+    {% else %}
+        <p>There are currently no blog posts</p>
+    {% endif %}
+    </div>
+    <div class="col-md-5">
+        {% include 'blog/blog_tabs.html' with include_context="index_page" %}
+    </div>
+    <div class="clearfix"></div>
+    {% for rl in self.related_links.all %}
+        <p>{{ rl.title }}: <a href='{{ rl.link_page.url }}'>{{ rl.link_page }}</a></p>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock %}
