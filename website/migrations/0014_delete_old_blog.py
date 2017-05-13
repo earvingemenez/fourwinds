@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         drop table if exists blog_blogtagindexpage;
         delete from auth_permission where content_type_id in (select id from django_content_type where app_label = 'blog');
         delete from django_admin_log where content_type_id in (select id from django_content_type where app_label = 'blog');
-        delete from reversion_version where content_type_id in (select id from django_content_type where app_label = 'blog');
+        
         delete from wagtailcore_pagerevision where page_id in (select id from wagtailcore_page where content_type_id in (select id from django_content_type where app_label = 'blog'));
         delete from wagtailcore_page where content_type_id in (select id from django_content_type where app_label = 'blog');
         delete from django_content_type where app_label = 'blog';
