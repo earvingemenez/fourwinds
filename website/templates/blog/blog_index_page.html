@@ -8,10 +8,10 @@
     <div class="col-md-7">
     {% if blogs %}
         {% if tag %}
-        <h2>Topic: {{ tag }}</h2>
+        <h2>Tag: {{ tag }}</h2>
         {% endif %}
         {% if category %}
-        <h2>{{ category }}</h2>
+        <h2>Topic: {{ category }}</h2>
         {% endif %}
         {% for blog in blogs %}
         <div class="panel panel-default">
@@ -32,12 +32,22 @@
                     {{ blog.body|richtext|truncatewords_html:70 }}
                     <a href="{% pageurl blog %}">Read full article &raquo;</a>
                 </div>
-                <div class="pull-right">
+                <div class="pull-left">
                     <div class="tags">
                         {% if blog.tags.all %}
-                            Topics:
+                            Tags:
                                 {% for tag in blog.tags.all %}
                                     <a href="{% url 'blog:tag' tag.slug %}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                                {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <div class="tags">
+                        {% if blog.categories.all %}
+                            Topics:
+                                {% for cat in blog.categories.all %}
+                                    <a href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                         {% endif %}
                     </div>

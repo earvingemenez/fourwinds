@@ -157,7 +157,8 @@ WAGTAIL_SITE_NAME = "fourwinds"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://fwinds.herokuapp.com/'
+# BASE_URL = 'http://localhost:8000/'
 
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')

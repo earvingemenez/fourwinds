@@ -1,13 +1,18 @@
+{% load home_tags%}
 <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#recent" aria-controls="home" role="tab" data-toggle="tab">Recent</a></li>
-    <li role="presentation"><a href="#popular" aria-controls="profile" role="tab" data-toggle="tab">Popular</a></li>
-    <li role="presentation"><a href="#categories" aria-controls="messages" role="tab" data-toggle="tab">Categories</a></li>
+{#    <li role="presentation"><a href="#popular" aria-controls="profile" role="tab" data-toggle="tab">Popular</a></li>#}
+    <li role="presentation"><a href="#categories" aria-controls="messages" role="tab" data-toggle="tab">Topics</a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="recent">...</div>
-    <div role="tabpanel" class="tab-pane" id="popular">...</div>
-    <div role="tabpanel" class="tab-pane" id="categories">...</div>
+    <div role="tabpanel" class="tab-pane active" id="recent">
+        {% blog_recents %}
+    </div>
+{#    <div role="tabpanel" class="tab-pane" id="popular">...</div>#}
+    <div role="tabpanel" class="tab-pane" id="categories">
+        {% blog_tags %}
+    </div>
   </div>
