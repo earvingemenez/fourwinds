@@ -69,7 +69,7 @@ def testimonials_slider(context, calling_page):
 
 
 @register.inclusion_tag('website/tags/travel_carousel.html', takes_context=True)
-def travel_carousel(context, caling_page):
+def travel_carousel(context, calling_page):
     travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:10]
     return {"travelpages": travels}
 
