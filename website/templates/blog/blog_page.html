@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+
+{% block content %}
+<div class="container">
+    <br/>
+    <br/>
+    <div class="col-md-7">
+        {% include 'blog/blog_post.html' with blog=self %}
+        <div class="row">
+        {% if COMMENTS_APP == 'django_comments_xtd' %}
+            {% include 'blog/blog_post_comments_xtd.html' with blog=self %}
+        {% endif %}
+        </div>
+    </div>
+    <div class="col-md-5">
+        {% include 'blog/blog_tabs.html' with include_context="index_page" %}
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endblock %}
