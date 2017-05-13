@@ -781,3 +781,13 @@ have a fixed width and height (but it's not required).
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+
+.richtext .richtext-image.left {
+  float: left;
+  margin-right: 16px;
+}
+
+.richtext .richtext-image.right {
+  float: right;
+  margin-left: 16px;
+}
