@@ -6,6 +6,7 @@ from taggit.models import TaggedItemBase, Tag
 from wagtail.wagtailcore.models import Page, Orderable
 from django import forms
 from django.db import models
+from django.forms import extras
 from django.core.validators import ValidationError
 from django.utils.text import slugify, _
 
@@ -95,7 +96,7 @@ class WebsiteTestimonialPage(Page):
             FieldPanel('full_name'),
             FieldPanel('trip_event'),
             FieldPanel('organization'),
-            FieldPanel('date'),
+            FieldPanel('date', widget=extras.SelectDateWidget()),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
             FieldPanel('tags')
         ], heading="Trip information"),

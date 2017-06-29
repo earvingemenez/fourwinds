@@ -10,9 +10,8 @@
 
         <div>{{ page.text|richtext }}</div>
         <p class="autor">
-            - {{ page.full_name }}, {{ page.organization }},
-                    {{ page.trip_event }}
-                    {{ page.date }}
+          - {{ page.full_name }}, {{ page.organization }},
+            {{ page.trip_event }}, {{ page.date|date:"F Y" }}
         </p>
         <p><a class="btn btn-link" href="{{ page.get_parent.url }}">Return to testimonials</a></p>
     </div>
