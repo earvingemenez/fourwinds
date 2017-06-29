@@ -1,5 +1,8 @@
+import datetime
+
 from blog.models import BlogPage, BlogCategory
 from django import template
+from django.template.defaultfilters import stringfilter
 
 from website.models import WebsiteTestimonialPage, WebsiteTravelPage
 
@@ -87,3 +90,17 @@ def blog_tags(context):
     return {
         'cats': cats
     }
+
+
+@stringfilter
+def parse_date(date_string, format):
+    """
+    Return a datetime corresponding to date_string, parsed according to format.
+    For example, to re-display a date string in another format:
+        {{ "2017-10"|parse_date:"%Y-%m"|date:"F Y" }}
+    """
+    try:
+        return datetime.datetime.strptime(date_string, format)
+    except ValueError:
+        return None
+register.filter('parse_date', parse_date)

@@ -83,7 +83,7 @@ class WebsiteTestimonialPage(Page):
     trip_event = models.CharField("Trip or/and Event", max_length=250, default='')
     categories = ParentalManyToManyField('website.WebsiteCategory', blank=True)
     tags = ClusterTaggableManager(through=WebsiteTestimonialPageTag, blank=True)
-    date = models.DateField("Date of the event/trip", null=True)
+    date = YearMonthField(max_length=10)
 
     search_fields = Page.search_fields + [
         index.SearchField('text'),
@@ -96,7 +96,7 @@ class WebsiteTestimonialPage(Page):
             FieldPanel('full_name'),
             FieldPanel('trip_event'),
             FieldPanel('organization'),
-            FieldPanel('date', widget=extras.SelectDateWidget()),
+            FieldPanel('date', widget=forms.TextInput(attrs={'placeholder': 'YYYY-MM'})),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
             FieldPanel('tags')
         ], heading="Trip information"),

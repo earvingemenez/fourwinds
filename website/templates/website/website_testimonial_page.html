@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags static%}
+{% load wagtailcore_tags wagtailimages_tags home_tags static%}
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
@@ -11,7 +11,7 @@
         <div>{{ page.text|richtext }}</div>
         <p class="autor">
           - {{ page.full_name }}, {{ page.organization }},
-            {{ page.trip_event }}, {{ page.date|date:"F Y" }}
+            {{ page.trip_event }}, {{ page.date|parse_date:"%Y-%m"|date:"F Y" }}
         </p>
         <p><a class="btn btn-link" href="{{ page.get_parent.url }}">Return to testimonials</a></p>
     </div>
