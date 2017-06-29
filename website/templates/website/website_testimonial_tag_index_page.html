@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static%}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="title">{{ page.title }}</h1>
+
+        {% if request.GET.tag|length %}
+            <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
+        {% endif %}
+
+        {% for testimonial in testimonialpages %}
+            <div class="item testimonial">
+            {% with testimonial=testimonial.specific %}
+                <h2><a href="{% pageurl testimonial %}">{{ testimonial.title }}</a></h2>
+                <img src="{% static 'img/testimonial/quote.png' %}" alt="" style="float:left"
+                             class="quote">{{ testimonial.text|richtext }}<img
+                            src="{% static 'img/testimonial/quote-close.png' %}" alt="" class="quote quote-close"
+                            style="float:right;margin-top: -30px;">
+                <div class="clearfix"></div>
+                <p class="autor">
+                    - {{ testimonial.full_name }}, {{ testimonial.organization }},
+                          {{ testimonial.trip_event }},  {{ testimonial.date }}
+                </p>
+            {% endwith %}
+            </div>
+        {% empty %}
+            No pages found with that tag.
+        {% endfor %}
+    </div>
+{% endblock %}

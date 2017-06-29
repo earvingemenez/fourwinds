@@ -103,6 +103,17 @@ class WebsiteTestimonialPage(Page):
     ]
 
 
+class WebsiteTestimonialTagIndexPage(Page):
+
+    def get_context(self, request):
+        tag = request.GET.get('tag')
+        testimonialpages = WebsiteTestimonialPage.objects.filter(tags__name=tag)
+
+        context = super(WebsiteTestimonialTagIndexPage, self).get_context(request)
+        context['testimonialpages'] = testimonialpages
+        return context
+
+
 @register_snippet
 class WebsiteCategory(models.Model):
     name = models.CharField(max_length=255)
