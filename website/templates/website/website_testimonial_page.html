@@ -14,6 +14,18 @@
                     {{ page.trip_event }}
                     {{ page.date }}
         </p>
+
+        {% if page.tags.all.count %}
+            <div class="tags">
+                <h4>Tags</h4>
+                {% for tag in page.tags.all %}
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}">
+                        <span class="btn btn-default">{{ tag }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <p><a class="btn btn-link" href="{{ page.get_parent.url }}">Return to testimonials</a></p>
     </div>
 {% endblock %}
