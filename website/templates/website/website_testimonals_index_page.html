@@ -20,8 +20,8 @@
                             style="float:right;margin-top: -30px;">
                 <div class="clearfix"></div>
                 <p class="autor">
-                    - {{ testimonial.full_name }}, {{ testimonial.organization }},
-                          {{ testimonial.trip_event }},  {{ testimonial.date }}
+                   -{{ testimonial.full_name }}, {{ testimonial.organization }},
+                    {{ testimonial.trip_event }},  {{ testimonial.date|date:"F Y" }}
                 </p>
             {% endwith %}
             </div>
