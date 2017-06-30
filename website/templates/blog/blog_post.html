@@ -13,21 +13,35 @@
 </div>
 {% endif %}
 
-<div class="share">
-    <span class="st_linkedin_large" st_title="{{ blog.title }}" st_url="{{ SITE_URL }}{% pageurl blog %}" displayText="LinkedIn"></span>
-    <span class="st_twitter_large" st_title="{{ blog.title }}" st_url="{{ SITE_URL }}{% pageurl blog %}" displayText="Tweet">
-
-    </span>
-    <span class="st_facebook_large" st_title="{{ blog.title }}" st_url="{{ SITE_URL }}{% pageurl blog %}" displayText="Facebook">
-      <!-- Your share button code -->
-      <div class="fb-share-button"
-        data-href="{{ SITE_URL }}{% pageurl blog %}"
-        data-layout="button_count">
-      </div>
-    </span>
-    <span class="st_plusone_large" st_title="{{ blog.title }}" st_url="{{ SITE_URL }}{% pageurl blog %}" displayText="Google +1"></span>
-    <span class="st_email_large" st_title="{{ blog.title }}" st_url="{{ SITE_URL }}{% pageurl blog %}" displayText="Email"></span>
-    <span class="st_sharethis_large" st_title="{{ blog.title }}" st_url="{{ SITE_URL }}{% pageurl blog %}" displayText="ShareThis"></span>
+<div class="col-md-12">
+    <div class="col-md-3 fb-share">
+        <!-- Share in Facebook -->
+        <div class="fb-share-button" 
+            data-href="{{ SITE_URL }}{% pageurl blog %}" 
+            data-layout="button_count">
+        </div>
+        <!-- Share in Facebook -->
+    </div>
+    <div class="col-md-9">
+        <!-- Share in Twitter -->
+        <span>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="true">Tweet</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </span>
+        <!-- Share in Twitter -->
+        <!-- Share in LinkedIn -->
+        <span>
+            <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+            <script type="IN/Share" data-url="{{ page.get_site.root_url }}{% pageurl blog%}" data-counter="right"></script>
+        </span>
+        <!-- Share in LinkedIn -->
+        <!-- Share in Google+ -->
+        <span>
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
+            <div class="g-plus" data-action="share"></div>
+        </span>
+        <!-- Share in Google+ -->
+    </div>
 </div>
 
 <div class="meta">

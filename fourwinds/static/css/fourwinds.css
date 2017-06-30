@@ -791,3 +791,9 @@ have a fixed width and height (but it's not required).
   float: right;
   margin-left: 16px;
 }
+
+.fb-share {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 60px;
+}
