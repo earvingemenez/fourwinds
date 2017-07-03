@@ -1,6 +1,6 @@
 {% load wagtailcore_tags static %}
 
-<h2>{{ blog.title }}</h2>
+<h2>{{ blog.title|title }}</h2>
 
 {% if include_context == "index_page" %}
 <div class="blog-intro">
