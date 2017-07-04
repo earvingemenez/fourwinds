@@ -791,3 +791,11 @@ have a fixed width and height (but it's not required).
   float: right;
   margin-left: 16px;
 }
+
+/*Blog Styling*/
+.blog-intro {
+    padding-top: 20px;
+}
+
+
+
