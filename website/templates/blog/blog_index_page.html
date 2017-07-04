@@ -25,7 +25,9 @@
                 <h2>{{ blog.title }}</h2>
 
                 {% if blog.header_image %}
-                {% image blog.header_image width-500 %}
+                <div class="blog-img">
+                    {% image blog.header_image width-500 %}
+                </div> 
                 {% endif %}
 
                 <div class="blog-intro">

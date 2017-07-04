@@ -4,7 +4,9 @@
     {% for blog in blogs %}
     <div class="media">
         <div class="media-left">
-            {% image blog.header_image width-100 class='media-object'%}
+            <div class="blog-recent">
+                {% image blog.header_image width-100 class='media-object'%}
+            </div>
         </div>
         <div class="media-body">
             <h4 class="media-heading">{{ blog.title }}</h4>
