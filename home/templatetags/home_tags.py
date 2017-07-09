@@ -63,9 +63,15 @@ def main_slider(context, calling_page):
         "show_carousel" : show_carousel
     }
 
+@register.inclusion_tag('home/tags/qoute_form.html', takes_context=True)
+def qoute_form(context):
+    return {
+        'request': context['request']
+    }
 
-@register.inclusion_tag('website/tags/testimonials.html', takes_context=True)
-def testimonials_slider(context, calling_page):
+
+@register.inclusion_tag('website/tags/side_testimonials.html', takes_context=True)
+def testimonials_sidebar(context, calling_page):
     testimonials = WebsiteTestimonialPage.objects.live().order_by('-first_published_at')
     more_testimonials_link = testimonials[0].get_parent().url if len(testimonials) > 0 else "#"
     return {"testimonials": testimonials, "more_testimonials_link": more_testimonials_link}
@@ -75,6 +81,14 @@ def testimonials_slider(context, calling_page):
 def travel_carousel(context, calling_page):
     travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:10]
     return {"travelpages": travels}
+
+
+@register.inclusion_tag('website/tags/travels.html', takes_context=True)
+def travels_home(context, calling_page):
+    travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:2]
+    return {
+        'travelpages': travels
+    }
 
 
 @register.inclusion_tag('blog/tags/recents.html', takes_context=True)

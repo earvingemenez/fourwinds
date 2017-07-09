@@ -1,0 +1,296 @@
+@font-face {
+  font-family: 'gothambold';
+  src: url("../fonts/gothambold-webfont.woff") format("woff"), url("../fonts/gothambold-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gothambook';
+  src: url("../fonts/gothambook-webfont.woff") format("woff"), url("../fonts/gothambook-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gothamlight';
+  src: url("../fonts/gothamlight-webfont.woff") format("woff"), url("../fonts/gothamlight-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'gothammedium';
+  src: url("../fonts/gothammedium-webfont.woff") format("woff"), url("../fonts/gothammedium-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+/* latin */
+@font-face {
+  font-family: 'Playfair-Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Playfair Display"), local("PlayfairDisplay-Regular"), url(../fonts/play-fair-display-italic.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* line 1, ../sass/_extends.scss */
+h1 {
+  font-family: "gothammedium";
+}
+
+/* line 5, ../sass/_extends.scss */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: inherit;
+}
+
+/* line 13, ../sass/_extends.scss */
+.flex-justify {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+/* line 1, ../sass/_header.scss */
+.header-text {
+  background: #eeeeee;
+  font-size: 14px;
+  min-height: 34px;
+  padding-top: 11px;
+  padding-bottom: 12px;
+}
+/* line 7, ../sass/_header.scss */
+.header-text p {
+  font-family: "gothambold";
+  margin: 0;
+}
+/* line 10, ../sass/_header.scss */
+.header-text p a {
+  border: solid 1px #333;
+  border-radius: 50%;
+  padding: 1px 3px;
+  font-size: 12px;
+  color: #424242;
+}
+
+/* line 20, ../sass/_header.scss */
+.top-banner {
+  height: 160px;
+}
+/* line 22, ../sass/_header.scss */
+.top-banner .banner {
+  text-align: center;
+  background-image: url("../img/banner/banner-bgd.png");
+  background-size: cover;
+}
+
+/* line 31, ../sass/_header.scss */
+.main-nav {
+  text-align: center;
+  background: #102633;
+  border-radius: 0;
+  border-color: #e7e7e7;
+}
+/* line 36, ../sass/_header.scss */
+.main-nav .navbar-nav {
+  display: inline-block;
+  float: none !important;
+  vertical-align: top;
+}
+/* line 40, ../sass/_header.scss */
+.main-nav .navbar-nav a {
+  color: #fff;
+  font-weight: bold;
+}
+/* line 43, ../sass/_header.scss */
+.main-nav .navbar-nav a:hover {
+  color: #00b19f !important;
+  background-color: white;
+}
+/* line 51, ../sass/_header.scss */
+.main-nav .dropdown.open .dropdown-toggle {
+  background-image: -webkit-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+  background-image: -o-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dbdbdb), to(#e2e2e2));
+  background-image: linear-gradient(to bottom, #dbdbdb 0, #e2e2e2 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdbdbdb', endColorstr='#ffe2e2e2', GradientType=0);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
+  color: #00b19f;
+}
+/* line 64, ../sass/_header.scss */
+.main-nav .dropdown.open .dropdown-menu li a {
+  color: #333;
+}
+/* line 66, ../sass/_header.scss */
+.main-nav .dropdown.open .dropdown-menu li a:hover {
+  background-color: #e8e8e8;
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+  background-image: -o-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e8e8e8));
+  background-image: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+  background-repeat: repeat-x;
+  color: #333 !important;
+}
+
+/* line 1, ../sass/_landing.scss */
+.masthead {
+  background-image: url("../images/header.png");
+  background-size: cover;
+  height: 500px;
+  padding: 30px;
+}
+/* line 8, ../sass/_landing.scss */
+.masthead .cta {
+  width: 30%;
+  background: rgba(255, 255, 255, 0.75);
+}
+/* line 11, ../sass/_landing.scss */
+.masthead .cta .info {
+  width: 99%;
+}
+
+/* line 17, ../sass/_landing.scss */
+.cta {
+  padding-top: 40px;
+}
+/* line 19, ../sass/_landing.scss */
+.cta .cta-button {
+  width: 233px;
+  height: 54px;
+  background-image: linear-gradient(to top, #f2b705, #f2c22f);
+  box-shadow: 0px 2px 5.5px 2.5px rgba(0, 0, 0, 0.16);
+  color: #fff;
+  padding: 19px 30px;
+  border-radius: 93px;
+  font-size: 18px;
+  font-family: "gothambold";
+  text-decoration: none;
+}
+/* line 31, ../sass/_landing.scss */
+.cta .or {
+  margin: 40px auto;
+  font-family: "gothambold";
+}
+/* line 35, ../sass/_landing.scss */
+.cta .cta-form {
+  border: solid 1px #eeeeee;
+}
+/* line 37, ../sass/_landing.scss */
+.cta .cta-form .form-title {
+  background: #eeeeee;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  text-align: center;
+  color: #102633;
+  font-family: "gothambold";
+  font-size: 21px;
+}
+/* line 46, ../sass/_landing.scss */
+.cta .cta-form form {
+  padding: 20px;
+}
+/* line 48, ../sass/_landing.scss */
+.cta .cta-form form .form-control {
+  border: solid 0.5px #c6c6c6;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/* line 53, ../sass/_landing.scss */
+.cta .cta-form form button {
+  background-color: #102633;
+  border-radius: 100px;
+  color: #fff;
+  padding: 7px 16px;
+  font-family: "gothambold";
+}
+
+/* line 64, ../sass/_landing.scss */
+.articles {
+  padding: 0 20px;
+}
+/* line 66, ../sass/_landing.scss */
+.articles .section-banner {
+  height: 150px;
+  overflow: hidden;
+}
+/* line 70, ../sass/_landing.scss */
+.articles .article,
+.articles .sub-articles {
+  margin-top: 50px;
+}
+/* line 73, ../sass/_landing.scss */
+.articles .article .title,
+.articles .sub-articles .title {
+  margin-bottom: 10px;
+  font-family: "gothammedium";
+}
+/* line 77, ../sass/_landing.scss */
+.articles .article .content,
+.articles .sub-articles .content {
+  margin: 20px 0 10px;
+  line-height: 1.5;
+  text-align: justify;
+}
+/* line 82, ../sass/_landing.scss */
+.articles .article .sub-articles,
+.articles .sub-articles .sub-articles {
+  padding: 0;
+}
+
+/* line 89, ../sass/_landing.scss */
+.sub-articles img {
+  max-width: 100%;
+  max-height: 134px;
+  overflow: hidden;
+}
+
+/* line 96, ../sass/_landing.scss */
+.testimonials {
+  margin-top: 40px;
+}
+/* line 98, ../sass/_landing.scss */
+.testimonials .title {
+  font-family: "gothammedium";
+  margin-bottom: 40px;
+}
+/* line 102, ../sass/_landing.scss */
+.testimonials .rich-text p {
+  font-family: "Playfair-Display";
+  font-style: italic;
+  line-height: 2;
+}
+/* line 106, ../sass/_landing.scss */
+.testimonials .rich-text p span {
+  font-size: 2em;
+}
+/* line 109, ../sass/_landing.scss */
+.testimonials .rich-text p img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* line 115, ../sass/_landing.scss */
+.testimonials .customer {
+  padding-left: 25%;
+}
+/* line 117, ../sass/_landing.scss */
+.testimonials .customer .name {
+  font-size: 14px;
+}
+/* line 121, ../sass/_landing.scss */
+.testimonials .more-testimonials {
+  background-color: #0d2633;
+  border-radius: 100px;
+  color: #f2b705;
+  width: 200px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 30px;
+  font-family: gotham-bold-regular;
+}
+/* line 131, ../sass/_landing.scss */
+.testimonials .more-testimonials:hover {
+  color: #fff;
+}

@@ -1,0 +1,134 @@
+.masthead{
+	background:{
+		image: url('../images/header.png');
+		size: cover;
+	}
+	height: 500px;
+	padding:30px;
+	.cta{
+		width:30%;
+		background: rgba($white, 0.75);
+		.info{
+			    width: 99%;
+		}
+	}
+}
+
+.cta {
+    padding-top: 40px;
+    .cta-button {
+        width: 233px;
+        height: 54px;
+        background-image: linear-gradient(to top, #f2b705, #f2c22f);
+        box-shadow: 0px 2px 5.5px 2.5px rgba(0, 0, 0, 0.16);
+        color: $white;
+        padding: 19px 30px;
+        border-radius: 93px;
+        font-size: 18px;
+        font-family: $gothambold;
+        text-decoration: none;
+    }
+    .or {
+        margin: 40px auto;
+        font-family: $gothambold;
+    }
+    .cta-form {
+        border: solid 1px #eeeeee;
+        .form-title {
+            background: $smoke;
+            padding-top: 14px;
+            padding-bottom: 14px;
+            text-align: center;
+            color: #102633;
+            font-family: $gothambold;
+            font-size: 21px;
+        }
+        form {
+            padding: 20px;
+            .form-control {
+                border: solid 0.5px #c6c6c6;
+                -webkit-box-shadow: none;
+                box-shadow: none;
+            }
+            button {
+                background-color: $dark-indigo;
+                border-radius: 100px;
+                color: $white;
+                padding: 7px 16px;
+                font-family: $gothambold;
+            }
+        }
+    }
+}
+
+.articles {
+    padding: 0 20px;
+    .section-banner {
+        height: 150px;
+        overflow: hidden;
+    }
+    .article,
+    .sub-articles {
+        margin-top: 50px;
+        .title {
+            margin-bottom: 10px;
+            font-family: $gothammedium;
+        }
+        .content {
+            margin: 20px 0 10px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .sub-articles {
+            padding: 0;
+        }
+    }
+}
+
+.sub-articles {
+    img {
+        max-width: 100%;
+        max-height: 134px;
+        overflow: hidden;
+    }
+}
+
+.testimonials {
+	margin-top:40px;
+    .title {
+        font-family: $gothammedium;
+        margin-bottom: 40px;
+    }
+    .rich-text p{
+    	font-family: $Playfair-Display;
+    	font-style: italic;
+        line-height: 2;
+    span{
+    	font-size: 2em;
+    }
+    img{
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+    }
+    .customer{
+    	padding-left:25%;
+    	.name{
+    		font-size: 14px;
+    	}
+    }
+    .more-testimonials {
+        background-color: #0d2633;
+        border-radius: 100px;
+        color: #f2b705;
+        width: 200px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        line-height: 30px;
+        font-family: gotham-bold-regular;
+    }
+    .more-testimonials:hover {
+    color: #fff;
+}
+}

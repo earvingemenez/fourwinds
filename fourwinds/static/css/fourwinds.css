@@ -29,10 +29,10 @@
     font-style: normal;
 }
 
-#page{
+/*#page{
     max-width: 2000px;
     margin: 0 auto;
-}
+}*/
 
 p {
     font-size: 16px;
@@ -44,9 +44,9 @@ p {
 .bold-regular{
     font-family: gotham-bold-regular;
 }
-.container{
+/*.container{
     max-width: 1100px;
-}
+}*/
 .box{
     background: #eeeeee;
 }
