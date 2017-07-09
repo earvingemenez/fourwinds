@@ -9,3 +9,4 @@ django-comments-xtd==1.7.2
 django-contrib-comments==1.7.3
 sendgrid==3.6.3
 sendgrid-django==4.0.4
+wagtailtinymce==4.2.1.5
