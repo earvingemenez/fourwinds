@@ -95,3 +95,6 @@ ENV/
 
 assets/
 media/
+images/
+original_images/
+.sass-cache/
