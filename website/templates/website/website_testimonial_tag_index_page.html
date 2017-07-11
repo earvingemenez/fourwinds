@@ -6,7 +6,11 @@
 
 {% block content %}
     <div class="container">
-        <div class="intro">{{ page.intro|richtext }}</div>
+        <h1 class="title">{{ page.title }}</h1>
+
+        {% if request.GET.tag|length %}
+            <h4>Showing pages tagged "{{ request.GET.tag }}"</h4>
+        {% endif %}
 
         {% for testimonial in testimonialpages %}
             <div class="item testimonial">
@@ -18,11 +22,13 @@
                             style="float:right;margin-top: -30px;">
                 <div class="clearfix"></div>
                 <p class="autor">
-                   -{{ testimonial.full_name }}, {{ testimonial.organization }},
-                    {{ testimonial.trip_event }},  {{ testimonial.date|parse_date:"%Y-%m"|date:"F Y" }}
+                    - {{ testimonial.full_name }}, {{ testimonial.organization }},
+                          {{ testimonial.trip_event }},  {{ testimonial.date|parse_date:"%Y-%m"|date:"F Y" }}
                 </p>
             {% endwith %}
             </div>
+        {% empty %}
+            No pages found with that tag.
         {% endfor %}
     </div>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags static%}
+{% load wagtailcore_tags wagtailimages_tags home_tags static%}
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
@@ -10,10 +10,21 @@
 
         <div>{{ page.text|richtext }}</div>
         <p class="autor">
-            - {{ page.full_name }}, {{ page.organization }},
-                    {{ page.trip_event }}
-                    {{ page.date }}
+          - {{ page.full_name }}, {{ page.organization }},
+            {{ page.trip_event }}, {{ page.date|parse_date:"%Y-%m"|date:"F Y" }}
         </p>
+
+        {% if page.tags.all.count %}
+            <div class="tags">
+                <h4>Tags</h4>
+                {% for tag in page.tags.all %}
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}">
+                        <span class="btn btn-default">{{ tag }}</span>
+                    </a>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <p><a class="btn btn-link" href="{{ page.get_parent.url }}">Return to testimonials</a></p>
     </div>
 {% endblock %}

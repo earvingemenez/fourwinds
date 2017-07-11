@@ -1,5 +1,8 @@
+import datetime
+
 from blog.models import BlogPage, BlogCategory
 from django import template
+from django.template.defaultfilters import stringfilter
 
 from website.models import WebsiteTestimonialPage, WebsiteTravelPage
 
@@ -60,9 +63,15 @@ def main_slider(context, calling_page):
         "show_carousel" : show_carousel
     }
 
+@register.inclusion_tag('home/tags/qoute_form.html', takes_context=True)
+def qoute_form(context):
+    return {
+        'request': context['request']
+    }
 
-@register.inclusion_tag('website/tags/testimonials.html', takes_context=True)
-def testimonials_slider(context, calling_page):
+
+@register.inclusion_tag('website/tags/side_testimonials.html', takes_context=True)
+def testimonials_sidebar(context, calling_page):
     testimonials = WebsiteTestimonialPage.objects.live().order_by('-first_published_at')
     more_testimonials_link = testimonials[0].get_parent().url if len(testimonials) > 0 else "#"
     return {"testimonials": testimonials, "more_testimonials_link": more_testimonials_link}
@@ -72,6 +81,14 @@ def testimonials_slider(context, calling_page):
 def travel_carousel(context, calling_page):
     travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:10]
     return {"travelpages": travels}
+
+
+@register.inclusion_tag('website/tags/travels.html', takes_context=True)
+def travels_home(context, calling_page):
+    travels = WebsiteTravelPage.objects.live().order_by('-first_published_at')[:2]
+    return {
+        'travelpages': travels
+    }
 
 
 @register.inclusion_tag('blog/tags/recents.html', takes_context=True)
@@ -87,3 +104,17 @@ def blog_tags(context):
     return {
         'cats': cats
     }
+
+
+@stringfilter
+def parse_date(date_string, format):
+    """
+    Return a datetime corresponding to date_string, parsed according to format.
+    For example, to re-display a date string in another format:
+        {{ "2017-10"|parse_date:"%Y-%m"|date:"F Y" }}
+    """
+    try:
+        return datetime.datetime.strptime(date_string, format)
+    except ValueError:
+        return None
+register.filter('parse_date', parse_date)

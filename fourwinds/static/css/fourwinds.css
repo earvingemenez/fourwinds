@@ -29,11 +29,13 @@
     font-style: normal;
 }
 
-#page{
+/*#page{
     max-width: 2000px;
     margin: 0 auto;
+}*/
 
-
+p {
+    font-size: 16px;
 }
 
 .font-size-14{
@@ -42,9 +44,9 @@
 .bold-regular{
     font-family: gotham-bold-regular;
 }
-.container{
+/*.container{
     max-width: 1100px;
-}
+}*/
 .box{
     background: #eeeeee;
 }
@@ -790,4 +792,36 @@ have a fixed width and height (but it's not required).
 .richtext .richtext-image.right {
   float: right;
   margin-left: 16px;
+}
+
+.fb-share {
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 60px;
+}
+
+/*Blog Styling*/
+
+.blog-intro {
+    padding-top: 20px;
+}
+
+.blog-img {
+    height: 450px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.blog-img img {
+    width: 100%;
+}
+
+.blog-recent {
+    height: 100px;
+    width: 120px;
+    overflow: hidden;
+}
+
+.blog-recent img {
+    width: 120px;
 }

@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     'django_comments_xtd',
     'django_comments',
     'django.contrib.sites',
+
+    'wagtailtinymce',
 ]
 
 MIDDLEWARE = [
@@ -166,3 +168,10 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', True)
 DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
+
+# wagtailtinymce configuration
+WAGTAILADMIN_RICH_TEXT_EDITORS = {
+    'default': {
+        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea'
+    },
+}

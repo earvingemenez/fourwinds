@@ -6,6 +6,7 @@ from taggit.models import TaggedItemBase, Tag
 from wagtail.wagtailcore.models import Page, Orderable
 from django import forms
 from django.db import models
+from django.forms import extras
 from django.core.validators import ValidationError
 from django.utils.text import slugify, _
 
@@ -82,7 +83,7 @@ class WebsiteTestimonialPage(Page):
     trip_event = models.CharField("Trip or/and Event", max_length=250, default='')
     categories = ParentalManyToManyField('website.WebsiteCategory', blank=True)
     tags = ClusterTaggableManager(through=WebsiteTestimonialPageTag, blank=True)
-    date = models.DateField("Date of the event/trip", null=True)
+    date = YearMonthField(max_length=10)
 
     search_fields = Page.search_fields + [
         index.SearchField('text'),
@@ -95,12 +96,23 @@ class WebsiteTestimonialPage(Page):
             FieldPanel('full_name'),
             FieldPanel('trip_event'),
             FieldPanel('organization'),
-            FieldPanel('date'),
+            FieldPanel('date', widget=forms.TextInput(attrs={'placeholder': 'YYYY-MM'})),
             FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
             FieldPanel('tags')
         ], heading="Trip information"),
         FieldPanel('text'),
     ]
+
+
+class WebsiteTestimonialTagIndexPage(Page):
+
+    def get_context(self, request):
+        tag = request.GET.get('tag')
+        testimonialpages = WebsiteTestimonialPage.objects.filter(tags__name=tag)
+
+        context = super(WebsiteTestimonialTagIndexPage, self).get_context(request)
+        context['testimonialpages'] = testimonialpages
+        return context
 
 
 @register_snippet
