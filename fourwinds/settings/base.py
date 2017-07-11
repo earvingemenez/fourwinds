@@ -172,6 +172,6 @@ DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
 # wagtailtinymce configuration
 WAGTAILADMIN_RICH_TEXT_EDITORS = {
     'default': {
-        'WIDGET': 'wagtailtinymce.rich_text.TinyMCERichTextArea'
+        'WIDGET': 'website.tinymce.TinyMCE'
     },
 }
