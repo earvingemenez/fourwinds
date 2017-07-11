@@ -1,0 +1,27 @@
+{% load static wagtailcore_tags wagtailimages_tags home_tags %}
+<div class="col-md-3">
+    <div class="testimonials">
+        <h4 class="title">Client Testimonials</h4>
+        {%  for testimonial in testimonials %}
+          {%  if forloop.first %}
+            <blockquote class="image-responsive">
+                <p class="content">
+                  {{ testimonial.text|richtext }}
+                </p>
+            </blockquote>
+            <div class="customer text-right">
+                <p class="name">
+                     --{{ testimonial.full_name }}
+                </p>
+                <p> 
+                    {{ testimonial.organization }}, 
+                    {{ testimonial.trip_event }}, {{ testimonial.date|parse_date:"%Y-%m"|date:"F Y" }}
+                </p>
+            </div>
+          {% endif %}
+        {% endfor %}
+        <a class="btn more-testimonials pull-right" href="{{ more_testimonials_link }}">
+            MORE TESTIMONIALS
+        </a>
+    </div>
+</div>

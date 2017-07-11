@@ -1,0 +1,75 @@
+{% load wagtailcore_tags static %}
+
+<h2>{{ blog.title|title }}</h2>
+
+{% if include_context == "index_page" %}
+<div class="blog-intro">
+    {{ blog.body|richtext|truncatewords_html:70 }}
+    <a href="{% pageurl blog %}">Read the rest of this entry &raquo;</a>
+</div>
+{% else %}
+<div class="blog-body">
+    {{ blog.body|richtext }}
+</div>
+{% endif %}
+
+<div class="col-md-12">
+    <div class="col-md-3 fb-share">
+        <!-- Share in Facebook -->
+        <div class="fb-share-button" 
+            data-href="{{ SITE_URL }}{% pageurl blog %}" 
+            data-layout="button_count">
+        </div>
+        <!-- Share in Facebook -->
+    </div>
+    <div class="col-md-9">
+        <!-- Share in Twitter -->
+        <span>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="true">Tweet</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </span>
+        <!-- Share in Twitter -->
+        <!-- Share in LinkedIn -->
+        <span>
+            <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+            <script type="IN/Share" data-url="{{ page.get_site.root_url }}{% pageurl blog%}" data-counter="right"></script>
+        </span>
+        <!-- Share in LinkedIn -->
+        <!-- Share in Google+ -->
+        <span>
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
+            <div class="g-plus" data-action="share"></div>
+        </span>
+        <!-- Share in Google+ -->
+    </div>
+</div>
+
+<div class="meta">
+    <div class="tags pull-left">
+        {% if blog.tags.all %}
+            Tags:
+                {% for tag in blog.tags.all %}
+                    <a href="{% url 'blog:tag' tag.slug %}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+        {% endif %}
+    </div>
+    <div class="tags pull-right">
+        {% if blog.categories.all %}
+            Topics:
+                {% for cat in blog.categories.all %}
+                    <a href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %} |
+        {% endif %}
+    </div>
+    <div class="clearfix"></div>
+    <div class="tags-and-comments">
+
+        <div id="comments" class="comments">
+        {% if COMMENTS_APP == 'django_comments_xtd' %}
+            {% include 'blog/blog_post_comments_xtd_link.html' with blog=blog %}
+        {% elif False %}
+            <a href="{% pageurl blog %}#disqus_thread">No Comments</a>
+        {% endif %}
+        </div>
+    </div>
+</div>

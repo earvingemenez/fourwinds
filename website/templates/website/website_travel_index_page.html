@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static home_tags%}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+    <div id="travel">
+        {% travel_carousel calling_page=self %}
+
+        <div class="events container">
+            <h3 class="pull-left">UPCOMING EVENTS</h3>
+            <div class="form-group pull-right col-sm-3">
+                <select class="form-control" onchange="javascript:filter_events(event)">
+                    <option value="0">All</option>
+                    {% for row in months %}
+                    <option value="{{ row.year_month }}"
+                    {% if year_month == row.year_month %}
+                        selected
+                    {% endif %}
+                    >{{ row.date }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="clearfix"></div>
+            <div class="events-list">
+                {% for travel in travelpages %}
+                <div class="event col-md-6">
+                    <div class="row">
+                        <h4 class="event-title">{{ travel.title }}</h4>
+                        <div class="event-content">
+                            <p>{{ travel.intro|richtext }}</p>
+                        </div>
+                        <a href="{% pageurl travel %}" class="btn btn-learn-more">
+                            LEARN MORE &#10095;&#10095;
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block extra_js %}
+
+<script type="text/javascript">
+function filter_events(e){
+    var val = $(e.currentTarget).val()
+    window.location.href = '{% pageurl page %}?year='+val
+};
+
+</script>
+<script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.jcarousel').jcarousel();
+    $('.jcarousel li').mousemove(function(){
+{#        $('.event-front',this).hide();#}
+        $('.event-back',this).show();
+    }).mouseleave(function(){
+{#        $('.event-front',this).show();#}
+        $('.event-back',this).hide();
+    });
+});
+</script>
+{%  endblock %}

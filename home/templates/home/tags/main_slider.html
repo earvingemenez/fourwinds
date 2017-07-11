@@ -1,0 +1,30 @@
+{% load static wagtailimages_tags%}
+{% if show_carousel %}
+{#    Main Carousel#}
+    <div id="main-carousel" class="carousel slide" data-ride="carousel">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+          {% for item in gallery_images.all %}
+            <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
+                {% image item.image fill-2000x550%}
+                {% if forloop.counter0 == 0 %}
+{#                <div class="carousel-caption">#}
+{#                    <img src="{% static 'img/slideshow/travel-is-education.png' %}" alt="">#}
+{#                </div>#}
+                {% endif %}
+            </div>
+        {% endfor %}
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+        <span class="icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+        <span class="icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+{#    End main carousel#}
+{% endif %}

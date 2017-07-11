@@ -1,0 +1,22 @@
+{% load wagtailcore_tags wagtailimages_tags static%}
+<div class="row">
+    {% for travel in travelpages %}
+    <div class="col-md-6">
+        <div class="sub-articles">
+            {% with travel.main_image as main_image %}
+              {% if main_image %}
+                  {% image main_image fill-540x499 %}
+              {% else %}
+                  <img src="{% static 'img/no-image-featured-image.png' %}" alt="{{ trip.title }}" class="img-responsive">
+              {% endif %}
+            {% endwith %}
+            <h4 class="title">
+                <a href="{% pageurl travel %}">{{ travel.title|title }}</a>
+            </h4>
+            <p class="content">
+              {{ travel.intro|richtext }}
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>

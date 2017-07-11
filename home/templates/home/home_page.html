@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags home_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    {% qoute_form %}
+    <div class="col-md-6 articles">
+        {% main_slider calling_page=page %}
+        {{ page.body|richtext }}
+        <div class="section-banner">
+            <img src="/media/images/img3.png" class="img-responsive">
+        </div>
+        <div class="article">
+            <h1 class="title">
+                  We are happy to announce the opening of our West coat Office in San Diego!
+            </h1>
+            <p class="content">
+              Welcome to Four Winds Tours. We are a full-service educational, student and group tour operator located in Jericho, NY. Since 1994 we have serviced group travel needs for organizations nationwide including: schools, non-profits, camps, and other youth organizations.
+            </p>
+        </div>
+        {% travels_home calling_page=self %}
+    </div>
+    {% testimonials_sidebar calling_page=self %}
+{% endblock %}

@@ -5,6 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
+# pycharm extentions
+*.pyc
 
 # Distribution / packaging
 .Python
@@ -52,6 +54,7 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+local.py
 
 # Flask stuff:
 instance/
@@ -93,3 +96,8 @@ ENV/
 
 assets/
 media/
+documents/
+local.py
+.sass-cache/
+images/
+original_images/

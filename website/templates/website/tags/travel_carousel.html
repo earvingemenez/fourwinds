@@ -1,0 +1,37 @@
+{% load wagtailcore_tags wagtailimages_tags static%}
+{#        Carousel#}
+<div class="jcarousel">
+    <ul class="jcarousel-list">
+        {% for travel in travelpages %}
+        <li class="jcarousel-item">
+            <div class="event-back" style="display: none">
+                <h4>{{ travel.title }}</h4>
+                <p>{{ travel.intro|richtext }}</p>
+                <a href="{% pageurl travel %}" class="btn ">
+                    LEARN MORE &#10095;&#10095;
+                </a>
+            </div>
+            <div class="event-front">
+                {% with travel.main_image as main_image %}
+                    {% if main_image %}
+                        {% image main_image fill-540x499%}
+                    {% else %}
+                        <img class="media-object img-thumbnail"
+                             src="{% static 'img/no-image-featured-image.png' %}" alt="{{ trip.title }}" width="540"
+                             height="499">
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <a class="left carousel-control" href="javascript:jcarousel_move(true)" role="button" data-slide="prev">
+        <span class="icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="javascript:jcarousel_move(false)" role="button" data-slide="next">
+        <span class="icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+{#        End Carousel#}

@@ -1,0 +1,18 @@
+h1{
+	font-family:$gothammedium;
+}
+
+p{
+	font-size: 16px;
+	line-height:1.5;
+	font-family: inherit;
+}
+
+//alignment
+
+.flex-justify{
+display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}

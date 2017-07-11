@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static%}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div id="safety" class="container" >
+            <div class="{% if page.body_right %}col-md-6{% endif %}">
+                {{ page.body_left|richtext }}
+            </div>
+            {% if page.body_right %}
+            <div class="col-md-6">
+                {{ page.body_right|richtext }}
+                {% if page.pdf %}
+                    <a href="{{ page.pdf.url }}">
+                        <img src="{% static 'img/safety-and-insureance/saftey-icon-pdf.png' %}" alt="safety and insurance"/>
+                    </a>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% if page.body_bottom %}
+            <div class="clearfix"></div>
+            <div class="text-center">
+                {{ page.body_bottom|richtext }}
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+{% endblock %}

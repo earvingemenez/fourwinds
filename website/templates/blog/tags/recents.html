@@ -1,0 +1,19 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+<div class="panel panel-default">
+  <div class="panel-body">
+    {% for blog in blogs %}
+    <div class="media">
+        <div class="media-left">
+            <div class="blog-recent">
+                {% image blog.header_image width-100 class='media-object'%}
+            </div>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{ blog.title|title }}</h4>
+            {{ blog.body|richtext|truncatewords_html:10 }}
+            <a href="{% pageurl blog %}">Read full article &raquo;</a>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
