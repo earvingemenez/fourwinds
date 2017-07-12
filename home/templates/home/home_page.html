@@ -5,11 +5,8 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    {% qoute_form %}
-    <div class="col-md-6 articles">
-        {% main_slider calling_page=page %}
-        {{ page.body|richtext }}
-        {% travels_home calling_page=self %}
-    </div>
-    {% testimonials_sidebar calling_page=self %}
+    {% main_slider calling_page=page %}
+    {{ page.body|richtext }}
+
+    {% testimonials_slider calling_page=self %}
 {% endblock %}
