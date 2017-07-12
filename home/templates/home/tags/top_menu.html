@@ -24,6 +24,9 @@
 <nav class="navbar main-nav">
     <div class="container">
         <ul class="navbar-nav nav">
+            <li>
+                <a href="{% pageurl site_root %}">Home</a>
+            </li>
             {% for menuitem in menuitems %}
                 <li class="top-navbar-item {% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
                     {% if menuitem.show_dropdown %}

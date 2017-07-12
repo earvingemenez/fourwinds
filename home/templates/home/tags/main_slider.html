@@ -8,9 +8,9 @@
             <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
                 {% image item.image fill-2000x550%}
                 {% if forloop.counter0 == 0 %}
-{#                <div class="carousel-caption">#}
-{#                    <img src="{% static 'img/slideshow/travel-is-education.png' %}" alt="">#}
-{#                </div>#}
+                <div class="carousel-caption">
+                    <img src="{% static 'img/slideshow/travel-is-education.png' %}" alt="">
+                </div>
                 {% endif %}
             </div>
         {% endfor %}
