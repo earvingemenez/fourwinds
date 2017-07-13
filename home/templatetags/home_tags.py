@@ -4,7 +4,7 @@ from blog.models import BlogPage, BlogCategory
 from django import template
 from django.template.defaultfilters import stringfilter
 
-from website.models import WebsiteTestimonialPage, WebsiteTravelPage
+from website.models import WebsiteTestimonialPage, WebsiteTravelPage, WebsiteCategory
 
 register = template.Library()
 
@@ -110,6 +110,12 @@ def blog_tags(context):
         'cats': cats
     }
 
+@register.inclusion_tag('website/tags/travel_categories.html', takes_context=True)
+def travel_categories(context):
+    categories = WebsiteCategory.objects.all()
+    return {
+        'categories': categories
+    }
 
 @stringfilter
 def parse_date(date_string, format):

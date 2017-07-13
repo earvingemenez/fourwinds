@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags static %}
+<div class="panel panel-default">
+  <div class="panel-body">
+    <ul class="list-unstyled the-loop">
+        {% for cat in categories %}
+        <li>
+            {% image cat.icon width-100 %}
+            <a href="{% slugurl 'categories' %}?category={{ cat.slug }}">
+                <span class="label label-default">
+                {{ cat.name}}
+                </span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
