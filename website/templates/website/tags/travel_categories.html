@@ -1,17 +1,31 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
-<div class="panel panel-default">
-  <div class="panel-body">
-    <ul class="list-unstyled the-loop">
-        {% for cat in categories %}
-        <li>
-            {% image cat.icon width-100 %}
-            <a href="{% slugurl 'categories' %}?category={{ cat.slug }}">
-                <span class="label label-default">
-                {{ cat.name}}
-                </span>
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-  </div>
+<div class="jcarousel-wrapper">
+    <div class="widgets-controller text-center">
+        <!-- Prev/next controls -->
+        <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><img src="{% static 'img/widgets/left-arrow.png' %}"></a> 
+        <span class="text-uppercase">SELECT YOUR DOMESTIC OR INTERNATIONAL VENUE OF INTEREST</span>
+        <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><img src="{% static 'img/widgets/right-arrow.png' %}"></a>
+    </div>
+    <!-- Carousel -->
+    <div id="widgets" class="jcarousel text-center">
+        <ul>
+            {% for category in categories %}
+            <li class="jcarousel-item">
+                <div class="item">
+                    <div class="widget-item text-center">
+                      {% image category.icon width-320 %}
+                      <div class="content">
+                        <p class="text-uppercase"></p>
+                        <h3 class="text-uppercase">{{ category.name }}</h3>
+                        <p class="text-uppercase">{{ category.description }}</p>
+                      </div>
+                      <div class="learn-more">
+                        <a href="{% slugurl 'categories' %}?category={{ category.slug }}">LEARN MORE</a>
+                      </div>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>

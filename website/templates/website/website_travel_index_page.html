@@ -7,37 +7,45 @@
 {% block content %}
     <div id="travel">
         {% travel_carousel calling_page=self %}
-
-        <div class="events container">
-            <h3 class="pull-left">UPCOMING EVENTS</h3>
-            <div class="form-group pull-right col-sm-3">
-                <select class="form-control" onchange="javascript:filter_events(event)">
-                    <option value="0">All</option>
-                    {% for row in months %}
-                    <option value="{{ row.year_month }}"
-                    {% if year_month == row.year_month %}
-                        selected
-                    {% endif %}
-                    >{{ row.date }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="clearfix"></div>
-            <div class="events-list">
-                {% for travel in travelpages %}
-                <div class="event col-md-6">
-                    <div class="row">
-                        <h4 class="event-title">{{ travel.title }}</h4>
-                        <div class="event-content">
-                            <p>{{ travel.intro|richtext }}</p>
+    </div>
+    <div class="container event-page">
+        <div class="section-header">
+            <div>
+                <div class="pull-right">
+                    <div class="select-container">
+                        <div class="select-wrapper">
+                            <select class="form-control event-filter " onchange="javascript:filter_events(event)">
+                                <option value="0">All</option>
+                                {% for row in months %}
+                                    <option value="{{ row.year_month }}"
+                                    {% if year_month == row.year_month %}
+                                        selected
+                                    {% endif %}
+                                    >{{ row.date }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
-                        <a href="{% pageurl travel %}" class="btn btn-learn-more">
-                            LEARN MORE &#10095;&#10095;
-                        </a>
                     </div>
                 </div>
-                {% endfor %}
+                <h3>UPCOMING EVENTS</h3>
             </div>
+        </div>
+        <div class="row">
+            {% for travel in travelpages %}
+            <div class="col-md-6">
+                <div class="event">
+                    <h4>
+                        {{ travel.title }}
+                    </h4>
+                    {{ travel.intro|richtext }}
+                    <div class="learn-more">
+                        <a href="{% pageurl travel %}">Learn more <span class="icon ion-chevron-right"></span><span class="icon ion-chevron-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <h3>No Upcoming Events.</h3>
+            {% endfor %}
         </div>
     </div>
     {% testimonials_slider calling_page=self %}
