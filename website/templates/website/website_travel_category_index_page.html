@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags static home_tags%}
+{% load wagtailcore_tags wagtailimages_tags home_tags static%}
 
-{% block body_class %}template-blogindexpage{% endblock %}
+{% block body_class %}template-travelcategoryindexpage{% endblock %}
 
 {% block content %}
     <div id="travel">
@@ -27,7 +27,9 @@
                         </div>
                     </div>
                 </div>
-                <h3>UPCOMING EVENTS</h3>
+                {% if request.GET.category|length %}
+                    <h3>UPCOMING {{ request.GET.category|upper }} EVENTS</h3>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -44,21 +46,14 @@
                 </div>
             </div>
             {% empty %}
-                <h3>No Upcoming Events.</h3>
+                <h3>No Upcoming Events for {{ request.GET.category }}.</h3>
             {% endfor %}
         </div>
     </div>
     {% testimonials_slider calling_page=self %}
 {% endblock %}
+
 {% block extra_js %}
-
-<script type="text/javascript">
-function filter_events(e){
-    var val = $(e.currentTarget).val()
-    window.location.href = '{% pageurl page %}?year='+val
-};
-
-</script>
 <script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
 <script type="text/javascript">
 $(document).ready(function() {

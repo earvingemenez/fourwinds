@@ -50,6 +50,48 @@ p {
   flex-direction: row;
 }
 
+/*
+This is the visible area of you carousel.
+Set a width here to define how much items are visible.
+The width can be either fixed in px or flexible in %.
+Position must be relative!
+*/
+/* line 26, ../sass/_extends.scss */
+.jcarousel {
+  position: relative;
+  overflow: hidden;
+}
+/* line 30, ../sass/_extends.scss */
+.jcarousel .event-front img {
+  width: 100%;
+  height: auto;
+}
+
+/*
+This is the container of the carousel items.
+You must ensure that the position is relative or absolute and
+that the width is big enough to contain all items.
+*/
+/* line 42, ../sass/_extends.scss */
+.jcarousel ul {
+  width: 20000em;
+  position: relative;
+  /* Optional, required in this case since it's a <ul> element */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+These are the item elements. jCarousel works best, if the items
+have a fixed width and height (but it's not required).
+*/
+/* line 56, ../sass/_extends.scss */
+.jcarousel li {
+  /* Required only for block elements like <li>'s */
+  float: left;
+}
+
 /* line 1, ../sass/_header.scss */
 .header-text {
   background: #eeeeee;
@@ -301,4 +343,163 @@ p {
 /* line 131, ../sass/_landing.scss */
 .testimonials .more-testimonials:hover {
   color: #fff;
+}
+
+/* line 3, ../sass/_pages.scss */
+.event-page .section-header {
+  border-top: solid 2px #102633;
+  border-bottom: solid 2px #102633;
+  margin-top: 50px;
+}
+/* line 7, ../sass/_pages.scss */
+.event-page .section-header h3 {
+  font-family: "gothambold";
+  margin-top: 20px;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+/* line 13, ../sass/_pages.scss */
+.event-page .section-header .select-container {
+  background: #eeeeee;
+}
+/* line 15, ../sass/_pages.scss */
+.event-page .section-header .select-container .select-wrapper {
+  background: url(../img/widgets/select-arrow.png) no-repeat right center;
+  height: 34px;
+  width: 240px;
+  overflow: hidden;
+}
+/* line 20, ../sass/_pages.scss */
+.event-page .section-header .select-container .select-wrapper .event-filter {
+  border: none;
+  box-shadow: none;
+  font-size: 16px;
+  height: 34px;
+  width: 268px;
+  background: transparent;
+  color: #102633;
+  font-family: "gothammedium";
+}
+/* line 29, ../sass/_pages.scss */
+.event-page .section-header .select-container .select-wrapper .event-filter option {
+  width: 268px;
+}
+/* line 36, ../sass/_pages.scss */
+.event-page .event {
+  margin-bottom: 45px;
+}
+/* line 38, ../sass/_pages.scss */
+.event-page .event h4 {
+  margin-top: 30px;
+  color: #01bdc9;
+  font-family: "gothambold";
+}
+/* line 43, ../sass/_pages.scss */
+.event-page .event p {
+  font-family: "gothammedium";
+  color: #102633;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
+  margin-bottom: 20px;
+}
+/* line 50, ../sass/_pages.scss */
+.event-page .event .learn-more {
+  margin-top: 30px;
+}
+/* line 52, ../sass/_pages.scss */
+.event-page .event .learn-more a {
+  color: #ffbf09;
+  background: #102633;
+  padding: 15px 22px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: "gothambold";
+}
+/* line 59, ../sass/_pages.scss */
+.event-page .event .learn-more a .icon {
+  font-size: 8px;
+}
+
+/* line 69, ../sass/_pages.scss */
+#widgets .item {
+  min-width: 320px;
+  padding-right: 20px;
+}
+/* line 73, ../sass/_pages.scss */
+#widgets .widget-item {
+  width: 100%;
+}
+/* line 75, ../sass/_pages.scss */
+#widgets .widget-item .content {
+  background: #102834;
+  color: #f3b701;
+  font-family: "gothambold";
+  padding-bottom: 45px;
+  border-bottom: solid 5px #01bdc9;
+}
+/* line 81, ../sass/_pages.scss */
+#widgets .widget-item .content p {
+  font-size: 14px;
+  margin-bottom: 0;
+  font-family: "gothammedium";
+}
+/* line 86, ../sass/_pages.scss */
+#widgets .widget-item .content h3 {
+  margin: 0 5px 5px;
+}
+/* line 90, ../sass/_pages.scss */
+#widgets .widget-item .learn-more {
+  width: 80%;
+  margin: 0 auto;
+  background: #01bdc9;
+  color: #102834;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: -25px;
+}
+/* line 98, ../sass/_pages.scss */
+#widgets .widget-item .learn-more a {
+  font-family: "gothambold";
+  text-decoration: none;
+  color: #102834;
+}
+/* line 102, ../sass/_pages.scss */
+#widgets .widget-item .learn-more a:hover {
+  color: #102834;
+}
+
+/* line 110, ../sass/_pages.scss */
+.widgets-controller {
+  margin: 30px;
+}
+/* line 112, ../sass/_pages.scss */
+.widgets-controller .text-uppercase {
+  font-size: 16px;
+  margin-bottom: 0;
+  font-family: "gothammedium";
+  color: #102834;
+}
+/* line 118, ../sass/_pages.scss */
+.widgets-controller a {
+  margin: 20px;
+}
+
+/* line 124, ../sass/_pages.scss */
+.testimonial-caption {
+  width: 100%;
+  height: 432px;
+  background-image: url("../img/bottom/testimony-bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: -93px;
+}
+/* line 133, ../sass/_pages.scss */
+.testimonial-caption p {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-top: 157px;
+  text-transform: uppercase;
+  font-family: "gothambold";
 }

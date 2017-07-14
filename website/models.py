@@ -222,3 +222,14 @@ class WebsiteTravelGalleryImage(Orderable):
         ImageChooserPanel('image'),
         FieldPanel('caption'),
     ]
+
+
+class WebsiteTravelCategoryIndexPage(Page):
+
+    def get_context(self, request):
+        category = request.GET.get('category')
+        travelpages = WebsiteTravelPage.objects.filter(categories__slug=category)
+
+        context = super(WebsiteTravelCategoryIndexPage, self).get_context(request)
+        context['travelpages'] = travelpages
+        return context
