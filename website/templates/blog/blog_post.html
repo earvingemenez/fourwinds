@@ -9,67 +9,48 @@
 </div>
 {% else %}
 <div class="blog-body">
-    {{ blog.body|richtext }}
+    <div class="blog-container">
+        <div class="">
+            <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style share-blog ">
+                <a class="a2a_button_facebook"></a>
+                <a class="a2a_button_twitter"></a>
+                <a class="a2a_button_google_plus"></a>
+                <a class="a2a_button_linkedin"></a>
+            </div>
+            <script async src="https://static.addtoany.com/menu/page.js"></script>
+        </div>
+        <div class="">
+            {{ blog.body|richtext }}
+            <div class="meta">
+                <div class="tags pull-left">
+                    {% if blog.tags.all %}
+                        Tags:
+                            {% for tag in blog.tags.all %}
+                                <a href="{% url 'blog:tag' tag.slug %}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="tags pull-right">
+                    {% if blog.categories.all %}
+                        Topics:
+                            {% for cat in blog.categories.all %}
+                                <a href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
+                            {% endfor %} |
+                    {% endif %}
+                </div>
+                <div class="clearfix"></div>
+                <div class="tags-and-comments">
+
+                    <div id="comments" class="comments">
+                    {% if COMMENTS_APP == 'django_comments_xtd' %}
+                        {% include 'blog/blog_post_comments_xtd_link.html' with blog=blog %}
+                    {% elif False %}
+                        <a href="{% pageurl blog %}#disqus_thread">No Comments</a>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endif %}
-
-<div class="col-md-12">
-    <div class="col-md-3 fb-share">
-        <!-- Share in Facebook -->
-        <div class="fb-share-button" 
-            data-href="{{ SITE_URL }}{% pageurl blog %}" 
-            data-layout="button_count">
-        </div>
-        <!-- Share in Facebook -->
-    </div>
-    <div class="col-md-9">
-        <!-- Share in Twitter -->
-        <span>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="true">Tweet</a>
-            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </span>
-        <!-- Share in Twitter -->
-        <!-- Share in LinkedIn -->
-        <span>
-            <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-            <script type="IN/Share" data-url="{{ page.get_site.root_url }}{% pageurl blog%}" data-counter="right"></script>
-        </span>
-        <!-- Share in LinkedIn -->
-        <!-- Share in Google+ -->
-        <span>
-            <script src="https://apis.google.com/js/platform.js" async defer></script>
-            <div class="g-plus" data-action="share"></div>
-        </span>
-        <!-- Share in Google+ -->
-    </div>
-</div>
-
-<div class="meta">
-    <div class="tags pull-left">
-        {% if blog.tags.all %}
-            Tags:
-                {% for tag in blog.tags.all %}
-                    <a href="{% url 'blog:tag' tag.slug %}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
-                {% endfor %}
-        {% endif %}
-    </div>
-    <div class="tags pull-right">
-        {% if blog.categories.all %}
-            Topics:
-                {% for cat in blog.categories.all %}
-                    <a href="{% url 'blog:category' cat.category.slug %}">{{ cat.category.name }}</a>{% if not forloop.last %}, {% endif %}
-                {% endfor %} |
-        {% endif %}
-    </div>
-    <div class="clearfix"></div>
-    <div class="tags-and-comments">
-
-        <div id="comments" class="comments">
-        {% if COMMENTS_APP == 'django_comments_xtd' %}
-            {% include 'blog/blog_post_comments_xtd_link.html' with blog=blog %}
-        {% elif False %}
-            <a href="{% pageurl blog %}#disqus_thread">No Comments</a>
-        {% endif %}
-        </div>
-    </div>
-</div>
