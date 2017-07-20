@@ -368,6 +368,11 @@ have a fixed width and height (but it's not required).
   color: #102633;
 }
 
+/* line 155, ../sass/_landing.scss */
+.carousel-caption {
+  padding-bottom: 5%;
+}
+
 /* line 3, ../sass/_pages.scss */
 .event-page .section-header {
   border-top: solid 2px #102633;
