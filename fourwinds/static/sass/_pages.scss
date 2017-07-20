@@ -140,3 +140,15 @@
         font-family: $gothambold;
     }
 }
+
+//blog
+.blog-container{
+    display: flex;
+    .share-blog{
+        position: -webkit-sticky!important;  // required for Safari
+        position: sticky!important;
+        top: 0; // required as well.
+        margin-left: -65px;
+        margin-right: 17px;
+    }
+}

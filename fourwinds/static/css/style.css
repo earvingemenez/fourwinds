@@ -503,3 +503,16 @@ have a fixed width and height (but it's not required).
   text-transform: uppercase;
   font-family: "gothambold";
 }
+
+/* line 146, ../sass/_pages.scss */
+.blog-container {
+  display: flex;
+}
+/* line 148, ../sass/_pages.scss */
+.blog-container .share-blog {
+  position: -webkit-sticky !important;
+  position: sticky !important;
+  top: 0;
+  margin-left: -65px;
+  margin-right: 17px;
+}
