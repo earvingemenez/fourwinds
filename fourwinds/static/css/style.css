@@ -361,6 +361,13 @@ have a fixed width and height (but it's not required).
   color: #fff;
 }
 
+/* line 149, ../sass/_landing.scss */
+.homepage-body-content {
+  background: #eeeeee;
+  padding: 40px;
+  color: #102633;
+}
+
 /* line 3, ../sass/_pages.scss */
 .event-page .section-header {
   border-top: solid 2px #102633;
@@ -436,16 +443,20 @@ have a fixed width and height (but it's not required).
   font-size: 8px;
 }
 
-/* line 69, ../sass/_pages.scss */
+/* line 68, ../sass/_pages.scss */
+#widgets {
+  margin-bottom: 50px;
+}
+/* line 70, ../sass/_pages.scss */
 #widgets .item {
   min-width: 320px;
   padding-right: 20px;
 }
-/* line 73, ../sass/_pages.scss */
+/* line 74, ../sass/_pages.scss */
 #widgets .widget-item {
   width: 100%;
 }
-/* line 75, ../sass/_pages.scss */
+/* line 76, ../sass/_pages.scss */
 #widgets .widget-item .content {
   background: #102834;
   color: #f3b701;
@@ -453,17 +464,17 @@ have a fixed width and height (but it's not required).
   padding-bottom: 45px;
   border-bottom: solid 5px #01bdc9;
 }
-/* line 81, ../sass/_pages.scss */
+/* line 82, ../sass/_pages.scss */
 #widgets .widget-item .content p {
   font-size: 14px;
   margin-bottom: 0;
   font-family: "gothammedium";
 }
-/* line 86, ../sass/_pages.scss */
+/* line 87, ../sass/_pages.scss */
 #widgets .widget-item .content h3 {
   margin: 0 5px 5px;
 }
-/* line 90, ../sass/_pages.scss */
+/* line 91, ../sass/_pages.scss */
 #widgets .widget-item .learn-more {
   width: 80%;
   margin: 0 auto;
@@ -473,34 +484,34 @@ have a fixed width and height (but it's not required).
   padding-bottom: 12px;
   margin-top: -25px;
 }
-/* line 98, ../sass/_pages.scss */
+/* line 99, ../sass/_pages.scss */
 #widgets .widget-item .learn-more a {
   font-family: "gothambold";
   text-decoration: none;
   color: #102834;
 }
-/* line 102, ../sass/_pages.scss */
+/* line 103, ../sass/_pages.scss */
 #widgets .widget-item .learn-more a:hover {
   color: #102834;
 }
 
-/* line 110, ../sass/_pages.scss */
+/* line 111, ../sass/_pages.scss */
 .widgets-controller {
   margin: 30px;
 }
-/* line 112, ../sass/_pages.scss */
+/* line 113, ../sass/_pages.scss */
 .widgets-controller .text-uppercase {
   font-size: 16px;
   margin-bottom: 0;
   font-family: "gothammedium";
   color: #102834;
 }
-/* line 118, ../sass/_pages.scss */
+/* line 119, ../sass/_pages.scss */
 .widgets-controller a {
   margin: 20px;
 }
 
-/* line 124, ../sass/_pages.scss */
+/* line 125, ../sass/_pages.scss */
 .testimonial-caption {
   width: 100%;
   height: 432px;
@@ -509,7 +520,7 @@ have a fixed width and height (but it's not required).
   background-repeat: no-repeat;
   background-position-y: -93px;
 }
-/* line 133, ../sass/_pages.scss */
+/* line 134, ../sass/_pages.scss */
 .testimonial-caption p {
   position: absolute;
   left: 0;
@@ -520,11 +531,11 @@ have a fixed width and height (but it's not required).
   font-family: "gothambold";
 }
 
-/* line 145, ../sass/_pages.scss */
+/* line 146, ../sass/_pages.scss */
 .blog-container {
   display: flex;
 }
-/* line 147, ../sass/_pages.scss */
+/* line 148, ../sass/_pages.scss */
 .blog-container .share-blog {
   position: -webkit-sticky !important;
   position: sticky !important;
@@ -533,12 +544,12 @@ have a fixed width and height (but it's not required).
   margin-right: 17px;
 }
 
-/* line 156, ../sass/_pages.scss */
+/* line 157, ../sass/_pages.scss */
 .blog-img {
   width: 100%;
   overflow: hidden;
 }
-/* line 159, ../sass/_pages.scss */
+/* line 160, ../sass/_pages.scss */
 .blog-img img {
   width: 100%;
 }
