@@ -67,7 +67,16 @@
         height: 150px;
         overflow: hidden;
     }
-    .article,
+    .article {
+        padding-top: 40px;
+        .rich-text {
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+    }
     .sub-articles {
         margin-top: 50px;
         .title {
