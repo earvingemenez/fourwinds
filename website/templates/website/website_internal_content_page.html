@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags home_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% qoute_form %}
+            <div class="col-md-6 articles">
+                <div class="article">
+                    {{ page.body|richtext }}
+                </div>
+                {% travels_home calling_page=self %}
+            </div>
+            {% testimonials_sidebar calling_page=self %}
+        </div>
+    </div>
+{% endblock %}

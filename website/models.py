@@ -233,3 +233,11 @@ class WebsiteTravelCategoryIndexPage(Page):
         context = super(WebsiteTravelCategoryIndexPage, self).get_context(request)
         context['travelpages'] = travelpages
         return context
+
+
+class WebsiteInternalContentPage(Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full"),
+    ]
