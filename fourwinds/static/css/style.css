@@ -42,7 +42,12 @@ p {
   font-family: inherit;
 }
 
-/* line 13, ../sass/_extends.scss */
+/* line 11, ../sass/_extends.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 17, ../sass/_extends.scss */
 .flex-justify {
   display: flex;
   justify-content: space-between;
@@ -56,12 +61,12 @@ Set a width here to define how much items are visible.
 The width can be either fixed in px or flexible in %.
 Position must be relative!
 */
-/* line 26, ../sass/_extends.scss */
+/* line 30, ../sass/_extends.scss */
 .jcarousel {
   position: relative;
   overflow: hidden;
 }
-/* line 30, ../sass/_extends.scss */
+/* line 34, ../sass/_extends.scss */
 .jcarousel .event-front img {
   width: 100%;
   height: auto;
@@ -72,7 +77,7 @@ This is the container of the carousel items.
 You must ensure that the position is relative or absolute and
 that the width is big enough to contain all items.
 */
-/* line 42, ../sass/_extends.scss */
+/* line 46, ../sass/_extends.scss */
 .jcarousel ul {
   width: 20000em;
   position: relative;
@@ -86,7 +91,7 @@ that the width is big enough to contain all items.
 These are the item elements. jCarousel works best, if the items
 have a fixed width and height (but it's not required).
 */
-/* line 56, ../sass/_extends.scss */
+/* line 60, ../sass/_extends.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left;
@@ -504,15 +509,25 @@ have a fixed width and height (but it's not required).
   font-family: "gothambold";
 }
 
-/* line 146, ../sass/_pages.scss */
+/* line 145, ../sass/_pages.scss */
 .blog-container {
   display: flex;
 }
-/* line 148, ../sass/_pages.scss */
+/* line 147, ../sass/_pages.scss */
 .blog-container .share-blog {
   position: -webkit-sticky !important;
   position: sticky !important;
   top: 0;
   margin-left: -65px;
   margin-right: 17px;
+}
+
+/* line 156, ../sass/_pages.scss */
+.blog-img {
+  width: 100%;
+  overflow: hidden;
+}
+/* line 159, ../sass/_pages.scss */
+.blog-img img {
+  width: 100%;
 }
