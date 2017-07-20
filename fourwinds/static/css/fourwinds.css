@@ -806,16 +806,6 @@ have a fixed width and height (but it's not required).
     padding-top: 20px;
 }
 
-.blog-img {
-    height: 450px;
-    width: 100%;
-    overflow: hidden;
-}
-
-.blog-img img {
-    width: 100%;
-}
-
 .blog-recent {
     height: 100px;
     width: 120px;

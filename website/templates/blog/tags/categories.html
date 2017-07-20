@@ -1,16 +1,10 @@
 {% load wagtailcore_tags wagtailimages_tags static %}
 <div class="panel panel-default">
   <div class="panel-body">
-    <ul class="list-unstyled the-loop">
         {% for cat in cats %}
-        <li>
-            <a href="{% url 'blog:category' cat.slug %}/">
-                <span class="label label-default">
+            <a href="{% url 'blog:category' cat.slug %}">
                 {{ cat.name}}
-                </span>
-            </a>
-        </li>
+            </a>{% if not forloop.last %}, {% endif %}
         {% endfor %}
-    </ul>
   </div>
 </div>
