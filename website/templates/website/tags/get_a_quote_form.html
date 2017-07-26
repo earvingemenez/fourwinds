@@ -1,0 +1,81 @@
+<form>
+    <div class="row">
+    <div class="form-group">
+        <div class="col-md-6">
+            <label>Firstname:</label>
+            <input type="text" class="form-control" name="first_name" required>
+        </div>
+        <div class="col-md-6">
+            <label>Lastname:</label>
+            <input type="text" class="form-control" name="last_name" required>
+        </div>
+         <div class="col-md-6">
+            <label>Email address:</label>
+            <input type="email" class="form-control" name="email" required>
+        </div>
+        <div class="col-md-6">
+            <label>Phone number:</label>
+            <input type="number" class="form-control" name="phone_num" required>
+        </div>
+        <div class="col-md-6">
+            <label>School name:</label>
+            <input type="text" class="form-control" name="school_name" required>
+        </div>
+        <div class="col-md-6">
+            <label>School ZIP:</label>
+            <input type="number" class="form-control" name="school_zip" required>
+        </div>
+        <div class="col-md-6">
+            <label>Code role:</label>
+            <select name="code_role" class="form-control" required>
+                <option value="">Please select</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+                <option value="parent">Parent</option>
+                <option value="administrator">Administrator</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Type of trip:</label>
+            <select name="trip_type" class="form-control" required>
+                <option value="">Please select</option>
+                <option value="band">Band</option>
+                <option value="orchestra">Orchestra</option>
+                <option value="chorus">Chorus</option>
+                <option value="senior">Senior</option>
+                <option value="international">International</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Estimated trip year:</label>
+            <select name="trip_type" class="form-control" required>
+                <option value="">Please select</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label>Desired destination:</label>
+            <input type="text" class="form-control" name="destination" required>
+        </div>
+        <div class="col-md-6">
+            <label>Number of students:</label>
+            <input type="number" class="form-control" name="student_number" required>
+        </div>
+        <div class="col-md-6">
+            <label>Approximate budget:</label>
+            <input type="number" class="form-control" name="budget" required>
+        </div>
+        <div class="col-md-12">
+            <label>Comments:</label>
+            <textarea class="form-control" name="comments"></textarea>
+        </div>
+        <div class="col-md-12">
+            <hr>
+            <button type="submit" class="btn btn-lg submit-btn pull-right">Finish</button>
+        </div>
+    </div>
+    </div>
+</form>

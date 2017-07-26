@@ -69,6 +69,12 @@ def qoute_form(context):
         'request': context['request']
     }
 
+@register.inclusion_tag('website/tags/get_a_quote_form.html', takes_context=True)
+def get_a_quote_form(context):
+    return {
+        'request': context['request']
+    }
+
 @register.inclusion_tag('website/tags/testimonials.html', takes_context=True)
 def testimonials_slider(context, calling_page):
     testimonials = WebsiteTestimonialPage.objects.live().order_by('-first_published_at')
