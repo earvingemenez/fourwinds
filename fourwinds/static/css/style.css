@@ -234,7 +234,7 @@ have a fixed width and height (but it's not required).
 }
 /* line 37, ../sass/_landing.scss */
 .cta .cta-form .form-title {
-  background: #eeeeee;
+  background: #ffbf09;
   padding-top: 14px;
   padding-bottom: 14px;
   text-align: center;
@@ -254,7 +254,7 @@ have a fixed width and height (but it's not required).
 }
 /* line 53, ../sass/_landing.scss */
 .cta .cta-form form button {
-  background-color: #102633;
+  background-color: #01bdc9;
   border-radius: 100px;
   color: #fff;
   padding: 7px 16px;
