@@ -1,4 +1,4 @@
-{% load static wagtailcore_tags wagtailimages_tags%}
+{% load static wagtailcore_tags wagtailimages_tags home_tags %}
 {#    Testimonials#}
             <div class="text-center testimonials">
                 <h3 class="font-size-14 bold-regular">
@@ -18,7 +18,7 @@
                                 </p>
                                 <p class="autor">
                                    - {{ testimonial.full_name }}, {{ testimonial.organization }},
-                                    {{ testimonial.trip_event }},  {{ testimonial.date }}
+                                    {{ testimonial.trip_event }},  {{ testimonial.date | parse_date:"%Y-%m"|date:"F Y" }}
                                 </p>
                             </div>
                             {% endfor %}
