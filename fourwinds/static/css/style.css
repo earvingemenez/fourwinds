@@ -558,3 +558,14 @@ have a fixed width and height (but it's not required).
 .blog-img img {
   width: 100%;
 }
+
+/* line 165, ../sass/_pages.scss */
+.margin-t-20 {
+  margin-top: 20px;
+}
+
+/* line 169, ../sass/_pages.scss */
+.submit-btn {
+  background-color: #01bdc9;
+  color: #000;
+}

@@ -15,7 +15,9 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailsnippets.models import register_snippet
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.wagtailforms.models import AbstractForm, AbstractFormField
 from wagtail.wagtailsearch import index
+from wagtail.wagtailforms.edit_handlers import FormSubmissionsPanel
 
 from website.fields import YearMonthField
 from website.mixins import WebsiteMixinTravelIndexPage
@@ -240,4 +242,14 @@ class WebsiteInternalContentPage(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
+    ]
+
+
+class WebsiteGetQuotePage(Page):
+    intro = RichTextField(blank=True)
+    success_text = RichTextField(blank=True)
+
+    content_panels = AbstractForm.content_panels + [
+        FieldPanel('intro', classname='full'),
+        FieldPanel('success_text', classname='full')
     ]
