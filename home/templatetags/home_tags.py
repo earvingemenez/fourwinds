@@ -63,8 +63,8 @@ def main_slider(context, calling_page):
         "show_carousel" : show_carousel
     }
 
-@register.inclusion_tag('home/tags/qoute_form.html', takes_context=True)
-def qoute_form(context):
+@register.inclusion_tag('home/tags/quick_contact_form.html', takes_context=True)
+def quick_contact_form(context):
     return {
         'request': context['request']
     }
