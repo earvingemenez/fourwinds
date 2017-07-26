@@ -253,3 +253,46 @@ class WebsiteGetQuotePage(Page):
         FieldPanel('intro', classname='full'),
         FieldPanel('success_text', classname='full')
     ]
+
+
+class WebsiteTourCollectionIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname='full'),
+    ]
+
+    def get_context(self, request):
+        context = super(WebsiteTourCollectionIndexPage, self).get_context(request)
+        tours = self.get_children().live().order_by('-first_published_at')
+        context['tours'] = tours
+        return context
+
+
+class WebsiteTourCollectionItemPage(Page):
+    heading = models.CharField(max_length=250)
+    description = RichTextField(blank=True)
+
+    def header_image(self):
+        header_image_item = self.header_images.first()
+        if header_image_item:
+            return header_image_item.image
+        else:
+            return None
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading'),
+        FieldPanel('description'),
+        InlinePanel('header_images', label='Header images')
+    ]
+
+
+class TourCollectionHeaderImages(Orderable):
+    page = ParentalKey(WebsiteTourCollectionItemPage, related_name='header_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+
+    panels = [
+        ImageChooserPanel('image')
+    ]
