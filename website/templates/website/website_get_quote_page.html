@@ -6,9 +6,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="homepage-body-content margin-t-20">
+                <div class="margin-t-20 homepage-body-content">
                     <p>{{ page.intro | richtext }}</p>
-                    {% get_a_quote_form %}
+                    <div class="row">
+                        <form action="{% pageurl page %}" method="POST" id="quote-form">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ field.label }}:</label>
+                                        {{ field }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-lg pull-right">Finish</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
