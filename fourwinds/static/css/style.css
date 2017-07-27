@@ -154,6 +154,25 @@ have a fixed width and height (but it's not required).
   background-color: white;
 }
 /* line 51, ../sass/_header.scss */
+.main-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* line 54, ../sass/_header.scss */
+.main-nav .dropdown:hover .dropdown-menu li a {
+  color: #333;
+}
+/* line 56, ../sass/_header.scss */
+.main-nav .dropdown:hover .dropdown-menu li a:hover {
+  background-color: #e8e8e8;
+  background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+  background-image: -o-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(#e8e8e8));
+  background-image: linear-gradient(to bottom, #f5f5f5 0, #e8e8e8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#ffe8e8e8', GradientType=0);
+  background-repeat: repeat-x;
+  color: #333 !important;
+}
+/* line 71, ../sass/_header.scss */
 .main-nav .dropdown.open .dropdown-toggle {
   background-image: -webkit-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
   background-image: -o-linear-gradient(top, #dbdbdb 0, #e2e2e2 100%);
@@ -165,11 +184,11 @@ have a fixed width and height (but it's not required).
   box-shadow: inset 0 3px 9px rgba(0, 0, 0, 0.075);
   color: #00b19f;
 }
-/* line 64, ../sass/_header.scss */
+/* line 84, ../sass/_header.scss */
 .main-nav .dropdown.open .dropdown-menu li a {
   color: #333;
 }
-/* line 66, ../sass/_header.scss */
+/* line 86, ../sass/_header.scss */
 .main-nav .dropdown.open .dropdown-menu li a:hover {
   background-color: #e8e8e8;
   background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
@@ -181,7 +200,7 @@ have a fixed width and height (but it's not required).
   color: #333 !important;
 }
 
-/* line 83, ../sass/_header.scss */
+/* line 103, ../sass/_header.scss */
 .navbar {
   position: relative;
   min-height: 50px;
