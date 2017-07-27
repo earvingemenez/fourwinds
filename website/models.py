@@ -245,13 +245,19 @@ class WebsiteInternalContentPage(Page):
     ]
 
 
-class WebsiteGetQuotePage(Page):
+class FormField(AbstractFormField):
+    page = ParentalKey('WebsiteGetQuotePage', related_name='form_fields')
+
+
+class WebsiteGetQuotePage(AbstractForm):
     intro = RichTextField(blank=True)
     success_text = RichTextField(blank=True)
 
     content_panels = AbstractForm.content_panels + [
+        FormSubmissionsPanel(),
         FieldPanel('intro', classname='full'),
-        FieldPanel('success_text', classname='full')
+        FieldPanel('success_text', classname='full'),
+        InlinePanel('form_fields', label='Form fields')
     ]
 
 

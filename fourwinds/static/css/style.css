@@ -616,3 +616,26 @@ have a fixed width and height (but it's not required).
 .tours-container .panel .panel-body .view-tour {
   text-align: center;
 }
+
+/* line 201, ../sass/_pages.scss */
+#quote-form input, #quote-form select, #quote-form textarea {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+/* line 214, ../sass/_pages.scss */
+#quote-form textarea {
+  height: 100px;
+}
+/* line 217, ../sass/_pages.scss */
+#quote-form button {
+  background-color: #01bdc9;
+}
