@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+    <div class="container tours-container">
+        <p>{{ page.intro | richtext }}</p>
+        <div class="row">
+        {% for tour in tours %}
+            <div class="col-md-4">
+               <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-image">
+                            {% if tour.specific.header_image %}
+                                <a href="{% pageurl tour %}">
+                                    {% image tour.specific.header_image fill-358x217 class="img-responsive"%}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <h3><a href="{% pageurl tour %}">{{ tour.specific.heading }}</a></h3>
+                        <p>{{ tour.specific.description | richtext }}</p>
+                        <div class="view-tour">
+                            <a href="{% pageurl tour %}" class="btn">View tours &raquo;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+        {% endif %}
+        {% empty %}
+            <h4>No tours yet!</h4>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}
