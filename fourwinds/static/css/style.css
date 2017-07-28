@@ -200,6 +200,14 @@ have a fixed width and height (but it's not required).
   color: #333 !important;
 }
 
+/* line 103, ../sass/_header.scss */
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 0px;
+  border: 0px;
+}
+
 /* line 1, ../sass/_landing.scss */
 .masthead {
   background-image: url("../images/header.png");
