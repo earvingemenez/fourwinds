@@ -154,15 +154,15 @@ have a fixed width and height (but it's not required).
   background-color: white;
 }
 /* line 51, ../sass/_header.scss */
-.main-nav .dropdown:hover .dropdown-menu {
+.main-nav .dropdown:hover .main-children {
   display: block;
 }
 /* line 54, ../sass/_header.scss */
-.main-nav .dropdown:hover .dropdown-menu li a {
+.main-nav .dropdown:hover .main-children li a {
   color: #333;
 }
 /* line 56, ../sass/_header.scss */
-.main-nav .dropdown:hover .dropdown-menu li a:hover {
+.main-nav .dropdown:hover .main-children li a:hover {
   background-color: #e8e8e8;
   background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
   background-image: -o-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);

@@ -44,9 +44,35 @@ def top_menu(context, parent, calling_page=None):
 
 # Retrieves the children of the top menu items for the drop downs
 @register.inclusion_tag('home/tags/top_menu_children.html', takes_context=True)
-def top_menu_children(context, parent):
+def top_menu_children(context, parent, calling_page=None):
     menuitems_children = parent.get_children()
     menuitems_children = menuitems_children.live().in_menu()
+
+    for menuitem in menuitems_children:
+        # Check if menuitem has children
+        menuitem.show_dropdown = has_menu_children(menuitem)
+        menuitem.active = (calling_page.url.startswith(menuitem.url)
+            if calling_page else False)
+
+    return {
+        'parent': parent,
+        'menuitems_children': menuitems_children,
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
+
+@register.inclusion_tag('home/tags/submenu.html', takes_context=True)
+def submenu(context, parent, calling_page=None):
+    menuitems_children = parent.get_children()
+    menuitems_children = menuitems_children.live().in_menu()
+
+    for menuitem in menuitems_children:
+        # Check if menuitem has children
+        menuitem.show_dropdown = has_menu_children(menuitem)
+        menuitem.active = (calling_page.url.startswith(menuitem.url)
+            if calling_page else False)
+
     return {
         'parent': parent,
         'menuitems_children': menuitems_children,
