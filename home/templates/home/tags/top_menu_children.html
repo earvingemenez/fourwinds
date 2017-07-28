@@ -1,9 +1,16 @@
 {% load home_tags wagtailcore_tags %}
 
-<ul class="dropdown-menu">
+<ul class="dropdown-menu main-children">
     {# Include link to parent because the parent link is a drop down #}
     <li><a href="{% pageurl parent %}">{{ parent.title }}</a></li>
     {% for child in menuitems_children %}
-        <li><a href="{% pageurl child %}">{{ child.title }}</a></li>
+        {% if child.show_dropdown %}
+            <li class="dropdown-submenu">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ child.title }}</a>
+                {% submenu parent=child %}
+            </li>
+        {% else %}
+             <li><a href="{% pageurl child %}">{{ child.title }}</a></li>
+        {% endif %}
     {% endfor %}
 </ul>
