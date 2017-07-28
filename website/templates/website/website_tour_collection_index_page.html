@@ -12,17 +12,17 @@
                     <div class="panel-heading">
                         <div class="panel-image">
                             {% if tour.specific.header_image %}
-                                <a href="{% pageurl tour %}">
+                                <a href="{{ tour.specific.page_link_to.url }}">
                                     {% image tour.specific.header_image fill-358x217 class="img-responsive"%}
                                 </a>
                             {% endif %}
                         </div>
                     </div>
                     <div class="panel-body">
-                        <h3><a href="{% pageurl tour %}">{{ tour.specific.heading }}</a></h3>
+                        <h3><a href="{{ tour.specific.page_link_to.url }}">{{ tour.specific.heading }}</a></h3>
                         <p>{{ tour.specific.description | richtext }}</p>
                         <div class="view-tour">
-                            <a href="{% pageurl tour %}" class="btn">View tours &raquo;</a>
+                            <a href="{{ tour.specific.page_link_to.url }}" class="btn">View tours &raquo;</a>
                         </div>
                     </div>
                 </div>

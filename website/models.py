@@ -13,7 +13,12 @@ from django.utils.text import slugify, _
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import (
+    FieldPanel,
+    MultiFieldPanel,
+    InlinePanel,
+    PageChooserPanel
+)
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailforms.models import AbstractForm, AbstractFormField
 from wagtail.wagtailsearch import index
@@ -278,6 +283,13 @@ class WebsiteTourCollectionIndexPage(Page):
 class WebsiteTourCollectionItemPage(Page):
     heading = models.CharField(max_length=250)
     description = RichTextField(blank=True)
+    page_link_to = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     def header_image(self):
         header_image_item = self.header_images.first()
@@ -289,7 +301,8 @@ class WebsiteTourCollectionItemPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('heading'),
         FieldPanel('description'),
-        InlinePanel('header_images', label='Header images')
+        InlinePanel('header_images', label='Header images'),
+        PageChooserPanel('page_link_to')
     ]
 
 
