@@ -35,7 +35,7 @@
     .cta-form {
         border: solid 1px #eeeeee;
         .form-title {
-            background: $yellow;
+            background: $cyan;
             padding-top: 14px;
             padding-bottom: 14px;
             text-align: center;
@@ -45,13 +45,14 @@
         }
         form {
             padding: 20px;
+            background-color: $light-grey;
             .form-control {
                 border: solid 0.5px #c6c6c6;
                 -webkit-box-shadow: none;
                 box-shadow: none;
             }
             button {
-                background-color: $cyan;
+                background-color: $yellow;
                 border-radius: 100px;
                 color: $white;
                 padding: 7px 16px;

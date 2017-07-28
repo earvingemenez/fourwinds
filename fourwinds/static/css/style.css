@@ -253,7 +253,7 @@ have a fixed width and height (but it's not required).
 }
 /* line 37, ../sass/_landing.scss */
 .cta .cta-form .form-title {
-  background: #ffbf09;
+  background: #01bdc9;
   padding-top: 14px;
   padding-bottom: 14px;
   text-align: center;
@@ -264,107 +264,108 @@ have a fixed width and height (but it's not required).
 /* line 46, ../sass/_landing.scss */
 .cta .cta-form form {
   padding: 20px;
+  background-color: #e8ebef;
 }
-/* line 48, ../sass/_landing.scss */
+/* line 49, ../sass/_landing.scss */
 .cta .cta-form form .form-control {
   border: solid 0.5px #c6c6c6;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 53, ../sass/_landing.scss */
+/* line 54, ../sass/_landing.scss */
 .cta .cta-form form button {
-  background-color: #01bdc9;
+  background-color: #ffbf09;
   border-radius: 100px;
   color: #fff;
   padding: 7px 16px;
   font-family: "gothambold";
 }
 
-/* line 64, ../sass/_landing.scss */
+/* line 65, ../sass/_landing.scss */
 .articles {
   padding: 0 20px;
 }
-/* line 66, ../sass/_landing.scss */
+/* line 67, ../sass/_landing.scss */
 .articles .section-banner {
   height: 150px;
   overflow: hidden;
 }
-/* line 70, ../sass/_landing.scss */
+/* line 71, ../sass/_landing.scss */
 .articles .article {
   padding-top: 40px;
 }
-/* line 73, ../sass/_landing.scss */
+/* line 74, ../sass/_landing.scss */
 .articles .article .rich-text img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-/* line 80, ../sass/_landing.scss */
+/* line 81, ../sass/_landing.scss */
 .articles .sub-articles {
   margin-top: 50px;
 }
-/* line 82, ../sass/_landing.scss */
+/* line 83, ../sass/_landing.scss */
 .articles .sub-articles .title {
   margin-bottom: 10px;
   font-family: "gothammedium";
 }
-/* line 86, ../sass/_landing.scss */
+/* line 87, ../sass/_landing.scss */
 .articles .sub-articles .content {
   margin: 20px 0 10px;
   line-height: 1.5;
   text-align: justify;
 }
-/* line 91, ../sass/_landing.scss */
+/* line 92, ../sass/_landing.scss */
 .articles .sub-articles .sub-articles {
   padding: 0;
 }
-/* line 94, ../sass/_landing.scss */
+/* line 95, ../sass/_landing.scss */
 .articles .sub-articles .rich-text {
   height: 120px;
   overflow: hidden;
 }
 
-/* line 102, ../sass/_landing.scss */
+/* line 103, ../sass/_landing.scss */
 .sub-articles img {
   max-width: 100%;
   max-height: 134px;
   overflow: hidden;
 }
 
-/* line 109, ../sass/_landing.scss */
+/* line 110, ../sass/_landing.scss */
 .testimonials {
   margin-top: 40px;
 }
-/* line 111, ../sass/_landing.scss */
+/* line 112, ../sass/_landing.scss */
 .testimonials .title {
   font-family: "gothammedium";
   margin-bottom: 40px;
 }
-/* line 115, ../sass/_landing.scss */
+/* line 116, ../sass/_landing.scss */
 .testimonials .rich-text p {
   font-family: "Playfair-Display";
   font-style: italic;
   line-height: 2;
 }
-/* line 119, ../sass/_landing.scss */
+/* line 120, ../sass/_landing.scss */
 .testimonials .rich-text p span {
   font-size: 2em;
 }
-/* line 122, ../sass/_landing.scss */
+/* line 123, ../sass/_landing.scss */
 .testimonials .rich-text p img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-/* line 128, ../sass/_landing.scss */
+/* line 129, ../sass/_landing.scss */
 .testimonials .customer {
   padding-left: 25%;
 }
-/* line 130, ../sass/_landing.scss */
+/* line 131, ../sass/_landing.scss */
 .testimonials .customer .name {
   font-size: 14px;
 }
-/* line 134, ../sass/_landing.scss */
+/* line 135, ../sass/_landing.scss */
 .testimonials .more-testimonials {
   background-color: #0d2633;
   border-radius: 100px;
@@ -375,19 +376,19 @@ have a fixed width and height (but it's not required).
   line-height: 30px;
   font-family: gotham-bold-regular;
 }
-/* line 144, ../sass/_landing.scss */
+/* line 145, ../sass/_landing.scss */
 .testimonials .more-testimonials:hover {
   color: #fff;
 }
 
-/* line 149, ../sass/_landing.scss */
+/* line 150, ../sass/_landing.scss */
 .homepage-body-content {
   background: #eeeeee;
   padding: 40px;
   color: #102633;
 }
 
-/* line 155, ../sass/_landing.scss */
+/* line 156, ../sass/_landing.scss */
 .carousel-caption {
   padding-bottom: 5%;
 }
