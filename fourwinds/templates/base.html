@@ -1,4 +1,4 @@
-{% load static wagtailuserbar wagtailembeds_tags home_tags cache%}
+{% load static wagtailuserbar wagtailembeds_tags home_tags cache wagtailcore_tags %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -45,6 +45,24 @@
         {% block menu %}
             {% get_site_root as site_root %}
             {% top_menu parent=site_root calling_page=self %}
+        {% endblock %}
+
+        {% block breadcrumb %} 
+            {% if self.get_ancestors|length > 1 %}
+            <div class="breadcrumb-wrapper">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        You're here:
+                        {% for page in self.get_ancestors %}
+                            {% if page.is_root == False %}
+                                <li><a href="{% pageurl page %}">{{ page.title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="active">{{ self.title }}</li>
+                    </ol>
+                </div>
+            </div>
+            {% endif %}
         {% endblock %}
 
         {% block content %}{% endblock %}
