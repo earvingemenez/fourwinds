@@ -1,6 +1,7 @@
 import datetime
 
 from blog.models import BlogPage, BlogCategory
+from home.models import HomePage
 from django import template
 from django.template.defaultfilters import stringfilter
 
@@ -9,7 +10,7 @@ from website.models import (
     WebsiteTestimonialPage,
     WebsiteTravelPage,
     WebsiteCategory,
-    WebsiteTravelIndexPage
+    WebsiteTourCollectionIndexPage
 )
 
 register = template.Library()
@@ -90,11 +91,12 @@ def submenu(context, parent, calling_page=None):
 @register.inclusion_tag('home/tags/main_slider.html', takes_context=True)
 def main_slider(context, calling_page):
     show_carousel = calling_page.gallery_images.count() > 0
-    tours_page = Page.objects.type(WebsiteTravelIndexPage)
+    parent_page = Page.objects.type(HomePage).first()
+    tours_page = Page.objects.type(WebsiteTourCollectionIndexPage).child_of(parent_page).first()
     return {
         "gallery_images": calling_page.gallery_images,
         "show_carousel" : show_carousel,
-        "tours_page_url": tours_page[0].url
+        "tours_page_url": tours_page.url
     }
 
 @register.inclusion_tag('home/tags/quick_contact_form.html', takes_context=True)
