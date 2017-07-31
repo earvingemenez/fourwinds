@@ -4,7 +4,13 @@ from blog.models import BlogPage, BlogCategory
 from django import template
 from django.template.defaultfilters import stringfilter
 
-from website.models import WebsiteTestimonialPage, WebsiteTravelPage, WebsiteCategory
+from wagtail.wagtailcore.models import Page
+from website.models import (
+    WebsiteTestimonialPage,
+    WebsiteTravelPage,
+    WebsiteCategory,
+    WebsiteTravelIndexPage
+)
 
 register = template.Library()
 
@@ -84,9 +90,11 @@ def submenu(context, parent, calling_page=None):
 @register.inclusion_tag('home/tags/main_slider.html', takes_context=True)
 def main_slider(context, calling_page):
     show_carousel = calling_page.gallery_images.count() > 0
+    tours_page = Page.objects.type(WebsiteTravelIndexPage)
     return {
         "gallery_images": calling_page.gallery_images,
-        "show_carousel" : show_carousel
+        "show_carousel" : show_carousel,
+        "tours_page_url": tours_page[0].url
     }
 
 @register.inclusion_tag('home/tags/quick_contact_form.html', takes_context=True)
