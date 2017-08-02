@@ -12,7 +12,7 @@
                             <div class="item testimonial {%  if forloop.counter == 1 %} active {% endif %}">
                                 <p>
                                     <img src="{% static 'img/testimonial/quote.png' %}" alt="" class="quote" style="float:left">
-                                    {{ testimonial.text|richtext }}
+                                    {{ testimonial.text|smart_truncate:500|richtext }}
                                     <img style="float:right;margin-top: -30px;"
                         src="{% static 'img/testimonial/quote-close.png' %}" alt="" class="quote quote-close">
                                 </p>

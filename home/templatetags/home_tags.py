@@ -171,3 +171,13 @@ def parse_date(date_string, format):
     except ValueError:
         return None
 register.filter('parse_date', parse_date)
+
+@stringfilter
+def smart_truncate(text, limitTo):
+    suffix = '...'
+    if len(text) <= limitTo:
+        return text
+    else:
+        return ' '.join(text[:int(limitTo)].split(' ')[:-1]) + suffix
+
+register.filter('smart_truncate', smart_truncate)
