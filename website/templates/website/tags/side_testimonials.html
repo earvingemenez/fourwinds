@@ -6,7 +6,7 @@
           {%  if forloop.first %}
             <blockquote class="image-responsive">
                 <p class="content">
-                  {{ testimonial.text|richtext }}
+                  {{ testimonial.text|smart_truncate:500|richtext }}
                 </p>
             </blockquote>
             <div class="customer text-right">
