@@ -383,6 +383,13 @@ have a fixed width and height (but it's not required).
   padding-bottom: 5%;
 }
 
+/* line 161, ../sass/_landing.scss */
+.jcarousel-control-prev img, .jcarousel-control-next img {
+  background-color: #ddd;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
 /* line 3, ../sass/_pages.scss */
 .event-page .section-header {
   border-top: solid 2px #102633;
