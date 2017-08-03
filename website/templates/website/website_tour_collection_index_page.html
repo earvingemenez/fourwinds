@@ -1,39 +1,41 @@
 {% extends 'base.html' %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags home_tags %}
 
 {% block content %}
     <div class="container tours-container">
-        <p>{{ page.intro | richtext }}</p>
         <div class="row">
-        {% for tour in tours %}
-            <div class="col-md-4">
-               <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-image">
-                            {% if tour.specific.header_image %}
-                                <a href="{{ tour.specific.page_link_to.url }}">
-                                    {% image tour.specific.header_image fill-358x217 class="img-responsive"%}
-                                </a>
-                            {% endif %}
+            {% quick_contact_form %}
+            <div class="col-md-6 articles">
+                <p>{{ page.intro | richtext }}</p>
+                <div class="row">
+                    {% for tour in tours %}
+                        <div class="col-md-6 col-sm-6">
+                           <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    {% image tour.specific.header_image original as panel_image %}
+                                    <div class="panel-image" style="background-image: url('{{ panel_image.url }}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <h3><a href="{{ tour.specific.page_link_to.url }}">{{ tour.specific.heading }}</a></h3>
+                                    <p>{{ tour.specific.description | richtext }}</p>
+                                    <div class="view-tour">
+                                        <a href="{{ tour.specific.page_link_to.url }}" class="btn">View tours &raquo;</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    {% if forloop.counter|divisibleby:2 %}
                     </div>
-                    <div class="panel-body">
-                        <h3><a href="{{ tour.specific.page_link_to.url }}">{{ tour.specific.heading }}</a></h3>
-                        <p>{{ tour.specific.description | richtext }}</p>
-                        <div class="view-tour">
-                            <a href="{{ tour.specific.page_link_to.url }}" class="btn">View tours &raquo;</a>
-                        </div>
-                    </div>
+                    <div class="row">
+                    {% endif %}
+                    {% empty %}
+                        <h4>No tours yet!</h4>
+                    {% endfor %}
                 </div>
             </div>
-        {% if forloop.counter|divisibleby:3 %}
-        </div>
-        <div class="row">
-        {% endif %}
-        {% empty %}
-            <h4>No tours yet!</h4>
-        {% endfor %}
+            {% testimonials_sidebar calling_page=self %}
         </div>
     </div>
 {% endblock %}
