@@ -24,6 +24,7 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'css/fourwinds.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.smartmenus.bootstrap.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
         {% block extra_css %}
@@ -208,8 +209,11 @@
 
         <script src="{% static 'js/jquery.jcarousel.min.js' %}"></script>
         <script src="{% static 'js/jquery.bootstrap-dropdown-hover.min.js' %}"></script>
+        <script src="{% static 'js/jquery.smartmenus.min.js' %}"></script>
+        <script src="{% static 'js/jquery.smartmenus.bootstrap.min.js' %}"></script>
         <script src="{% static 'js/carousel.config.js' %}"></script>
         <script type="text/javascript">
+        
         function jcarousel_move(left){
             var direction = "+=1";
             if(left){

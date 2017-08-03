@@ -21,23 +21,34 @@
 {# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
 
 {#     top menu#}
+
 <nav class="navbar main-nav">
     <div class="container">
-        <ul class="navbar-nav nav">
-            <li>
-                <a href="{% pageurl site_root %}">Home</a>
-            </li>
-            {% for menuitem in menuitems %}
-                <li class="top-navbar-item {% if menuitem.show_dropdown %}dropdown{% endif %}{% if menuitem.active %} active{% endif %}">
-                    {% if menuitem.show_dropdown %}
-                        <a data-toggle="dropdown" class="dropdown-toggle parent-menu" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ menuitem.title }} <span class="icon ion-arrow-down-b"></span></a>
-                        {% top_menu_children parent=menuitem %}
-                    {% else %}
-                        <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
-                    {% endif %}
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="navbar-nav nav">
+                <li>
+                    <a href="{% pageurl site_root %}">Home</a>
                 </li>
-            {% endfor %}
-        </ul>
+                {% for menuitem in menuitems %}
+                    <li>
+                        {% if menuitem.show_dropdown %}
+                            <a href="{{ menuitem.url }}">{{ menuitem.title }} <span class="caret"></span></a>
+                            {% top_menu_children parent=menuitem %}
+                        {% else %}
+                            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </nav>
 
