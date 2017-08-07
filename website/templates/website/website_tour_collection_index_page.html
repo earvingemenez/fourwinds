@@ -5,15 +5,19 @@
 {% block content %}
     <div class="container tours-container">
         <div class="row">
-            {% quick_contact_form %}
-            <div class="col-md-6 articles">
+            <div class="col-md-4">
                 <p>{{ page.intro | richtext }}</p>
+            </div>
+            <div class="col-md-8 articles">
+                {% if page.heading %}
+                    <h3>{{ page.heading }}</h3>
+                {% endif %}
                 <div class="row">
                     {% for tour in tours %}
                         <div class="col-md-6 col-sm-6">
                            <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    {% image tour.specific.header_image original as panel_image %}
+                                    {% image tour.specific.header_image fill-358x217 as panel_image %}
                                     <div class="panel-image" style="background-image: url('{{ panel_image.url }}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
                                     </div>
                                 </div>
@@ -35,7 +39,6 @@
                     {% endfor %}
                 </div>
             </div>
-            {% testimonials_sidebar calling_page=self %}
         </div>
     </div>
 {% endblock %}
