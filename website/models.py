@@ -268,9 +268,11 @@ class WebsiteGetQuotePage(AbstractForm):
 
 class WebsiteTourCollectionIndexPage(Page):
     intro = RichTextField(blank=True)
+    heading = models.CharField(max_length=250, blank=True, null=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('intro', classname='full'),
+        FieldPanel('heading', classname='full'),
     ]
 
     def get_context(self, request):

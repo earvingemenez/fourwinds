@@ -173,18 +173,17 @@
 
 .tours-container {
     margin-top: 20px;
-    .cta {
-        padding-top: 0px;
-    }
-    .testimonials {
-        margin-top: 0px;
+    .articles {
+        h3 {
+            margin-bottom: 20px;
+        }
     }
     .panel {
         .panel-heading {
             padding: 0px;
             .panel-image {
                 width: 100%;
-                height: 217.5px;
+                height: 217px;
                 overflow: hidden;
             }
         }

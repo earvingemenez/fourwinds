@@ -591,39 +591,35 @@ have a fixed width and height (but it's not required).
 .tours-container {
   margin-top: 20px;
 }
-/* line 176, ../sass/_pages.scss */
-.tours-container .cta {
-  padding-top: 0px;
+/* line 177, ../sass/_pages.scss */
+.tours-container .articles h3 {
+  margin-bottom: 20px;
 }
-/* line 179, ../sass/_pages.scss */
-.tours-container .testimonials {
-  margin-top: 0px;
-}
-/* line 183, ../sass/_pages.scss */
+/* line 182, ../sass/_pages.scss */
 .tours-container .panel .panel-heading {
   padding: 0px;
 }
-/* line 185, ../sass/_pages.scss */
+/* line 184, ../sass/_pages.scss */
 .tours-container .panel .panel-heading .panel-image {
   width: 100%;
-  height: 217.5px;
+  height: 217px;
   overflow: hidden;
 }
-/* line 192, ../sass/_pages.scss */
+/* line 191, ../sass/_pages.scss */
 .tours-container .panel .panel-body h3 {
   margin-top: 0px;
   text-align: center;
 }
-/* line 196, ../sass/_pages.scss */
+/* line 195, ../sass/_pages.scss */
 .tours-container .panel .panel-body p {
   text-align: center;
 }
-/* line 199, ../sass/_pages.scss */
+/* line 198, ../sass/_pages.scss */
 .tours-container .panel .panel-body .view-tour {
   text-align: center;
 }
 
-/* line 207, ../sass/_pages.scss */
+/* line 206, ../sass/_pages.scss */
 #quote-form input, #quote-form select, #quote-form textarea {
   display: block;
   width: 100%;
@@ -639,20 +635,20 @@ have a fixed width and height (but it's not required).
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 222, ../sass/_pages.scss */
+/* line 221, ../sass/_pages.scss */
 #quote-form textarea {
   height: 100px;
 }
-/* line 225, ../sass/_pages.scss */
+/* line 224, ../sass/_pages.scss */
 #quote-form button {
   background-color: #01bdc9;
 }
 
-/* line 230, ../sass/_pages.scss */
+/* line 229, ../sass/_pages.scss */
 .breadcrumb-wrapper {
   margin-top: 20px;
 }
-/* line 232, ../sass/_pages.scss */
+/* line 231, ../sass/_pages.scss */
 .breadcrumb-wrapper .breadcrumb {
   margin-bottom: 0px;
 }
