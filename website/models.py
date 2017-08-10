@@ -9,6 +9,7 @@ from django.db import models
 from django.forms import extras
 from django.core.validators import ValidationError
 from django.utils.text import slugify, _
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
@@ -70,6 +71,14 @@ class WebsiteTestimonalsIndexPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super(WebsiteTestimonalsIndexPage, self).get_context(request)
         pages = self.get_children().live().order_by('-first_published_at')
+        paginator = Paginator(pages, 10)
+        page = request.GET.get('page')
+        try:
+            pages = paginator.page(page)
+        except PageNotAnInteger:
+            pages = paginator.page(1)
+        except EmptyPage:
+            pages = paginator.page(num_pages)
         context['testimonialpages'] = pages
         return context
 

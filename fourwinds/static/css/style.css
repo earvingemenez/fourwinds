@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: 'gothambold';
   src: url("../fonts/gothambold-webfont.woff") format("woff"), url("../fonts/gothambold-webfont.woff2") format("woff2");
@@ -651,4 +652,41 @@ have a fixed width and height (but it's not required).
 /* line 231, ../sass/_pages.scss */
 .breadcrumb-wrapper .breadcrumb {
   margin-bottom: 0px;
+}
+/* line 234, ../sass/_pages.scss */
+.breadcrumb-wrapper .breadcrumb li a {
+  color: #01bdc9;
+}
+
+/* line 243, ../sass/_pages.scss */
+.testimonial-block .rich-text p {
+  font-size: 16px;
+  line-height: 30px;
+}
+/* line 247, ../sass/_pages.scss */
+.testimonial-block .rich-text p:first-child::before {
+  content: '“';
+  font-size: 20px;
+}
+/* line 253, ../sass/_pages.scss */
+.testimonial-block .rich-text p:last-child::after {
+  content: "”";
+  font-size: 20px;
+}
+
+/* line 262, ../sass/_pages.scss */
+.pager {
+  max-width: 850px;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+/* line 268, ../sass/_pages.scss */
+.pager li a {
+  color: #01bdc9;
+}
+/* line 272, ../sass/_pages.scss */
+.pager li:hover a {
+  background-color: #102633;
+  color: #fff;
 }
