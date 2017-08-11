@@ -253,9 +253,12 @@ class WebsiteTravelCategoryIndexPage(Page):
 
 class WebsiteInternalContentPage(Page):
     body = RichTextField(blank=True)
+    docs = models.ForeignKey('wagtaildocs.Document', blank=True, null=True,
+        on_delete=models.SET_NULL, related_name='+')
 
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
+        FieldPanel('docs')
     ]
 
 

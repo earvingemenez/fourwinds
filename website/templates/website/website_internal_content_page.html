@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags home_tags %}
+{% load wagtailcore_tags wagtailimages_tags home_tags static %}
 
 {% block content %}
     <div class="container">
@@ -9,7 +9,12 @@
             <div class="col-md-6 articles">
                 <div class="article">
                     {{ page.body|richtext }}
-                </div>
+                    {% if page.docs %}
+                        <a href="{{ page.docs.url }}">
+                            <img src="{% static 'img/safety-and-insureance/saftey-icon-pdf.png' %}" alt="safety and insurance"/>
+                        </a>
+                    {% endif %}
+                </div><br>
                 {% travels_home calling_page=self %}
             </div>
             {% testimonials_sidebar calling_page=self %}
