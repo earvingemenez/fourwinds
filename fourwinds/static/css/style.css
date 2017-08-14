@@ -391,6 +391,33 @@ have a fixed width and height (but it's not required).
   border-radius: 20px;
 }
 
+@media only screen and (max-width: 768px) {
+  /* line 171, ../sass/_landing.scss */
+  #main-carousel .left .icon, #main-carousel .right .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+  }
+  /* line 178, ../sass/_landing.scss */
+  #main-carousel .carousel-caption img {
+    height: 100px;
+  }
+  /* line 181, ../sass/_landing.scss */
+  #main-carousel .carousel-caption .cta {
+    padding-top: 20px;
+    margin-bottom: -30px;
+  }
+  /* line 184, ../sass/_landing.scss */
+  #main-carousel .carousel-caption .cta .cta-button {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+
+  /* line 192, ../sass/_landing.scss */
+  .jcarousel-control-prev img, .jcarousel-control-next img {
+    padding: 5px 8px;
+  }
+}
 /* line 3, ../sass/_pages.scss */
 .event-page .section-header {
   border-top: solid 2px #102633;
