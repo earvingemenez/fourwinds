@@ -70,7 +70,7 @@ class WebsiteTestimonalsIndexPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super(WebsiteTestimonalsIndexPage, self).get_context(request)
-        pages = self.get_children().live().order_by('-first_published_at')
+        pages = WebsiteTestimonialPage.objects.descendant_of(self).live().order_by('-date')
         paginator = Paginator(pages, 10)
         page = request.GET.get('page')
         try:
