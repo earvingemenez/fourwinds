@@ -151,6 +151,15 @@
     background: $smoke;
     padding: 40px;
     color: $dark-indigo;
+    .row {
+        form {
+            .btn-center {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
 }
 
 .carousel-caption {

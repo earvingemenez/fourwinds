@@ -378,13 +378,19 @@ have a fixed width and height (but it's not required).
   padding: 40px;
   color: #102633;
 }
-
 /* line 156, ../sass/_landing.scss */
+.homepage-body-content .row form .btn-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 165, ../sass/_landing.scss */
 .carousel-caption {
   padding-bottom: 5%;
 }
 
-/* line 161, ../sass/_landing.scss */
+/* line 170, ../sass/_landing.scss */
 .jcarousel-control-prev img, .jcarousel-control-next img {
   background-color: #ddd;
   padding: 10px 15px;
@@ -392,28 +398,28 @@ have a fixed width and height (but it's not required).
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 171, ../sass/_landing.scss */
+  /* line 180, ../sass/_landing.scss */
   #main-carousel .left .icon, #main-carousel .right .icon {
     width: 30px;
     height: 30px;
     border-radius: 20px;
   }
-  /* line 178, ../sass/_landing.scss */
+  /* line 187, ../sass/_landing.scss */
   #main-carousel .carousel-caption img {
     height: 100px;
   }
-  /* line 181, ../sass/_landing.scss */
+  /* line 190, ../sass/_landing.scss */
   #main-carousel .carousel-caption .cta {
     padding-top: 20px;
     margin-bottom: -30px;
   }
-  /* line 184, ../sass/_landing.scss */
+  /* line 193, ../sass/_landing.scss */
   #main-carousel .carousel-caption .cta .cta-button {
     font-size: 14px;
     padding: 12px 15px;
   }
 
-  /* line 192, ../sass/_landing.scss */
+  /* line 201, ../sass/_landing.scss */
   .jcarousel-control-prev img, .jcarousel-control-next img {
     padding: 5px 8px;
   }
@@ -716,4 +722,9 @@ have a fixed width and height (but it's not required).
 .pager li:hover a {
   background-color: #102633;
   color: #fff;
+}
+
+/* line 280, ../sass/_pages.scss */
+#gmap {
+  height: 300px !important;
 }

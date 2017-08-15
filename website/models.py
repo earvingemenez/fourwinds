@@ -329,3 +329,19 @@ class TourCollectionHeaderImages(Orderable):
     panels = [
         ImageChooserPanel('image')
     ]
+
+
+class ContactFormField(AbstractFormField):
+    page = ParentalKey('WebsiteContactUsPage', related_name='form_fields')
+
+
+class WebsiteContactUsPage(AbstractForm):
+    intro = RichTextField(blank=True)
+    success_text = models.CharField(max_length=250)
+
+    content_panels = AbstractForm.content_panels + [
+        FormSubmissionsPanel(),
+        FieldPanel('intro', classname='full'),
+        FieldPanel('success_text', classname='full'),
+        InlinePanel('form_fields', label='Contact form fields')
+    ]
