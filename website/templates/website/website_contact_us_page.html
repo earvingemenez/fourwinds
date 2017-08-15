@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags home_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row margin-t-20">
+                    <div class="col-md-9">
+                        <div id="gmap"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <b>Address:</b><br>
+                        30 Jericho Executive Plaza<br>
+                        Suite 500E<br>
+                        Jericho NY, 11753<br>
+                        <b>Toll Free:</b><br> 
+                        (800) 896-3858<br>
+                        <b>Phone:</b><br>
+                        (516) 334-2400<br>
+                        <b>Fax:</b><br>
+                        (516) 334-2466
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 margin-t-20">
+                <p>{{ page.intro | richtext }}</p><br>
+                <h3 class="text-center">Email Us!</h3>
+                <div class="margin-t-20 homepage-body-content">
+                    <div class="row">
+                        <form action="{% pageurl page %}" method="POST" id="quote-form">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>{{ field.label }}:</label>
+                                        {{ field }}
+                                        <span>{{ field.help_text }}</span>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="col-md-12">
+                                <div class="col-md-4 col-md-offset-4 btn-center">
+                                    <button type="submit" class="btn btn-lg btn-block">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% testimonials_slider calling_page=self %}
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDL5Se0038hi_G6fFFuPUuYeVe5MAU5knQ"></script>
+    <script>
+    //MAP
+        function initMap() {
+            var myLatlng = new google.maps.LatLng(40.776871,-73.568454);
+            var myOptions = {
+              zoom: 12,
+              center: myLatlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+            
+            var marker = new google.maps.Marker({
+                position: myLatlng, 
+                map: map,
+                title:"Hello World!"
+            });  
+        }
+
+        initMap();
+    </script>
+{% endblock %}
