@@ -197,18 +197,24 @@
             h3 {
                 margin-top: 0px;
                 text-align: center;
+                a {
+                    color: $cyan;
+                }
             }
             p {
                 text-align: center;
             }
             .view-tour {
                 text-align: center;
+                a {
+                    color: $cyan;
+                }
             }
         }
     }
 }
 
-#quote-form {
+.custom-form {
     input, select, textarea {
         display: block;
         width: 100%;
@@ -228,7 +234,7 @@
         height: 100px;
     }
     button {
-        background-color: #01bdc9;
+        background-color: $yellow;;
     }
 }
 

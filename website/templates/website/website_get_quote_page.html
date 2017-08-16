@@ -9,7 +9,7 @@
                 <div class="margin-t-20 homepage-body-content">
                     <p>{{ page.intro | richtext }}</p>
                     <div class="row">
-                        <form action="{% pageurl page %}" method="POST" id="quote-form">
+                        <form action="{% pageurl page %}" method="POST" class="custom-form">
                             {% csrf_token %}
                             {% for field in form %}
                                 <div class="col-md-6">
