@@ -87,17 +87,33 @@
     border: 0px;
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px){
+
     .navbar-nav {
         float: left;
         text-align: left;
         width: 100%;
         .dropdown-menu {
+            display: block;
+            position: static;
+            background-color: transparent;
+            border:0 none;
+            box-shadow: none;
+            margin-top: 0;
+            position: static;
+            width: 100%;
+            padding-left: 15px;
             li {
                 a {
                     color: #fff !important;
+                    padding:5px 15px 5px 25px;
+                    line-height:20px;
                 }
             }
         }
     }
+}
+
+.sub-arrow {
+    display: none;
 }
