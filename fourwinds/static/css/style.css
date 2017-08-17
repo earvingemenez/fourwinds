@@ -188,17 +188,36 @@ have a fixed width and height (but it's not required).
 }
 
 @media only screen and (max-width: 768px) {
-  /* line 91, ../sass/_header.scss */
+  /* line 92, ../sass/_header.scss */
   .navbar-nav {
     float: left;
     text-align: left;
     width: 100%;
   }
-  /* line 97, ../sass/_header.scss */
+  /* line 96, ../sass/_header.scss */
+  .navbar-nav .dropdown-menu {
+    display: block;
+    position: static;
+    background-color: transparent;
+    border: 0 none;
+    box-shadow: none;
+    margin-top: 0;
+    position: static;
+    width: 100%;
+    padding-left: 15px;
+  }
+  /* line 107, ../sass/_header.scss */
   .navbar-nav .dropdown-menu li a {
     color: #fff !important;
+    padding: 5px 15px 5px 25px;
+    line-height: 20px;
   }
 }
+/* line 117, ../sass/_header.scss */
+.sub-arrow {
+  display: none;
+}
+
 /* line 1, ../sass/_landing.scss */
 .masthead {
   background-image: url("../images/header.png");
