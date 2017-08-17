@@ -189,40 +189,40 @@ have a fixed width and height (but it's not required).
 
 @media only screen and (max-width: 768px) {
   /* line 92, ../sass/_header.scss */
-  .navbar-nav {
+  .main-nav .navbar-nav {
     float: left;
     text-align: left;
     width: 100%;
   }
   /* line 98, ../sass/_header.scss */
-  .navbar-nav li a:hover {
-    color: #fff !important;
+  .main-nav .navbar-nav li a:hover {
+    color: #00b19f !important;
     background-color: transparent !important;
   }
   /* line 104, ../sass/_header.scss */
-  .navbar-nav .dropdown-menu {
+  .main-nav .navbar-nav .dropdown-menu {
     display: block;
     position: static;
     background-color: transparent;
     border: 0 none;
     box-shadow: none;
     margin-top: 0;
-    position: static;
+    position: relative;
     width: 100%;
     padding-left: 15px;
   }
   /* line 115, ../sass/_header.scss */
-  .navbar-nav .dropdown-menu li a {
+  .main-nav .navbar-nav .dropdown-menu li a {
     color: #fff !important;
     padding: 5px 15px 5px 25px;
     line-height: 20px;
   }
   /* line 119, ../sass/_header.scss */
-  .navbar-nav .dropdown-menu li a:hover {
-    color: #fff !important;
+  .main-nav .navbar-nav .dropdown-menu li a:hover {
+    color: #00b19f !important;
   }
 }
-/* line 128, ../sass/_header.scss */
+/* line 129, ../sass/_header.scss */
 .sub-arrow {
   display: none;
 }
