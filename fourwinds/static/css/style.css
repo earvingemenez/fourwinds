@@ -155,7 +155,7 @@ have a fixed width and height (but it's not required).
 }
 /* line 51, ../sass/_header.scss */
 .main-nav .navbar-nav li a:hover {
-  color: #00b19f !important;
+  color: #00b19f;
   background-color: white;
 }
 /* line 58, ../sass/_header.scss */
@@ -194,7 +194,12 @@ have a fixed width and height (but it's not required).
     text-align: left;
     width: 100%;
   }
-  /* line 96, ../sass/_header.scss */
+  /* line 98, ../sass/_header.scss */
+  .navbar-nav li a:hover {
+    color: #fff !important;
+    background-color: transparent !important;
+  }
+  /* line 104, ../sass/_header.scss */
   .navbar-nav .dropdown-menu {
     display: block;
     position: static;
@@ -206,14 +211,18 @@ have a fixed width and height (but it's not required).
     width: 100%;
     padding-left: 15px;
   }
-  /* line 107, ../sass/_header.scss */
+  /* line 115, ../sass/_header.scss */
   .navbar-nav .dropdown-menu li a {
     color: #fff !important;
     padding: 5px 15px 5px 25px;
     line-height: 20px;
   }
+  /* line 119, ../sass/_header.scss */
+  .navbar-nav .dropdown-menu li a:hover {
+    color: #fff !important;
+  }
 }
-/* line 117, ../sass/_header.scss */
+/* line 128, ../sass/_header.scss */
 .sub-arrow {
   display: none;
 }
