@@ -43,6 +43,7 @@
         }(document, 'script', 'facebook-jssdk'));</script>
 
         {% wagtailuserbar %}
+        {% get_site_header %}
         {% block menu %}
             {% get_site_root as site_root %}
             {% top_menu parent=site_root calling_page=self %}
@@ -78,95 +79,10 @@
                 <img src="{% static 'img/footer/footer-affiliates.png' %}" alt="affiliates">
             </div>
             <div id="menu-footer" class="text-center">
-
-                    <ul class="nav navbar-nav" >
-                        <li>
-                            <a href="#">
-                                HOME
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                OUR STORY
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                TRAVEL
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                SAFETY &amp; INSURANCE
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                REQUEST A QUOTE
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                SHARE YOUR ADVENTURE
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                CAREERS
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                BLOG
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                CONTACT US
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav policies">
-                        <li>
-                            <a href="#">
-                                Disclaimer and Payment Schedule
-                            </a>
-                        </li>
-                        <li>
-                            <a>|</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Airline Disclaimer and Payment Schedule
-                            </a>
-                        </li>
-                        <li>
-                            <a>|</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Privacy Policy
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav social">
-                        <li>
-                            <a href="https://www.facebook.com/FourwindsTours/" target="_blank">
-                                <span class="ion-social-facebook social-icon"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/fourwindstours" target="_blank">
-                                <span class="ion-social-twitter social-icon"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.linkedin.com/company-beta/6569482/" target="_blank">
-                                <span class="ion-social-linkedin social-icon"></span>
-                            </a>
-                        </li>
-                    </ul>
-                <div class="clearfix"></div>
+                {% block footer_menu %}
+                    {% get_site_root as site_root %}
+                    {% footer_menu parent=site_root calling_page=self %}
+                {% endblock %}
             </div>
             <div id="contact-info" class="text-center">
                 <div>
