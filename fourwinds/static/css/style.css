@@ -227,6 +227,11 @@ have a fixed width and height (but it's not required).
   display: none;
 }
 
+/* line 5, ../sass/_footer.scss */
+#footer .social li a .social-icon {
+  font-size: 28px;
+}
+
 /* line 1, ../sass/_landing.scss */
 .masthead {
   background-image: url("../images/header.png");

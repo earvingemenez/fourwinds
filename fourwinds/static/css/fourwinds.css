@@ -502,24 +502,6 @@ have a fixed width and height (but it's not required).
     color: #999999;
     padding: 2px 5px;
 }
-#footer #menu-footer .social li a span{
-    /*width: 24px;*/
-    /*height: 24px;*/
-    padding: 12px;
-    background: url('../img/footer/footer-socialmedia.png') no-repeat;
-}
-#footer #menu-footer .social li a span.facebook{
-        background-position: 0px 5px;
-}
-#footer #menu-footer .social li a span.instagram{
-        background-position: -44px 5px
-}
-#footer #menu-footer .social li a span.twitter{
-        background-position: -88px 5px
-}
-#footer #menu-footer .social li a span.pinterest{
-        background-position: -132px 5px
-}
 #footer #contact-info{
     margin-top: 25px;
 }
