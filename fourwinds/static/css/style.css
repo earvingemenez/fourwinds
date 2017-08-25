@@ -138,36 +138,40 @@ have a fixed width and height (but it's not required).
   border-radius: 0;
   border-color: #e7e7e7;
 }
-/* line 34, ../sass/_header.scss */
+/* line 33, ../sass/_header.scss */
+.main-nav .navbar-header .navbar-toggle {
+  border: 1px solid #ddd;
+}
+/* line 35, ../sass/_header.scss */
 .main-nav .navbar-header .navbar-toggle .icon-bar {
   background-color: #fff;
 }
-/* line 43, ../sass/_header.scss */
+/* line 44, ../sass/_header.scss */
 .main-nav .navbar-nav {
   display: inline-block;
   float: none !important;
   vertical-align: top;
 }
-/* line 48, ../sass/_header.scss */
+/* line 49, ../sass/_header.scss */
 .main-nav .navbar-nav li a {
   color: #fff;
   font-weight: bold;
 }
-/* line 51, ../sass/_header.scss */
+/* line 52, ../sass/_header.scss */
 .main-nav .navbar-nav li a:hover {
   color: #00b19f;
   background-color: white;
 }
-/* line 58, ../sass/_header.scss */
+/* line 59, ../sass/_header.scss */
 .main-nav .navbar-nav .open .highlighted {
   color: #00b19f !important;
   background-color: white;
 }
-/* line 65, ../sass/_header.scss */
+/* line 66, ../sass/_header.scss */
 .main-nav .navbar-nav .dropdown-menu li a {
   color: #333;
 }
-/* line 67, ../sass/_header.scss */
+/* line 68, ../sass/_header.scss */
 .main-nav .navbar-nav .dropdown-menu li a:hover {
   background-color: #e8e8e8;
   background-image: -webkit-linear-gradient(top, #f5f5f5 0, #e8e8e8 100%);
@@ -179,7 +183,7 @@ have a fixed width and height (but it's not required).
   color: #333 !important;
 }
 
-/* line 83, ../sass/_header.scss */
+/* line 84, ../sass/_header.scss */
 .navbar {
   position: relative;
   min-height: 50px;
@@ -187,20 +191,21 @@ have a fixed width and height (but it's not required).
   border: 0px;
 }
 
+/* Show all menu links when navigation is toggled in mobile */
 @media only screen and (max-width: 768px) {
-  /* line 92, ../sass/_header.scss */
-  .main-nav .navbar-nav {
+  /* line 5, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav, .main-nav .navbar-nav {
     float: left;
     text-align: left;
     width: 100%;
   }
-  /* line 98, ../sass/_header.scss */
-  .main-nav .navbar-nav li a:hover {
+  /* line 11, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav li a:hover, .main-nav .navbar-nav li a:hover {
     color: #00b19f !important;
     background-color: transparent !important;
   }
-  /* line 104, ../sass/_header.scss */
-  .main-nav .navbar-nav .dropdown-menu {
+  /* line 17, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav .dropdown-menu, .main-nav .navbar-nav .dropdown-menu {
     display: block;
     position: static;
     background-color: transparent;
@@ -211,22 +216,106 @@ have a fixed width and height (but it's not required).
     width: 100%;
     padding-left: 15px;
   }
-  /* line 115, ../sass/_header.scss */
-  .main-nav .navbar-nav .dropdown-menu li a {
+  /* line 28, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav .dropdown-menu li a, .main-nav .navbar-nav .dropdown-menu li a {
     color: #fff !important;
     padding: 5px 15px 5px 25px;
     line-height: 20px;
   }
-  /* line 119, ../sass/_header.scss */
-  .main-nav .navbar-nav .dropdown-menu li a:hover {
+  /* line 32, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav .dropdown-menu li a:hover, .main-nav .navbar-nav .dropdown-menu li a:hover {
     color: #00b19f !important;
   }
 }
-/* line 129, ../sass/_header.scss */
+/* line 93, ../sass/_header.scss */
 .sub-arrow {
   display: none;
 }
 
+/* line 3, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav {
+  background-color: #071116;
+}
+/* line 7, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav .container .navbar-header .navbar-toggle {
+  float: none;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+/* line 10, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav .container .navbar-header .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+/* line 17, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav .container #footer-nav .navbar-nav {
+  float: none;
+  margin: 0 auto;
+  display: table;
+  table-layout: fixed;
+}
+/* line 22, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav .container #footer-nav .navbar-nav a {
+  color: #fff;
+  font-size: 12px;
+  font-family: "Arial Rounded MT Bold";
+  padding-bottom: 5px;
+}
+/* line 27, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav .container #footer-nav .navbar-nav a:hover, #footer #menu-footer .footer-nav .container #footer-nav .navbar-nav a.highlighted {
+  color: #00b19f;
+  background-color: #fff;
+}
+/* line 35, ../sass/_footer.scss */
+#footer #menu-footer .footer-nav .container #footer-nav .navbar-nav li .dropdown-menu li a {
+  color: #000;
+}
+/* line 48, ../sass/_footer.scss */
+#footer #menu-footer .social li a .social-icon {
+  font-size: 28px;
+}
+/* line 56, ../sass/_footer.scss */
+#footer #menu-footer .policies li a {
+  font-size: 12px;
+  color: #999999;
+  padding: 2px 5px;
+}
+
+/* Show all menu links when navigation is toggled in mobile */
+@media only screen and (max-width: 768px) {
+  /* line 5, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav, .main-nav .navbar-nav {
+    float: left;
+    text-align: left;
+    width: 100%;
+  }
+  /* line 11, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav li a:hover, .main-nav .navbar-nav li a:hover {
+    color: #00b19f !important;
+    background-color: transparent !important;
+  }
+  /* line 17, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav .dropdown-menu, .main-nav .navbar-nav .dropdown-menu {
+    display: block;
+    position: static;
+    background-color: transparent;
+    border: 0 none;
+    box-shadow: none;
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    padding-left: 15px;
+  }
+  /* line 28, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav .dropdown-menu li a, .main-nav .navbar-nav .dropdown-menu li a {
+    color: #fff !important;
+    padding: 5px 15px 5px 25px;
+    line-height: 20px;
+  }
+  /* line 32, ../sass/_mixins.scss */
+  .footer-nav .navbar-nav .dropdown-menu li a:hover, .main-nav .navbar-nav .dropdown-menu li a:hover {
+    color: #00b19f !important;
+  }
+}
 /* line 1, ../sass/_landing.scss */
 .masthead {
   background-image: url("../images/header.png");

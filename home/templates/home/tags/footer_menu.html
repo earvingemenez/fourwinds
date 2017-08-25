@@ -1,0 +1,78 @@
+{% load home_tags static wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+{# Implementation of bootstrap theme dropdown menu - shows top level links and their children #}
+
+{#     top menu#}
+
+<nav class="navbar footer-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#footer-nav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="footer-nav">
+            <ul class="navbar-nav nav">
+                <li>
+                    <a href="{% pageurl site_root %}">Home</a>
+                </li>
+                {% for menuitem in menuitems %}
+                    <li>
+                        {% if menuitem.show_dropdown %}
+                            <a href="{{ menuitem.url }}">{{ menuitem.title }} <span class="caret"></span></a>
+                            {% top_menu_children parent=menuitem %}
+                        {% else %}
+                            <a href="{% pageurl menuitem %}">{{ menuitem.title }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<ul class="nav navbar-nav policies">
+    <li>
+        <a href="#">
+            Disclaimer and Payment Schedule
+        </a>
+    </li>
+    <li>
+        <a>|</a>
+    </li>
+    <li>
+        <a href="#">
+            Airline Disclaimer and Payment Schedule
+        </a>
+    </li>
+    <li>
+        <a>|</a>
+    </li>
+    <li>
+        <a href="#">
+            Privacy Policy
+        </a>
+    </li>
+</ul>
+<ul class="nav navbar-nav social">
+    <li>
+        <a href="https://www.facebook.com/FourwindsTours/" target="_blank">
+            <span class="ion-social-facebook social-icon"></span>
+        </a>
+    </li>
+    <li>
+        <a href="https://twitter.com/fourwindstours" target="_blank">
+            <span class="ion-social-twitter social-icon"></span>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.linkedin.com/company-beta/6569482/" target="_blank">
+            <span class="ion-social-linkedin social-icon"></span>
+        </a>
+    </li>
+</ul>
+<div class="clearfix"></div>

@@ -1,0 +1,66 @@
+#footer {
+    #menu-footer {
+        .footer-nav {
+            background-color: #071116;
+            .container {
+                .navbar-header {
+                    .navbar-toggle {
+                        float: none;
+                        border: 1px solid #ddd;;
+                        .icon-bar {
+                            background-color: $white;
+                        }
+                        text-align: center;
+                    }
+                }
+                #footer-nav {
+                    .navbar-nav {
+                        float: none;
+                        margin: 0 auto;
+                        display: table;
+                        table-layout: fixed;
+                        a {
+                            color: $white;
+                            font-size :12px;
+                            font-family: "Arial Rounded MT Bold";
+                            padding-bottom: 5px;
+                            &:hover, &.highlighted {
+                                color: #00b19f;
+                                background-color: $white;
+                            }
+                        }
+                        li {
+                            .dropdown-menu {
+                                li {
+                                    a {
+                                        color: #000;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .social {
+            li {
+                a {
+                    .social-icon {
+                        font-size: 28px;
+                    }
+                }
+            }
+        }
+        .policies {
+            li {
+                a {
+                    font-size: 12px;
+                    color: #999999;
+                    padding: 2px 5px;
+                }
+            }
+        }
+    }
+}
+
+@include mobile_show_links();

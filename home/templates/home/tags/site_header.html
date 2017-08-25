@@ -1,0 +1,20 @@
+{% load home_tags static wagtailcore_tags %}
+{% get_site_root as site_root %}
+
+{#        Top bar#}
+<div class="header-text text-center">
+    <div class="container">
+        <p class="hidden-xs">SPECIALIZING IN PRIVATE CUSTOM STUDENT TOURS FOR OVER TWO DECADES | CALL FOR A CUSTOM QUOTE (800) 896-3858</p>
+        <p class="hidden-sm hidden-md hidden-lg">FREE CUSTOM QUOTE (800) 896-3858</p>
+    </div>
+</div>
+<div class="top-banner">
+    <div class="container">
+        <div class="banner">
+            <a href="{% pageurl site_root %}">
+                <img src="{% static 'img/banner/banner-logo.png' %}">
+            </a>
+        </div>
+    </div>
+</div>
+{#        end top bar#}
