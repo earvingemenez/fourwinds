@@ -6,7 +6,7 @@
       <div class="carousel-inner" role="listbox">
           {% for item in gallery_images.all %}
             <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
-                {% image item.image fill-2000x550%}
+                {% image item.image fill-2000x650 class="carousel-item" %}
                 {% if forloop.counter0 == 0 %}
                 <div class="carousel-caption">
                     <img src="{% static 'img/slideshow/travel-is-education.png' %}" alt="">

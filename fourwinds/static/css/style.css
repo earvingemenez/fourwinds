@@ -425,31 +425,89 @@ have a fixed width and height (but it's not required).
   border-radius: 20px;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 560px) {
   /* line 180, ../sass/_landing.scss */
   #main-carousel .left .icon, #main-carousel .right .icon {
     width: 30px;
     height: 30px;
     border-radius: 20px;
   }
-  /* line 187, ../sass/_landing.scss */
+  /* line 188, ../sass/_landing.scss */
+  #main-carousel .carousel-inner .item .carousel-item {
+    height: 200px;
+  }
+  /* line 194, ../sass/_landing.scss */
   #main-carousel .carousel-caption img {
     height: 100px;
   }
-  /* line 190, ../sass/_landing.scss */
+  /* line 197, ../sass/_landing.scss */
+  #main-carousel .carousel-caption .cta {
+    padding-top: 20px;
+    margin-bottom: 0px;
+  }
+  /* line 200, ../sass/_landing.scss */
+  #main-carousel .carousel-caption .cta .cta-button {
+    font-size: 12px;
+    padding: 12px 16px;
+  }
+
+  /* line 208, ../sass/_landing.scss */
+  .jcarousel-control-prev img, .jcarousel-control-next img {
+    padding: 5px 8px;
+  }
+}
+@media (max-width: 768px) and (min-width: 560px) {
+  /* line 217, ../sass/_landing.scss */
+  #main-carousel .left .icon, #main-carousel .right .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+  }
+  /* line 225, ../sass/_landing.scss */
+  #main-carousel .carousel-inner .item .carousel-item {
+    height: 250px;
+  }
+  /* line 231, ../sass/_landing.scss */
+  #main-carousel .carousel-caption img {
+    height: 150px;
+  }
+  /* line 234, ../sass/_landing.scss */
   #main-carousel .carousel-caption .cta {
     padding-top: 20px;
     margin-bottom: -30px;
   }
-  /* line 193, ../sass/_landing.scss */
+  /* line 237, ../sass/_landing.scss */
   #main-carousel .carousel-caption .cta .cta-button {
     font-size: 14px;
     padding: 12px 15px;
   }
-
-  /* line 201, ../sass/_landing.scss */
-  .jcarousel-control-prev img, .jcarousel-control-next img {
-    padding: 5px 8px;
+}
+@media (max-width: 1150px) and (min-width: 769px) {
+  /* line 249, ../sass/_landing.scss */
+  #main-carousel .left .icon, #main-carousel .right .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+  }
+  /* line 256, ../sass/_landing.scss */
+  #main-carousel .carousel-caption img {
+    height: 200px;
+  }
+  /* line 259, ../sass/_landing.scss */
+  #main-carousel .carousel-caption .cta {
+    padding-top: 20px;
+    margin-bottom: -30px;
+  }
+  /* line 262, ../sass/_landing.scss */
+  #main-carousel .carousel-caption .cta .cta-button {
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+}
+@media (min-width: 1150px) {
+  /* line 273, ../sass/_landing.scss */
+  .carousel-caption .cta {
+    margin-bottom: 30px;
   }
 }
 /* line 3, ../sass/_pages.scss */
