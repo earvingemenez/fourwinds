@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get a Quote Submission</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<div style="width: 100%; height: 100%; background-color: #f3f3f3; padding-top: 50px; padding-bottom: 50px;">
+    <div style=" width: 45%;height: 100%;  border-radius: 10px;  background-color: #ffffff; margin-left: auto; margin-right: auto; padding-top: 50px; padding-bottom: 60px; padding-right: 60px; padding-left: 60px;">
+        <h2 style="=font-family: 'Roboto', sans-serif; font-size: 24px;  font-weight: 600;  line-height: 1;  text-align: center;  color: #636363;">Get a Quote!</h2>
+        
+        <h3 style="margin-top: 37px; font-family: 'Roboto', sans-serif;font-size: 20px;  font-weight: 600;  line-height: 1.2;  text-align: left;  color: #102633;">Contact details</h3>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Name: {{ firstname }} {{ lastname }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Email address: {{ email }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Phone number: {{ phone_number }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            School name: {{ school_name }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            School ZIP code: {{ school_zip_code }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Role: {{ role }}
+        </p>
+
+        <h3 style="margin-top: 37px; font-family: 'Roboto', sans-serif; font-size: 20px;  font-weight: 600;  line-height: 1.2;  text-align: left;  color: #102633;">Trip details</h3>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Type of trip: {{ type_of_trip }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Estimated trip year: {{ estimated_trip_year }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Desired destination: {{ desired_destination }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Number of students: {{ number_of_students }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Approximate budget: {{ approximate_budget }}
+        </p>
+        <h3 style="margin-top: 37px; font-family: 'Roboto', sans-serif; font-size: 20px;  font-weight: 600;  line-height: 1.2;  text-align: left;  color: #102633;">Comments</h3>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            {{ comments }}
+        </p>
+    </div>
+</div>
+</body>
+</html>
