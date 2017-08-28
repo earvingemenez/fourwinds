@@ -162,12 +162,16 @@ WAGTAIL_SITE_NAME = "fourwinds"
 BASE_URL = 'https://fwinds.herokuapp.com/'
 # BASE_URL = 'http://localhost:8000/'
 
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
-EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', True)
-DEFAULT_FROM_EMAIL = "Helpdesk <helpdesk@yourdomain>"
+EMAIL_HOST = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = ''
+DEFAULT_TO_EMAIL = 'info@fourwindstours.com'
+
+# Email backend
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # wagtailtinymce configuration
 WAGTAILADMIN_RICH_TEXT_EDITORS = {

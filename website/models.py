@@ -9,7 +9,9 @@ from django.db import models
 from django.forms import extras
 from django.core.validators import ValidationError
 from django.utils.text import slugify, _
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
@@ -21,7 +23,11 @@ from wagtail.wagtailadmin.edit_handlers import (
     PageChooserPanel
 )
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailforms.models import AbstractForm, AbstractFormField
+from wagtail.wagtailforms.models import (
+    AbstractForm,
+    AbstractFormField,
+    AbstractFormSubmission
+)
 from wagtail.wagtailsearch import index
 from wagtail.wagtailforms.edit_handlers import FormSubmissionsPanel
 
@@ -148,6 +154,13 @@ class WebsiteCategory(models.Model):
             ' and Nacional. Totally optional.')
     )
     description = models.CharField(max_length=500, blank=True)
+    page_link_to = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     class Meta:
         ordering = ['name']
@@ -159,6 +172,7 @@ class WebsiteCategory(models.Model):
         FieldPanel('parent'),
         FieldPanel('description'),
         ImageChooserPanel('icon'),
+        PageChooserPanel('page_link_to')
     ]
 
     def __str__(self):
@@ -277,6 +291,32 @@ class WebsiteGetQuotePage(AbstractForm):
         InlinePanel('form_fields', label='Form fields')
     ]
 
+    def process_form_submission(self, form):
+        email = EmailMessage(
+            'Get a Quote Form Submission',
+            render_to_string('email/get-a-quote-template.html', {
+                'firstname': form.cleaned_data.get('first-name'),
+                'lastname': form.cleaned_data.get('last-name'),
+                'email': form.cleaned_data.get('email-address'),
+                'phone_number': form.cleaned_data.get('phone-number'),
+                'school_name': form.cleaned_data.get('school-name'),
+                'school_zip_code': form.cleaned_data.get('school-zip-code'),
+                'role': form.cleaned_data.get('role'),
+                'type_of_trip': form.cleaned_data.get('type-of-trip'),
+                'estimated_trip_year': form.cleaned_data.get('estimated-trip-year'),
+                'desired_destination': form.cleaned_data.get('desired-destination'),
+                'number_of_students': form.cleaned_data.get('number-of-students'),
+                'approximate_budget': form.cleaned_data.get('approximate-budget'),
+                'comments': form.cleaned_data.get('comments'),
+            }),
+            '{} {} <{}>'.format(form.cleaned_data.get('first-name'),
+                form.cleaned_data.get('last-name'),
+                form.cleaned_data.get('email-address')),
+            [settings.DEFAULT_TO_EMAIL]
+        )
+        email.content_subtype = 'html'
+        email.send()
+
 
 class WebsiteTourCollectionIndexPage(Page):
     intro = RichTextField(blank=True)
@@ -345,3 +385,21 @@ class WebsiteContactUsPage(AbstractForm):
         FieldPanel('success_text', classname='full'),
         InlinePanel('form_fields', label='Contact form fields')
     ]
+
+    def process_form_submission(self, form):
+        email = EmailMessage(
+            'Contact form submission',
+            render_to_string('email/contact-form-template.html', {
+                'firstname': form.cleaned_data.get('first-name'),
+                'lastname': form.cleaned_data.get('last-name'),
+                'email': form.cleaned_data.get('email-address'),
+                'intended_recipient': form.cleaned_data.get('intended-recipient'),
+                'your_message': form.cleaned_data.get('your-message'),
+            }),
+            '{} {} <{}>'.format(form.cleaned_data.get('first-name'),
+                form.cleaned_data.get('last-name'),
+                form.cleaned_data.get('email-address')),
+            [settings.DEFAULT_TO_EMAIL]
+        )
+        email.content_subtype = 'html'
+        email.send()

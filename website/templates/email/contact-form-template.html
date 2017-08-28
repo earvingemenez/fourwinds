@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get a Quote Submission</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+<div style="width: 100%; height: 100%; background-color: #f3f3f3; padding-top: 50px; padding-bottom: 50px;">
+    <div style=" width: 45%;height: 100%;  border-radius: 10px;  background-color: #ffffff; margin-left: auto; margin-right: auto; padding-top: 50px; padding-bottom: 60px; padding-right: 60px; padding-left: 60px;">
+        <h2 style="=font-family: 'Roboto', sans-serif; font-size: 24px;  font-weight: 600;  line-height: 1;  text-align: center;  color: #636363;">Contact!</h2>
+        
+        <h3 style="margin-top: 37px; font-family: 'Roboto', sans-serif;font-size: 20px;  font-weight: 600;  line-height: 1.2;  text-align: left;  color: #102633;">Message from</h3>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Name: {{ firstname }} {{ lastname }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Email address: {{ email }}
+        </p>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            Intended recipient: {{ intended_recipient }}
+        </p>
+        <h3 style="margin-top: 37px; font-family: 'Roboto', sans-serif; font-size: 20px;  font-weight: 600;  line-height: 1.2;  text-align: left;  color: #102633;">Message</h3>
+        <p style="font-family: 'Roboto', sans-serif; font-size: 16px;  line-height: 1.5;  text-align: justify;  color: #7d7d7d;">
+            {{ your_message }}
+        </p>
+    </div>
+</div>
+</body>
+</html>
