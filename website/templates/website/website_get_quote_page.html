@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="margin-t-20 homepage-body-content">
                     <p>{{ page.intro | richtext }}</p>
                     <div class="row">
@@ -15,6 +15,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ field.label }}:</label>
+                                        {% if field.field.required %}
+                                            <span>*required</span>
+                                        {% endif %}
                                         {{ field }}
                                     </div>
                                 </div>
