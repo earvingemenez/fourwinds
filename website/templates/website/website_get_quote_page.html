@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags home_tags %}
+{% load wagtailcore_tags wagtailimages_tags home_tags static %}
 
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="margin-t-20 homepage-body-content">
                     <p>{{ page.intro | richtext }}</p>
                     <div class="row">
@@ -15,12 +15,15 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>{{ field.label }}:</label>
+                                        {% if field.field.required %}
+                                            <span>*required</span>
+                                        {% endif %}
                                         {{ field }}
                                     </div>
                                 </div>
                             {% endfor %}
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-lg pull-right">Finish</button>
+                            <div class="col-md-4 col-md-offset-4 btn-center">
+                                <button type="submit" class="btn btn-lg btn-block">Finish</button>
                             </div>
                         </form>
                     </div>
@@ -29,4 +32,11 @@
         </div>
     </div>
     {% testimonials_slider calling_page=self %}
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src="{% static 'js/fourwinds.js' %}"></script>
+    <script type="text/javascript">
+        $("#id_phone-number").mask("(999) 999-9999");
+    </script>
 {% endblock %}

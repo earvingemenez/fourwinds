@@ -234,7 +234,9 @@
         height: 100px;
     }
     button {
-        background-color: $yellow;;
+        background-color: $yellow;
+        color: $white;
+        margin-top: 10px;
     }
 }
 
