@@ -10,6 +10,7 @@ from django.forms import extras
 from django.core.validators import ValidationError
 from django.utils.text import slugify, _
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from django.template.loader import render_to_string
 
