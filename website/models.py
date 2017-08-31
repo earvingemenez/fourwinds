@@ -13,6 +13,8 @@ from django.core.mail import EmailMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import get_object_or_404
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
@@ -266,6 +268,7 @@ class WebsiteTravelCategoryIndexPage(Page):
         return context
 
 
+from wagtail.wagtaildocs.models import get_document_model
 class WebsiteInternalContentPage(Page):
     body = RichTextField(blank=True)
     docs = models.ForeignKey('wagtaildocs.Document', blank=True, null=True,
@@ -275,6 +278,16 @@ class WebsiteInternalContentPage(Page):
         FieldPanel('body', classname="full"),
         FieldPanel('docs')
     ]
+
+    def wagtail_docs_preview(request, doc_id, doc_name):
+        Document = get_document_model()
+        doc = get_object_or_404(Document, id=doc_id)
+
+        # Check if names matches
+        if doc.filename != doc_name:
+            raise Http404('This document does not match the given filename.')
+
+        return HttpResponseRedirect(doc.file.url)
 
 
 class FormField(AbstractFormField):

@@ -1,10 +1,10 @@
 {% load static wagtailuserbar wagtailembeds_tags home_tags cache wagtailcore_tags %}
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+    <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+    <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+    <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,13 +34,6 @@
 
     <body id="page">
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 
         {% wagtailuserbar %}
         {% get_site_header %}
@@ -69,7 +62,7 @@
 
         {% block content %}{% endblock %}
 
-{#        Footer#}
+        {# Footer #}
         <div id="footer">
 
             <div class="text-center affiliates">
@@ -104,13 +97,13 @@
                 <div>
                     <address>
                         &copy; 2016 Four Winds International Tours & Travel. All Rights Reserved.<br/>
-    website by: andreafoglia.com
+                        website by: andreafoglia.com
                     </address>
 
                 </div>
             </div>
         </div>
-{#        End footer#}
+        {# End footer #}
 
         {# Global javascript #}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -123,6 +116,8 @@
         <script src="{% static 'js/jquery.smartmenus.min.js' %}"></script>
         <script src="{% static 'js/jquery.smartmenus.bootstrap.min.js' %}"></script>
         <script src="{% static 'js/carousel.config.js' %}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
         <script type="text/javascript">
         
         function jcarousel_move(left){
@@ -133,12 +128,21 @@
             $('.jcarousel').jcarousel('scroll',direction);
         }
 
-        </script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-        <script type="text/javascript">
-            $.validate({
-                modules : 'sanitize'
-            });
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $.validate({
+            modules : 'sanitize'
+        });
+
+        // Open pdf preview in new tab
+        $('.rich-text a').attr('target', '_blank');
+
         </script>
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
