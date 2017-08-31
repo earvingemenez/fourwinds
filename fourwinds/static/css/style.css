@@ -258,7 +258,7 @@ have a fixed width and height (but it's not required).
   color: #fff;
   font-size: 14px;
   font-family: "Helvetica Neue", "Helvetica", "Arial" , sans-serif;
-  padding-bottom: 5px;
+  padding-bottom: 15px;
 }
 /* line 27, ../sass/_footer.scss */
 #footer #menu-footer .footer-nav .container #footer-nav .navbar-nav a:hover, #footer #menu-footer .footer-nav .container #footer-nav .navbar-nav a.highlighted {
