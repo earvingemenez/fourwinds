@@ -50,17 +50,14 @@ class WebsiteMixinTravelIndexPage(object):
         context['months'] = months
         return context
 
-
-class ServeDocsMixin():
-    """ Mixin to handle previewing of docs in the browser """
     
-    def wagtail_docs_preview(self, doc_id, doc_name):
-        Document = get_document_model()
-        doc = get_object_or_404(Document, id=doc_id)
+def wagtail_docs_preview(request, doc_id, doc_name):
+    Document = get_document_model()
+    doc = get_object_or_404(Document, id=doc_id)
 
-        # Check if names match
-        if doc.filename != doc_name:
-            raise Http404('This document does not match the given filename.')
+    # Check if names match
+    if doc.filename != doc_name:
+        raise Http404('This document does not match the given filename.')
 
-        return HttpResponseRedirect(doc.file.url)
+    return HttpResponseRedirect(doc.file.url)
 
