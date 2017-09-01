@@ -237,6 +237,11 @@
         background-color: $yellow;
         color: $white;
         margin-top: 10px;
+        font-family: $gothambold;
+        border-radius: 100px;
+        &:hover {
+            color: $white;
+        }
     }
 }
 
