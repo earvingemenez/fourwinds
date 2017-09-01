@@ -21,7 +21,8 @@
                         table-layout: fixed;
                         a {
                             color: $white;
-                            font-size : 14px;
+                            font-size : 15px;
+                            font-weight: bold;
                             font-family: "Helvetica Neue", "Helvetica", "Arial" , sans-serif;
                             padding-bottom: 15px;
                             &:hover, &.highlighted {
@@ -33,6 +34,7 @@
                             .dropdown-menu {
                                 li {
                                     a {
+                                        padding-bottom: 5px;
                                         font-size: 14px;
                                         color: #000;
                                     }
@@ -44,6 +46,7 @@
             }
         }
         .social {
+            margin-top: 20px;
             li {
                 a {
                     .social-icon {
