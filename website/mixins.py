@@ -5,6 +5,10 @@ from datetime import datetime
 from django.utils.timezone import now
 from django.db.models import Count
 from django.db.models.functions import Concat
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import get_object_or_404
+
+from wagtail.wagtaildocs.models import get_document_model
 
 from website.fields import Year, Month, ToDate
 
@@ -45,4 +49,18 @@ class WebsiteMixinTravelIndexPage(object):
         context['travelpages'] = upcomming_travels
         context['months'] = months
         return context
+
+
+class ServeDocsMixin():
+    """ Mixin to handle previewing of docs in the browser """
+    
+    def wagtail_docs_preview(self, doc_id, doc_name):
+        Document = get_document_model()
+        doc = get_object_or_404(Document, id=doc_id)
+
+        # Check if names match
+        if doc.filename != doc_name:
+            raise Http404('This document does not match the given filename.')
+
+        return HttpResponseRedirect(doc.file.url)
 
