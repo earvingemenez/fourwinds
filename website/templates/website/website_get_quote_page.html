@@ -37,6 +37,9 @@
 {% block extra_js %}
     <script type="text/javascript" src="{% static 'js/fourwinds.js' %}"></script>
     <script type="text/javascript">
-        $("#id_phone-number").mask("(999) 999-9999");
+        $(document).ready(function(){
+            $("#id_phone-number").mask("(999) 999-9999");
+            $("#id_comments").parents(".col-md-6").removeClass("col-md-6").addClass("col-md-12");
+        })
     </script>
 {% endblock %}
