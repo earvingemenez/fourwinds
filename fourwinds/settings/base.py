@@ -162,12 +162,11 @@ WAGTAIL_SITE_NAME = "fourwinds"
 BASE_URL = 'https://fwinds.herokuapp.com/'
 # BASE_URL = 'http://localhost:8000/'
 
-EMAIL_HOST = ''
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'info@fourwindstours.com'
+EMAIL_HOST_PASSWORD = '5163342400'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = ''
 DEFAULT_TO_EMAIL = 'info@fourwindstours.com'
 
 # Email backend

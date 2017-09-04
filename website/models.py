@@ -294,7 +294,7 @@ class WebsiteGetQuotePage(AbstractForm):
 
     def process_form_submission(self, form):
         email = EmailMessage(
-            'Get a Quote Form Submission',
+            'Form submission from: Get a Quote',
             render_to_string('email/get-a-quote-template.html', {
                 'firstname': form.cleaned_data.get('first-name'),
                 'lastname': form.cleaned_data.get('last-name'),
@@ -389,7 +389,7 @@ class WebsiteContactUsPage(AbstractForm):
 
     def process_form_submission(self, form):
         email = EmailMessage(
-            'Contact form submission',
+            'Form submission from: Contact Us',
             render_to_string('email/contact-form-template.html', {
                 'firstname': form.cleaned_data.get('first-name'),
                 'lastname': form.cleaned_data.get('last-name'),
