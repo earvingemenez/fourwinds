@@ -710,23 +710,24 @@ have a fixed width and height (but it's not required).
 }
 /* line 76, ../sass/_pages.scss */
 #widgets .widget-item .content {
+  width: 320px;
   background: #102834;
   color: #f3b701;
   font-family: "gothambold";
   padding-bottom: 45px;
   border-bottom: solid 5px #01bdc9;
 }
-/* line 82, ../sass/_pages.scss */
+/* line 83, ../sass/_pages.scss */
 #widgets .widget-item .content p {
   font-size: 14px;
   margin-bottom: 0;
   font-family: "gothammedium";
 }
-/* line 87, ../sass/_pages.scss */
+/* line 88, ../sass/_pages.scss */
 #widgets .widget-item .content h3 {
   margin: 0 5px 5px;
 }
-/* line 91, ../sass/_pages.scss */
+/* line 92, ../sass/_pages.scss */
 #widgets .widget-item .learn-more {
   width: 80%;
   margin: 0 auto;
@@ -736,34 +737,34 @@ have a fixed width and height (but it's not required).
   padding-bottom: 12px;
   margin-top: -25px;
 }
-/* line 99, ../sass/_pages.scss */
+/* line 100, ../sass/_pages.scss */
 #widgets .widget-item .learn-more a {
   font-family: "gothambold";
   text-decoration: none;
   color: #102834;
 }
-/* line 103, ../sass/_pages.scss */
+/* line 104, ../sass/_pages.scss */
 #widgets .widget-item .learn-more a:hover {
   color: #102834;
 }
 
-/* line 111, ../sass/_pages.scss */
+/* line 112, ../sass/_pages.scss */
 .widgets-controller {
   margin: 30px;
 }
-/* line 113, ../sass/_pages.scss */
+/* line 114, ../sass/_pages.scss */
 .widgets-controller .text-uppercase {
   font-size: 16px;
   margin-bottom: 0;
   font-family: "gothammedium";
   color: #102834;
 }
-/* line 119, ../sass/_pages.scss */
+/* line 120, ../sass/_pages.scss */
 .widgets-controller a {
   margin: 20px;
 }
 
-/* line 125, ../sass/_pages.scss */
+/* line 126, ../sass/_pages.scss */
 .testimonial-caption {
   width: 100%;
   height: 432px;
@@ -772,7 +773,7 @@ have a fixed width and height (but it's not required).
   background-repeat: no-repeat;
   background-position-y: -93px;
 }
-/* line 134, ../sass/_pages.scss */
+/* line 135, ../sass/_pages.scss */
 .testimonial-caption p {
   position: absolute;
   left: 0;
@@ -783,11 +784,11 @@ have a fixed width and height (but it's not required).
   font-family: "gothambold";
 }
 
-/* line 146, ../sass/_pages.scss */
+/* line 147, ../sass/_pages.scss */
 .blog-container {
   display: flex;
 }
-/* line 148, ../sass/_pages.scss */
+/* line 149, ../sass/_pages.scss */
 .blog-container .share-blog {
   position: -webkit-sticky !important;
   position: sticky !important;
@@ -796,73 +797,73 @@ have a fixed width and height (but it's not required).
   margin-right: 17px;
 }
 
-/* line 157, ../sass/_pages.scss */
+/* line 158, ../sass/_pages.scss */
 .blog-img {
   width: 100%;
   overflow: hidden;
 }
-/* line 160, ../sass/_pages.scss */
+/* line 161, ../sass/_pages.scss */
 .blog-img img {
   width: 100%;
 }
 
-/* line 165, ../sass/_pages.scss */
+/* line 166, ../sass/_pages.scss */
 .margin-t-20 {
   margin-top: 20px;
 }
 
-/* line 169, ../sass/_pages.scss */
+/* line 170, ../sass/_pages.scss */
 .submit-btn {
   background-color: #01bdc9;
   color: #000;
 }
 
-/* line 174, ../sass/_pages.scss */
+/* line 175, ../sass/_pages.scss */
 .tours-container {
   margin-top: 20px;
 }
-/* line 177, ../sass/_pages.scss */
+/* line 178, ../sass/_pages.scss */
 .tours-container .articles h3 {
   margin-bottom: 20px;
 }
-/* line 182, ../sass/_pages.scss */
+/* line 183, ../sass/_pages.scss */
 .tours-container .panel:hover {
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);
   transition: 0.25s;
 }
-/* line 188, ../sass/_pages.scss */
+/* line 189, ../sass/_pages.scss */
 .tours-container .panel .panel-heading {
   padding: 0px;
 }
-/* line 190, ../sass/_pages.scss */
+/* line 191, ../sass/_pages.scss */
 .tours-container .panel .panel-heading .panel-image {
   width: 100%;
   height: 217px;
   overflow: hidden;
 }
-/* line 197, ../sass/_pages.scss */
+/* line 198, ../sass/_pages.scss */
 .tours-container .panel .panel-body h3 {
   margin-top: 0px;
   text-align: center;
 }
-/* line 200, ../sass/_pages.scss */
+/* line 201, ../sass/_pages.scss */
 .tours-container .panel .panel-body h3 a {
   color: #01bdc9;
 }
-/* line 204, ../sass/_pages.scss */
+/* line 205, ../sass/_pages.scss */
 .tours-container .panel .panel-body p {
   text-align: center;
 }
-/* line 207, ../sass/_pages.scss */
+/* line 208, ../sass/_pages.scss */
 .tours-container .panel .panel-body .view-tour {
   text-align: center;
 }
-/* line 209, ../sass/_pages.scss */
+/* line 210, ../sass/_pages.scss */
 .tours-container .panel .panel-body .view-tour a {
   color: #01bdc9;
 }
 
-/* line 218, ../sass/_pages.scss */
+/* line 219, ../sass/_pages.scss */
 .custom-form input, .custom-form select, .custom-form textarea {
   display: block;
   width: 100%;
@@ -878,11 +879,11 @@ have a fixed width and height (but it's not required).
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-/* line 233, ../sass/_pages.scss */
+/* line 234, ../sass/_pages.scss */
 .custom-form textarea {
   height: 100px;
 }
-/* line 236, ../sass/_pages.scss */
+/* line 237, ../sass/_pages.scss */
 .custom-form button {
   background-color: #ffbf09;
   color: #fff;
@@ -890,58 +891,58 @@ have a fixed width and height (but it's not required).
   font-family: "gothambold";
   border-radius: 100px;
 }
-/* line 242, ../sass/_pages.scss */
+/* line 243, ../sass/_pages.scss */
 .custom-form button:hover {
   color: #fff;
 }
 
-/* line 248, ../sass/_pages.scss */
+/* line 249, ../sass/_pages.scss */
 .breadcrumb-wrapper {
   margin-top: 20px;
 }
-/* line 250, ../sass/_pages.scss */
+/* line 251, ../sass/_pages.scss */
 .breadcrumb-wrapper .breadcrumb {
   margin-bottom: 0px;
 }
-/* line 253, ../sass/_pages.scss */
+/* line 254, ../sass/_pages.scss */
 .breadcrumb-wrapper .breadcrumb li a {
   color: #01bdc9;
 }
 
-/* line 262, ../sass/_pages.scss */
+/* line 263, ../sass/_pages.scss */
 .testimonial-block .rich-text p {
   font-size: 16px;
   line-height: 30px;
 }
-/* line 266, ../sass/_pages.scss */
+/* line 267, ../sass/_pages.scss */
 .testimonial-block .rich-text p:first-child::before {
   content: '“';
   font-size: 20px;
 }
-/* line 272, ../sass/_pages.scss */
+/* line 273, ../sass/_pages.scss */
 .testimonial-block .rich-text p:last-child::after {
   content: "”";
   font-size: 20px;
 }
 
-/* line 281, ../sass/_pages.scss */
+/* line 282, ../sass/_pages.scss */
 .pager {
   max-width: 850px;
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
 }
-/* line 287, ../sass/_pages.scss */
+/* line 288, ../sass/_pages.scss */
 .pager li a {
   color: #01bdc9;
 }
-/* line 291, ../sass/_pages.scss */
+/* line 292, ../sass/_pages.scss */
 .pager li:hover a {
   background-color: #102633;
   color: #fff;
 }
 
-/* line 299, ../sass/_pages.scss */
+/* line 300, ../sass/_pages.scss */
 #gmap {
   height: 300px !important;
 }
