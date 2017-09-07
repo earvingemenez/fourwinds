@@ -1,45 +1,128 @@
-{% extends "base.html" %}
-
-{% load wagtailcore_tags wagtailimages_tags home_tags static %}
-
-{% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="margin-t-20 homepage-body-content">
-                    <p>{{ page.intro | richtext }}</p>
-                    <div class="row">
-                        <form action="{% pageurl page %}" method="POST" class="custom-form">
-                            {% csrf_token %}
-                            {% for field in form %}
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>{{ field.label }}:</label>
-                                        {% if field.field.required %}
-                                            <span>*required</span>
-                                        {% endif %}
-                                        {{ field }}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            <div class="col-md-4 col-md-offset-4 btn-center">
-                                <button type="submit" class="btn btn-lg btn-block">Finish</button>
+{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags home_tags static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="margin-t-20 homepage-body-content">
+                <p>{{ page.intro | richtext }}</p>
+                <div class="row">
+                    <form action="/get-quote/" method="POST" class="custom-form has-validation-callback">
+                        {% csrf_token %}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                <span>*required</span>
+                                <input id="id_first-name" maxlength="255" name="first-name" type="text" required="" value="{% if firstname %}{{ firstname }}{% endif %}">
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                <span>*required</span>
+                                <input id="id_last-name" maxlength="255" name="last-name" type="text" required="" value="{% if lastname %}{{ lastname }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email Address:</label>
+                                <span>*required</span>
+                                <input id="id_email-address" name="email-address" type="email" required="" value="{% if email %}{{ email }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Phone Number:</label>
+                                <span>*required</span>
+                                <input id="id_phone-number" maxlength="255" name="phone-number" type="text" required="" value="{% if phonenumber %}{{ phonenumber }}{% endif %}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>School Name:</label>
+                                <input id="id_school-name" maxlength="255" name="school-name" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>School ZIP Code:</label>
+                                <input id="id_school-zip-code" name="school-zip-code" step="any" type="number">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Role:</label>
+                                <span>*required</span>
+                                <select id="id_role" name="role" required="">
+                                    <option value="Please select" {% if not role %}selected{% endif %}>Please select</option>
+                                    <option value="Teacher" {% if role == 'Teacher' %}selected{% endif %}>Teacher</option>
+                                    <option value="Student" {% if role == 'Student' %}selected{% endif %}>Student</option>
+                                    <option value="Parent" {% if role == 'Parent' %}selected{% endif %}>Parent</option>
+                                    <option value="Administrator" {% if role == 'Administrator' %}selected{% endif %}>Administrator</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Type of Trip:</label>
+                                <select id="id_type-of-trip" name="type-of-trip">
+                                    <option value="Please select" selected="selected">Please select</option>
+                                    <option value="Band">Band</option>
+                                    <option value="Orchestra">Orchestra</option>
+                                    <option value="Chorus">Chorus</option>
+                                    <option value="Senior">Senior</option>
+                                    <option value="International">International</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Estimated Trip Year:</label>
+                                <select id="id_estimated-trip-year" name="estimated-trip-year">
+                                    <option value="Please select" selected="selected">Please select</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2019">2019</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Desired Destination:</label>
+                                <input id="id_desired-destination" maxlength="255" name="desired-destination" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Number of Students:</label>
+                                <input id="id_number-of-students" name="number-of-students" step="any" type="number">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Approximate Budget:</label>
+                                <input id="id_approximate-budget" maxlength="255" name="approximate-budget" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Comments:</label>
+                                <textarea cols="40" id="id_comments" name="comments" rows="10"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-md-offset-4 btn-center">
+                            <button type="submit" class="btn btn-lg btn-block">Finish</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    {% testimonials_slider calling_page=self %}
-{% endblock %}
-
-{% block extra_js %}
-    <script type="text/javascript" src="{% static 'js/fourwinds.js' %}"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#id_phone-number").mask("(999) 999-9999");
-            $("#id_comments").parents(".col-md-6").removeClass("col-md-6").addClass("col-md-12");
-        })
-    </script>
+</div>
+{% testimonials_slider calling_page=self %} {% endblock %} {% block extra_js %}
+<script type="text/javascript" src="{% static 'js/fourwinds.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#id_phone-number").mask("(999) 999-9999");
+})
+</script>
 {% endblock %}

@@ -7,12 +7,14 @@ from wagtail.wagtailcore.models import Page, Orderable
 from django import forms
 from django.db import models
 from django.forms import extras
+from django.http import HttpResponseRedirect
 from django.core.validators import ValidationError
 from django.utils.text import slugify, _
 from django.core.mail import EmailMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.shortcuts import render, redirect
 
 from modelcluster.fields import ParentalKey, ParentalManyToManyField
 from wagtail.wagtailcore.fields import RichTextField
@@ -284,13 +286,34 @@ class FormField(AbstractFormField):
 class WebsiteGetQuotePage(AbstractForm):
     intro = RichTextField(blank=True)
     success_text = RichTextField(blank=True)
+    redirect_success_to = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     content_panels = AbstractForm.content_panels + [
         FormSubmissionsPanel(),
         FieldPanel('intro', classname='full'),
         FieldPanel('success_text', classname='full'),
-        InlinePanel('form_fields', label='Form fields')
+        InlinePanel('form_fields', label='Form fields'),
+        PageChooserPanel('redirect_success_to')
     ]
+
+    def get_context(self, request):
+        context = super(WebsiteGetQuotePage, self).get_context(request)
+        context = {
+            'firstname': request.GET.get('first-name'),
+            'lastname': request.GET.get('last-name'),
+            'role': request.GET.get('role'),
+            'email': request.GET.get('email-address'),
+            'phonenumber': request.GET.get('phone-number'),
+            'redirect_success_to': self.redirect_success_to
+        }
+        return context
+        
 
     def process_form_submission(self, form):
         email = EmailMessage(
@@ -379,12 +402,20 @@ class ContactFormField(AbstractFormField):
 class WebsiteContactUsPage(AbstractForm):
     intro = RichTextField(blank=True)
     success_text = models.CharField(max_length=250)
+    redirect_success_to = models.ForeignKey(
+        'wagtailcore.Page',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+    )
 
     content_panels = AbstractForm.content_panels + [
         FormSubmissionsPanel(),
         FieldPanel('intro', classname='full'),
         FieldPanel('success_text', classname='full'),
-        InlinePanel('form_fields', label='Contact form fields')
+        InlinePanel('form_fields', label='Contact form fields'),
+        PageChooserPanel('redirect_success_to')
     ]
 
     def process_form_submission(self, form):
@@ -404,3 +435,15 @@ class WebsiteContactUsPage(AbstractForm):
         )
         email.content_subtype = 'html'
         email.send()
+
+
+class WebsiteFullContentPage(Page):
+    """ Model for page with full width content """
+
+    heading = models.CharField(max_length=250, blank=True, null=True)
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('heading', classname='full'),
+        FieldPanel('intro', classname='full'),
+    ]

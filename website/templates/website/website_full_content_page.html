@@ -7,9 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="homepage-body-content margin-t-20">
-                    <script type="text/javascript">
-                        window.location = "{{ redirect_success_to.url }}";
-                    </script>
+                    {{ page.intro | richtext }}<br>
                 </div>
             </div>
         </div>
