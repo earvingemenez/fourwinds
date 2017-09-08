@@ -305,6 +305,7 @@ class WebsiteGetQuotePage(AbstractForm):
     def get_context(self, request):
         context = super(WebsiteGetQuotePage, self).get_context(request)
         context = {
+            'page': self,
             'firstname': request.GET.get('first-name'),
             'lastname': request.GET.get('last-name'),
             'role': request.GET.get('role'),
@@ -417,6 +418,14 @@ class WebsiteContactUsPage(AbstractForm):
         InlinePanel('form_fields', label='Contact form fields'),
         PageChooserPanel('redirect_success_to')
     ]
+
+    def get_context(self, request):
+        context = super(WebsiteContactUsPage, self).get_context(request)
+        context = {
+            'page': self,
+            'redirect_success_to': self.redirect_success_to
+        }
+        return context
 
     def process_form_submission(self, form):
         email = EmailMessage(
