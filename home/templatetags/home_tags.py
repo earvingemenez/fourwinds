@@ -119,7 +119,7 @@ def main_slider(context, calling_page):
     return {
         "gallery_images": calling_page.gallery_images,
         "show_carousel" : show_carousel,
-        "tours_page_url": tours_page.url
+        "tours_page": tours_page
     }
 
 @register.inclusion_tag('home/tags/quick_contact_form.html', takes_context=True)

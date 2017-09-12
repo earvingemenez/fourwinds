@@ -11,7 +11,7 @@
                 <div class="carousel-caption">
                     <img src="{% static 'img/slideshow/travel-is-education.png' %}" alt="">
                     <div class="text-center cta">
-                        <a href="{{ tours_page_url }}" class="cta-button">Browse Tours</a>
+                        <a href="{{ tours_page.url }}" class="cta-button">Browse Tours</a>
                     </div>
                 </div>
                 {% endif %}
@@ -20,11 +20,11 @@
       </div>
 
       <!-- Controls -->
-      <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+      <a class="left carousel-control hidden-xs" href="#main-carousel" role="button" data-slide="prev">
         <span class="icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+      <a class="right carousel-control hidden-xs" href="#main-carousel" role="button" data-slide="next">
         <span class="icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
