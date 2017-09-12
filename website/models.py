@@ -327,6 +327,7 @@ class WebsiteGetQuotePage(AbstractForm):
                 'estimated_trip_year': form.cleaned_data.get('estimated-trip-year'),
                 'desired_destination': form.cleaned_data.get('desired-destination'),
                 'number_of_students': form.cleaned_data.get('number-of-students'),
+                'number_of_days': form.cleaned_data.get('number-of-days'),
                 'approximate_budget': form.cleaned_data.get('approximate-budget'),
                 'comments': form.cleaned_data.get('comments'),
             }),
