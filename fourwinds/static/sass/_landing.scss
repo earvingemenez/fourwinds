@@ -177,11 +177,16 @@
     padding-bottom: 5%;
 }
 
-.jcarousel-control-prev, .jcarousel-control-next {
-    img {
-        background-color: #ddd;
-        padding: 10px 15px;
-        border-radius: 20px;
+.widgets-controller {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .jcarousel-control-prev, .jcarousel-control-next {
+        img {
+            background-color: #ddd;
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
     }
 }
 

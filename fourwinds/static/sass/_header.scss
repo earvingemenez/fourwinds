@@ -94,3 +94,8 @@
 .sub-arrow {
     display: none;
 }
+
+a[href^="tel:"] {
+  text-decoration: none;
+  border: 0px !important;
+}
