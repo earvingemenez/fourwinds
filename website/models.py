@@ -285,7 +285,6 @@ class FormField(AbstractFormField):
 
 class WebsiteGetQuotePage(AbstractForm):
     intro = RichTextField(blank=True)
-    success_text = RichTextField(blank=True)
     redirect_success_to = models.ForeignKey(
         'wagtailcore.Page',
         null=True,
@@ -296,7 +295,6 @@ class WebsiteGetQuotePage(AbstractForm):
 
     content_panels = AbstractForm.content_panels + [
         FieldPanel('intro', classname='full'),
-        FieldPanel('success_text', classname='full'),
         PageChooserPanel('redirect_success_to')
     ]
 
