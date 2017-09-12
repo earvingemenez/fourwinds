@@ -295,10 +295,8 @@ class WebsiteGetQuotePage(AbstractForm):
     )
 
     content_panels = AbstractForm.content_panels + [
-        FormSubmissionsPanel(),
         FieldPanel('intro', classname='full'),
         FieldPanel('success_text', classname='full'),
-        InlinePanel('form_fields', label='Form fields'),
         PageChooserPanel('redirect_success_to')
     ]
 
