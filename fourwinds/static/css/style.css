@@ -547,7 +547,7 @@ a[href^="tel:"] {
   border-radius: 20px;
 }
 
-@media (max-width: 560px) {
+@media (min-width: 320px) and (max-width: 767px) {
   /* line 196, ../sass/_landing.scss */
   #main-carousel .left .icon, #main-carousel .right .icon {
     width: 30px;
@@ -555,81 +555,95 @@ a[href^="tel:"] {
     border-radius: 20px;
   }
   /* line 204, ../sass/_landing.scss */
-  #main-carousel .carousel-inner .item .carousel-item {
-    height: 200px;
+  #main-carousel .carousel-inner .item .carousel-image {
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
   }
-  /* line 210, ../sass/_landing.scss */
+  /* line 214, ../sass/_landing.scss */
+  #main-carousel .carousel-caption {
+    margin-bottom: 30px;
+  }
+  /* line 216, ../sass/_landing.scss */
   #main-carousel .carousel-caption img {
-    height: 100px;
+    height: 150px;
   }
-  /* line 213, ../sass/_landing.scss */
+  /* line 219, ../sass/_landing.scss */
   #main-carousel .carousel-caption .cta {
     padding-top: 20px;
     margin-bottom: 0px;
   }
-  /* line 216, ../sass/_landing.scss */
+  /* line 222, ../sass/_landing.scss */
   #main-carousel .carousel-caption .cta .cta-button {
     font-size: 12px;
     padding: 12px 16px;
   }
 
-  /* line 224, ../sass/_landing.scss */
+  /* line 230, ../sass/_landing.scss */
   .jcarousel-control-prev img, .jcarousel-control-next img {
     padding: 5px 8px;
   }
 }
-@media (max-width: 768px) and (min-width: 560px) {
-  /* line 233, ../sass/_landing.scss */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* line 239, ../sass/_landing.scss */
   #main-carousel .left .icon, #main-carousel .right .icon {
     width: 30px;
     height: 30px;
     border-radius: 20px;
-  }
-  /* line 241, ../sass/_landing.scss */
-  #main-carousel .carousel-inner .item .carousel-item {
-    height: 250px;
   }
   /* line 247, ../sass/_landing.scss */
-  #main-carousel .carousel-caption img {
-    height: 150px;
+  #main-carousel .carousel-inner .item .carousel-image {
+    height: 500px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
   }
-  /* line 250, ../sass/_landing.scss */
-  #main-carousel .carousel-caption .cta {
-    padding-top: 20px;
-    margin-bottom: -30px;
+  /* line 257, ../sass/_landing.scss */
+  #main-carousel .carousel-caption {
+    margin-bottom: 80px;
   }
-  /* line 253, ../sass/_landing.scss */
-  #main-carousel .carousel-caption .cta .cta-button {
-    font-size: 14px;
-    padding: 12px 15px;
-  }
-}
-@media (max-width: 1150px) and (min-width: 769px) {
-  /* line 265, ../sass/_landing.scss */
-  #main-carousel .left .icon, #main-carousel .right .icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 20px;
-  }
-  /* line 272, ../sass/_landing.scss */
+  /* line 259, ../sass/_landing.scss */
   #main-carousel .carousel-caption img {
     height: 200px;
   }
-  /* line 275, ../sass/_landing.scss */
-  #main-carousel .carousel-caption .cta {
-    padding-top: 20px;
-    margin-bottom: -30px;
+}
+@media (min-width: 1025px) and (max-width: 1599px) {
+  /* line 269, ../sass/_landing.scss */
+  #main-carousel .left .icon, #main-carousel .right .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
   }
-  /* line 278, ../sass/_landing.scss */
-  #main-carousel .carousel-caption .cta .cta-button {
-    font-size: 14px;
-    padding: 12px 15px;
+  /* line 277, ../sass/_landing.scss */
+  #main-carousel .carousel-inner .item .carousel-image {
+    height: 610px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+  /* line 287, ../sass/_landing.scss */
+  #main-carousel .carousel-caption {
+    margin-bottom: 100px;
   }
 }
-@media (min-width: 1150px) {
-  /* line 289, ../sass/_landing.scss */
-  .carousel-caption .cta {
-    margin-bottom: 30px;
+@media (min-width: 1600px) {
+  /* line 296, ../sass/_landing.scss */
+  #main-carousel .left .icon, #main-carousel .right .icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+  }
+  /* line 304, ../sass/_landing.scss */
+  #main-carousel .carousel-inner .item .carousel-image {
+    height: 610px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+  /* line 314, ../sass/_landing.scss */
+  #main-carousel .carousel-caption {
+    margin-bottom: 50px;
   }
 }
 /* line 3, ../sass/_pages.scss */
