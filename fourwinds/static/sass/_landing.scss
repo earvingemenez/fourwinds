@@ -190,7 +190,7 @@
     }
 }
 
-@media (max-width : 560px) {
+@include mobile {
     #main-carousel {
         .left, .right {
             .icon {
@@ -201,14 +201,20 @@
         }
         .carousel-inner {
             .item {
-                .carousel-item {
-                    height: 200px;
+                .carousel-image {
+                    height: 300px;
+                    width: 100%;
+                    background: {
+                        size: cover;
+                        position: center center;
+                    }
                 }
             }
         }
         .carousel-caption {
+            margin-bottom: 30px;
             img {
-                height: 100px;
+                height: 150px;
             }
             .cta {
                 padding-top: 20px;
@@ -227,7 +233,7 @@
     }
 }
 
-@media (max-width : 768px) and (min-width : 560px) {
+@include tablet {
     #main-carousel {
         .left, .right {
             .icon {
@@ -238,28 +244,26 @@
         }
         .carousel-inner {
             .item {
-                .carousel-item {
-                    height: 250px;
+                .carousel-image {
+                    height: 500px;
+                    width: 100%;
+                    background: {
+                        size: cover;
+                        position: center center;
+                    }
                 }
             }
         }
         .carousel-caption {
+            margin-bottom: 80px;
             img {
-                height: 150px;
-            }
-            .cta {
-                padding-top: 20px;
-                margin-bottom: -30px;
-                .cta-button {
-                    font-size: 14px;
-                    padding: 12px 15px;
-                }
+                height: 200px;
             }
         }
     }
 }
 
-@media (max-width : 1150px) and (min-width : 769px) {
+@include desktop {
     #main-carousel {
         .left, .right {
             .icon {
@@ -268,26 +272,47 @@
                 border-radius: 20px;
             }
         }
-        .carousel-caption {
-            img {
-                height: 200px;
-            }
-            .cta {
-                padding-top: 20px;
-                margin-bottom: -30px;
-                .cta-button {
-                    font-size: 14px;
-                    padding: 12px 15px;
+        .carousel-inner {
+            .item {
+                .carousel-image {
+                    height: 610px;
+                    width: 100%;
+                    background: {
+                        size: cover;
+                        position: center center;
+                    }
                 }
             }
+        }
+        .carousel-caption {
+            margin-bottom: 100px;
         }
     }
 }
 
-@media (min-width: 1150px) {
-    .carousel-caption {
-        .cta {
-            margin-bottom: 30px;
+@include desktop-lg {
+    #main-carousel {
+        .left, .right {
+            .icon {
+                width: 30px;
+                height: 30px;
+                border-radius: 20px;
+            }
+        }
+        .carousel-inner {
+            .item {
+                .carousel-image {
+                    height: 610px;
+                    width: 100%;
+                    background: {
+                        size: cover;
+                        position: center center;
+                    }
+                }
+            }
+        }
+        .carousel-caption {
+            margin-bottom: 50px;
         }
     }
 }
