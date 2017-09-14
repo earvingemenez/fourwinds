@@ -8,14 +8,12 @@
             <div class="item {% if forloop.counter0 == 0 %} active {% endif %}">
               {% image item.image fill-1562x445-c100 as carousel_image %}
               <div class="carousel-image" style="background-image: url('{{ carousel_image.url }}')">
-                {% if forloop.counter0 == 0 %}
                 <div class="carousel-caption">
                     <img src="{% static 'img/slideshow/travel-is-education.png' %}" alt="">
                     <div class="text-center cta">
                         <a href="{{ tours_page.url }}" class="cta-button">Browse Tours</a>
                     </div>
                 </div>
-                {% endif %}
               </div>
             </div>
         {% endfor %}
