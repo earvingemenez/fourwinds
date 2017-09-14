@@ -5,8 +5,10 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            {% quick_contact_form %}
-            <div class="col-md-6 articles">
+            <div class="hidden-xs hidden-sm">
+                {% quick_contact_form %}
+            </div>
+            <div class="col-xs-12 col-md-6 articles">
                 <div class="article">
                     {{ page.body|richtext }}
                     {% if page.docs %}
@@ -16,6 +18,9 @@
                     {% endif %}
                 </div><br>
                 {% travels_home calling_page=self %}
+            </div>
+            <div class="visible-xs visible-sm">
+                {% quick_contact_form %}
             </div>
             {% testimonials_sidebar calling_page=self %}
         </div>
