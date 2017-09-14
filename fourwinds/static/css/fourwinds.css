@@ -485,7 +485,6 @@ have a fixed width and height (but it's not required).
     table-layout: fixed;
 }
 #footer #menu-footer .navbar-nav a{
-    color: white;
     font-size:12px;
     font-family: "Arial Rounded MT Bold";
     padding-bottom: 5px;
