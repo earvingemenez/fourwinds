@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import os
+
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase, Tag
 
@@ -298,46 +300,53 @@ class WebsiteGetQuotePage(AbstractForm):
         PageChooserPanel('redirect_success_to')
     ]
 
-    def get_context(self, request):
-        context = super(WebsiteGetQuotePage, self).get_context(request)
-        context = {
-            'page': self,
-            'firstname': request.GET.get('first-name'),
-            'lastname': request.GET.get('last-name'),
-            'role': request.GET.get('role'),
-            'email': request.GET.get('email-address'),
-            'phonenumber': request.GET.get('phone-number'),
-            'redirect_success_to': self.redirect_success_to
-        }
-        return context
-        
+    def serve(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            data = request.POST
+            itinerary = request.FILES.get('itinerary')
+            email = EmailMessage(
+                'Form submission from: Get a Quote',
+                render_to_string('email/get-a-quote-template.html', {
+                    'firstname': data.get('first-name'),
+                    'lastname': data.get('last-name'),
+                    'email': data.get('email-address'),
+                    'phone_number': data.get('phone-number'),
+                    'school_name': data.get('school-name'),
+                    'school_zip_code': data.get('school-zip-code'),
+                    'role': data.get('role'),
+                    'type_of_trip': data.get('type-of-trip'),
+                    'estimated_trip_year': data.get('estimated-trip-year'),
+                    'desired_destination': data.get('desired-destination'),
+                    'number_of_students': data.get('number-of-students'),
+                    'number_of_days': data.get('number-of-days'),
+                    'approximate_budget': data.get('approximate-budget'),
+                    'comments': data.get('comments'),
+                    'itinerary': itinerary.name if itinerary else ''
+                }),
+                '{} {} <{}>'.format(data.get('first-name'),
+                    data.get('last-name'),
+                    data.get('email-address')),
+                [settings.DEFAULT_TO_EMAIL]
+            )
+            email.content_subtype = 'html'
+            if itinerary:
+                email.attach(itinerary.name, itinerary.read(), itinerary.content_type)
 
-    def process_form_submission(self, form):
-        email = EmailMessage(
-            'Form submission from: Get a Quote',
-            render_to_string('email/get-a-quote-template.html', {
-                'firstname': form.data.get('first-name'),
-                'lastname': form.data.get('last-name'),
-                'email': form.data.get('email-address'),
-                'phone_number': form.data.get('phone-number'),
-                'school_name': form.data.get('school-name'),
-                'school_zip_code': form.data.get('school-zip-code'),
-                'role': form.data.get('role'),
-                'type_of_trip': form.data.get('type-of-trip'),
-                'estimated_trip_year': form.data.get('estimated-trip-year'),
-                'desired_destination': form.data.get('desired-destination'),
-                'number_of_students': form.data.get('number-of-students'),
-                'number_of_days': form.data.get('number-of-days'),
-                'approximate_budget': form.data.get('approximate-budget'),
-                'comments': form.data.get('comments'),
-            }),
-            '{} {} <{}>'.format(form.data.get('first-name'),
-                form.data.get('last-name'),
-                form.data.get('email-address')),
-            [settings.DEFAULT_TO_EMAIL]
-        )
-        email.content_subtype = 'html'
-        email.send()
+            email.send()
+            context = {'redirect_success_to': self.redirect_success_to}
+            return render(request, self.get_landing_page_template(request), context)
+
+        else:
+            context = {
+                'page': self,
+                'firstname': request.GET.get('first-name'),
+                'lastname': request.GET.get('last-name'),
+                'role': request.GET.get('role'),
+                'email': request.GET.get('email-address'),
+                'phonenumber': request.GET.get('phone-number'),
+                'redirect_success_to': self.redirect_success_to
+            }
+            return render(request, self.get_template(request), context)
 
 
 class WebsiteTourCollectionIndexPage(Page):
