@@ -4,8 +4,9 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="margin-t-20 homepage-body-content">
                 <p>{{ page.intro | richtext }}</p>
+                <div class="messages"></div>
                 <div class="row">
-                    <form action="/get-quote/" method="POST" class="custom-form has-validation-callback">
+                    <form action="/get-quote/" method="POST" class="custom-form has-validation-callback" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="col-md-6">
                             <div class="form-group">
@@ -108,6 +109,12 @@
                             <div class="form-group">
                                 <label>Approximate Budget:</label>
                                 <input id="id_approximate-budget" maxlength="255" name="approximate-budget" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Itinerary:</label>
+                                <input id="id_itinerary" maxlength="255" name="itinerary" type="file" onchange="checkFileType()">
                             </div>
                         </div>
                         <div class="col-md-12">
