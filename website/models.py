@@ -462,3 +462,10 @@ class WebsiteFullContentPage(Page):
         FieldPanel('heading', classname='full'),
         FieldPanel('intro', classname='full'),
     ]
+
+    def get_context(self, request):
+        context = super(WebsiteFullContentPage, self).get_context(request)
+        if self.get_ancestors().live().type(WebsiteGetQuotePage).exists():
+            context['is_get_quote_page'] = True
+        return context
+
