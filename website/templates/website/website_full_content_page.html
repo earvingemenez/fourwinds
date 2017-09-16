@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags home_tags %}
+{% load wagtailcore_tags wagtailimages_tags home_tags static %}
 
 {% block content %}
     <div class="container">
@@ -9,6 +9,25 @@
                 <div class="homepage-body-content margin-t-20">
                     <h3>{{ page.heading }}</h3>
                     {{ page.intro|richtext }}<br>
+                    {% if is_get_quote_page or is_contact_us_page %}
+                        <div class="full-width-page-social">
+                            <li>
+                                <a href="https://www.facebook.com/FourwindsTours/" target="_blank">
+                                    <img src="{% static 'img/footer/facebook.png' %}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/fourwindstours" target="_blank">
+                                    <img src="{% static 'img/footer/twitter.png' %}">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/company-beta/6569482/" target="_blank">
+                                    <img src="{% static 'img/footer/linkedin.png' %}">
+                                </a>
+                            </li>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -465,7 +465,12 @@ class WebsiteFullContentPage(Page):
 
     def get_context(self, request):
         context = super(WebsiteFullContentPage, self).get_context(request)
+
         if self.get_ancestors().live().type(WebsiteGetQuotePage).exists():
             context['is_get_quote_page'] = True
+
+        if self.get_ancestors().live().type(WebsiteContactUsPage).exists():
+            context['is_contact_us_page'] = True
+
         return context
 

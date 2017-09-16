@@ -968,3 +968,18 @@ a[href^="tel:"] {
 #gmap {
   height: 300px !important;
 }
+
+/* line 304, ../sass/_pages.scss */
+.full-width-page-social {
+  display: inline-flex;
+  justify-content: center;
+}
+/* line 307, ../sass/_pages.scss */
+.full-width-page-social li {
+  list-style: none;
+  margin-right: 20px;
+}
+/* line 311, ../sass/_pages.scss */
+.full-width-page-social li a img {
+  width: 70%;
+}

@@ -300,3 +300,17 @@
 #gmap {
     height: 300px !important;
 }
+
+.full-width-page-social {
+    display: inline-flex;
+    justify-content: center;
+    li {
+        list-style: none;
+        margin-right: 20px;
+        a {
+            img {
+                width: 70%;
+            }
+        }
+    }
+}
